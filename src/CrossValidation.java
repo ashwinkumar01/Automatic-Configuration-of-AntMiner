@@ -799,7 +799,7 @@ public class CrossValidation implements Runnable {
 	 */
 	private double calculateRuleQuality(Ant ant){   //, int nQualityChoice
 		double quality = 0;
-		int nTruePositive, nFalsePositive, nFalseNegative, nTrueNegative;
+		int nTruePositive, nFalsePositive, nFalseNegative, nTrueNegative, nQualityChoice = 0;
         int totalNumExamples = 0;
 		nTruePositive=nFalsePositive=nFalseNegative=nTrueNegative=0;
 		

@@ -99,7 +99,7 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
 	private JScrollPane jScrollPane3;
 	private JPanel jPanel6;
 	private JPanel jPanel5;
-	private JPanel jPanel3;
+	private JPanel jClassifyPanel;
 	private JTabbedPane jTabbedPane1;
 	private JScrollPane jScrollPane1;
 	private JLabel jLabelNumberOfAttributes;
@@ -107,7 +107,7 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
 	private JLabel jLabel3;
 	private JLabel jLabel2;
 	private JLabel jLabel1;
-	private JPanel jPanel1;
+	private JPanel jRelationPanel;
 	private JPanel jPanel2;
 	private JMenuItem jMenuItem3;
 	private JMenu jMenu2;
@@ -120,6 +120,7 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
 	private JButton jButton2;
 	private JProgressBar jProgressBar1;
 	private JPanel jPanel8;
+    private JPanel jPanel10;
 	private JCheckBox jCheckBox3;
 	private JCheckBox jCheckBox2;
 	private JLabel jLabel15;
@@ -275,8 +276,8 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
 
                     }
                     {
-                        jPanel1 = new JPanel();
-                        jPanel2.add(jPanel1, new GridBagConstraints(
+                        jRelationPanel = new JPanel();
+                        jPanel2.add(jRelationPanel, new GridBagConstraints(
                                 0,
                                 0,
                                 1,
@@ -294,14 +295,14 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                         jPanel1Layout.columnWidths = new int[]{30, 66, 120, 63, 100, 20};
                         jPanel1Layout.rowHeights = new int[]{18, 18};
                         jPanel1Layout.rowWeights = new double[]{0.1, 0.1};
-                        jPanel1.setLayout(jPanel1Layout);
+                        jRelationPanel.setLayout(jPanel1Layout);
 
-                        jPanel1.setBounds(7, 8, 385, 72);
-                        jPanel1.setBorder(BorderFactory.createTitledBorder("Relation"));
-                        jPanel1.setSize(320, 59);
+                        jRelationPanel.setBounds(7, 8, 385, 72);
+                        jRelationPanel.setBorder(BorderFactory.createTitledBorder("Relation"));
+                        jRelationPanel.setSize(320, 59);
                         {
                             jLabel1 = new JLabel();
-                            jPanel1.add(jLabel1, new GridBagConstraints(
+                            jRelationPanel.add(jLabel1, new GridBagConstraints(
                                     1,
                                     0,
                                     1,
@@ -322,7 +323,7 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                         }
                         {
                             jLabel2 = new JLabel();
-                            jPanel1.add(jLabel2, new GridBagConstraints(
+                            jRelationPanel.add(jLabel2, new GridBagConstraints(
                                     2,
                                     0,
                                     1,
@@ -340,7 +341,7 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                         }
                         {
                             jLabel3 = new JLabel();
-                            jPanel1.add(jLabel3, new GridBagConstraints(
+                            jRelationPanel.add(jLabel3, new GridBagConstraints(
                                     1,
                                     1,
                                     1,
@@ -358,7 +359,7 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                         }
                         {
                             jLabelNumberOfInstances = new JLabel();
-                            jPanel1.add(
+                            jRelationPanel.add(
                                     jLabelNumberOfInstances,
                                     new GridBagConstraints(
                                             2,
@@ -377,7 +378,7 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                         }
                         {
                             jLabel5 = new JLabel();
-                            jPanel1.add(jLabel5, new GridBagConstraints(
+                            jRelationPanel.add(jLabel5, new GridBagConstraints(
                                     3,
                                     1,
                                     1,
@@ -395,7 +396,7 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                         }
                         {
                             jLabelNumberOfAttributes = new JLabel();
-                            jPanel1.add(
+                            jRelationPanel.add(
                                     jLabelNumberOfAttributes,
                                     new GridBagConstraints(
                                             4,
@@ -588,17 +589,17 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                         }
                     }
                     {
-                        jPanel3 = new JPanel();
-                        jTabbedPane1.addTab("Classify", null, jPanel3, null);
+                        jClassifyPanel = new JPanel();
+                        jTabbedPane1.addTab("Classify", null, jClassifyPanel, null);
                         GridBagLayout jPanel3Layout = new GridBagLayout();
                         jPanel3Layout.columnWeights = new double[]{0.0, 1.0};
                         jPanel3Layout.columnWidths = new int[]{150, 500};
                         jPanel3Layout.rowWeights = new double[]{1.0};
                         jPanel3Layout.rowHeights = new int[]{7};
-                        jPanel3.setLayout(jPanel3Layout);
+                        jClassifyPanel.setLayout(jPanel3Layout);
                         {
                             jButton1 = new JButton();
-                            jPanel3.add(jButton1, new GridBagConstraints(
+                            jClassifyPanel.add(jButton1, new GridBagConstraints(
                                     0,
                                     0,
                                     1,
@@ -642,7 +643,7 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                             jPanel7Layout.columnWidths = new int[]{20, 135, 60};
                             jPanel7Layout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0};
                             jPanel7Layout.rowHeights = new int[]{22, 22, 22, 22, 22};
-                            jPanel3.add(jPanel7, new GridBagConstraints(
+                            jClassifyPanel.add(jPanel7, new GridBagConstraints(
                                     0,
                                     0,
                                     1,
@@ -833,7 +834,7 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                         }
                         {
                             jPanel9 = new JPanel();
-                            jPanel3.add(jPanel9, new GridBagConstraints(
+                            jClassifyPanel.add(jPanel9, new GridBagConstraints(
                                     0,
                                     0,
                                     1,
@@ -892,7 +893,7 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                         }
                         {
                             jScrollPane2 = new JScrollPane();
-                            jPanel3.add(jScrollPane2, new GridBagConstraints(
+                            jClassifyPanel.add(jScrollPane2, new GridBagConstraints(
                                     1,
                                     0,
                                     1,
@@ -915,7 +916,7 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                         }
                         {
                             jCheckBox1 = new JCheckBox();
-                            jPanel3.add(jCheckBox1, new GridBagConstraints(
+                            jClassifyPanel.add(jCheckBox1, new GridBagConstraints(
                                     0,
                                     0,
                                     1,
@@ -935,7 +936,7 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                         }
                         {
                             jCheckBox2 = new JCheckBox();
-                            jPanel3.add(jCheckBox2, new GridBagConstraints(
+                            jClassifyPanel.add(jCheckBox2, new GridBagConstraints(
                                     0,
                                     0,
                                     1,
@@ -952,7 +953,7 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                         }
                         {
                             jCheckBox3 = new JCheckBox();
-                            jPanel3.add(jCheckBox3, new GridBagConstraints(
+                            jClassifyPanel.add(jCheckBox3, new GridBagConstraints(
                                     0,
                                     0,
                                     1,
@@ -969,7 +970,7 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                         }
                         {
                             jButton2 = new JButton();
-                            jPanel3.add(jButton2, new GridBagConstraints(
+                            jClassifyPanel.add(jButton2, new GridBagConstraints(
                                     0,
                                     0,
                                     1,
@@ -1007,6 +1008,23 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                                 }
                             });
                         }
+                    }
+                    {
+                        jPanel10 = new JPanel();
+                        jPanel10.add(ruleQualityChoices);
+                        jPanel10.setVisible(true);
+                        jClassifyPanel.add(jPanel10, new GridBagConstraints(
+                                0,
+                                0,
+                                1,
+                                1,
+                                0.0,
+                                0.0,
+                                GridBagConstraints.NORTHWEST,
+                                GridBagConstraints.NONE,
+                                new Insets(322, 10, 0, 0),
+                                0,
+                                0));
                     }
                 }
             }
