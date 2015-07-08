@@ -51,6 +51,51 @@ public class CrossValidation implements Runnable {
 	private int maxUncoveredCases;
 	private GUIAntMinerJFrame caller;
 	private boolean interrupted;
+    private boolean pruneRule;  //boolean to turn pruning of rule on or off
+    private int cPheromoneUpdate; //constant rate of pheromone update
+    private int nParam; //paramter to be sent for parameterized heuristics
+
+    public int getnParam() {
+        return nParam;
+    }
+
+    public int getcPheromoneUpdate() {
+        return cPheromoneUpdate;
+    }
+
+    public int getNumAnts() {
+        return numAnts;
+    }
+
+    public int getFolds() {
+        return folds;
+    }
+
+    public int getMinCasesRule() {
+        return minCasesRule;
+    }
+
+    public int getConvergenceTest() {
+        return convergenceTest;
+    }
+
+    public int getNumIterations() {
+        return numIterations;
+    }
+
+    public int getMaxUncoveredCases() {
+        return maxUncoveredCases;
+    }
+
+    public boolean isPruneRule() {
+        return pruneRule;
+    }
+
+    public boolean isPheromoneUpdateType() {
+        return pheromoneUpdateType;
+    }
+
+    private boolean pheromoneUpdateType; //True for nomalized, False for constant
 	private Thread cvThread;
 	
 	public CrossValidation(GUIAntMinerJFrame caller){
@@ -82,6 +127,18 @@ public class CrossValidation implements Runnable {
 	public void setMaxUncoveredCases(int maxUncoveredCases) {
 		this.maxUncoveredCases = maxUncoveredCases;
 	}
+    public void setPruning(boolean pruneRule){
+        this.pruneRule = pruneRule;
+    }
+    public void setPheromoneUpdateType(boolean pheromoneUpdateType){
+        this.pheromoneUpdateType = pheromoneUpdateType;
+    }
+    public void setcPheromoneUpdate(int cPheromoneUpdate) {
+        this.cPheromoneUpdate = cPheromoneUpdate;
+    }
+    public void setnParam(int nParam) {
+        this.nParam = nParam;
+    }
 	
 	public void start() {
 	  	cvThread = new Thread(this);
@@ -256,13 +313,15 @@ public class CrossValidation implements Runnable {
 						}
 						
 						determineRuleConsequent(currentAnt);
-						calculateRuleQuality(currentAnt);
+						calculateRuleQuality(currentAnt, nParam);
 						
-						try {
-							currentAnt = pruneRule(currentAnt);
-						} catch (CloneNotSupportedException e) {
-							e.printStackTrace();
-						}
+						if(pruneRule == true) {
+                            try {
+                                currentAnt = pruneRule(currentAnt);
+                            } catch (CloneNotSupportedException e) {
+                                e.printStackTrace();
+                            }
+                        }
 						antsArray[antIndex] = currentAnt;
 						
 						if(currentAnt.getRuleQuality() >= bestQuality){
@@ -285,8 +344,8 @@ public class CrossValidation implements Runnable {
 							deltaCount = 0;
 					}else
 						deltaCount++;
-					
-					updatePheromone(antsArray[bestAntIndex]);
+
+                    updatePheromone(antsArray[bestAntIndex], pheromoneUpdateType, cPheromoneUpdate);
 					
 					iteration++;
 				}
@@ -797,7 +856,7 @@ public class CrossValidation implements Runnable {
 	 * @param ant
 	 * @return
 	 */
-	private double calculateRuleQuality(Ant ant){   //, int nQualityChoice
+	private double calculateRuleQuality(Ant ant, int nParam){   //, int nQualityChoice, int param - for F measure, cost measure, relative cost measure, Klosgen measure or m-estimate
 		double quality = 0;
 		int nTruePositive, nFalsePositive, nFalseNegative, nTrueNegative, nQualityChoice = 0;
         int totalNumExamples = 0;
@@ -820,7 +879,8 @@ public class CrossValidation implements Runnable {
 					nTruePositive++;
 				else
 					nFalsePositive++;
-			}else{
+			}
+            else{   //If the data instance is not covered by the rule
 				if(trainingSet[dataInstanceIndex].getClassValue() == ant.getRuleConsequent())
 					nFalseNegative++;
 				else
@@ -829,44 +889,94 @@ public class CrossValidation implements Runnable {
 		}
 
         totalNumExamples =  nTruePositive + nFalseNegative + nTrueNegative + nFalsePositive;
+        quality = ruleChoice(nTruePositive, nFalsePositive, nFalseNegative, nTrueNegative, nQualityChoice, nParam);
 
-        switch(nQualityChoice)
-        {
-            case 1:   //Sensitivity aka (True Positive rate or Recall) * Specificity (aka False Positive rate)       //Derived from Parpinelli paper
-                quality = ((double) nTruePositive / (nTruePositive + nFalseNegative)) * ((double) nTrueNegative / (nFalsePositive + nTrueNegative)) ;    //sensitivity * specificity
-                break;
-            case 2:  //Precision aka (True Positive rate or Recall)
-                 quality = ((double) nTruePositive / (nTruePositive + nFalseNegative));
-                break;
-            case 3:  //Laplace (PSO/ACO2)
-                quality = ((double) (nTruePositive + 1) / (nTruePositive+nTrueNegative+1));
-                break;
-            case 4: //Precision + Coverage
-                break;
-            case 5: //Weighted Relative Accuracy  = Sensitivity - Specificity
-                quality = ((double) nTruePositive / (nTruePositive + nFalseNegative)) - ((double) nTrueNegative / (nFalsePositive + nTrueNegative)) ;    //sensitivity * specificity
-                break;
-            case 6: // Full Coverage      p+n / P+N
-                quality = ((double) (nTruePositive + nTrueNegative) / (nTruePositive + nFalseNegative + nFalsePositive + nTrueNegative));
-                break;
-            case 7:    //AntMiner+   p/p+n + p/P+N
-                 quality = ((double) (nTruePositive / (nTruePositive + nTrueNegative)) + (nTruePositive / (nTruePositive + nFalseNegative + nFalsePositive + nTrueNegative)));
-                break;
-            case 8:  // Specificity (aka False Positive rate)
-                 quality = ((double) nTrueNegative / (nFalsePositive + nTrueNegative));
-                break;
-            case 9:     break;
-            default:
-                quality = ((double) nTruePositive / (nTruePositive + nFalseNegative)) * ((double) nTrueNegative / (nFalsePositive + nTrueNegative)) ;    //sensitivity * specificity
-                break;
-        }
-		if(Double.isNaN(quality))
+
+        if(Double.isNaN(quality))
 			quality = 0.0;		
 		ant.setRuleQuality(quality);
 		return quality;
 	}
-	
-	/** 
+
+    /**
+     * Depending on the choice, it calculate the rule quality of the ant
+     * @param nTruePositive
+     * @param nFalsePositive
+     * @param nFalseNegative
+     * @param nTrueNegative
+     * @param nQualityChoice
+     * @return
+     */
+    private double ruleChoice(int nTruePositive, int nFalsePositive, int nFalseNegative, int nTrueNegative, int nQualityChoice, int nParam) {   //int nParam
+        double quality = 0;
+        //p =  nTruePositive; P = nTruePositive + nFalseNegative;
+        //n = nTrueNegative;  N =  nFalsePositive + nTrueNegative;
+        final int P = nTruePositive + nFalseNegative;
+        final int N = nFalsePositive + nTrueNegative;
+        final double sensitivity = nTruePositive / P;
+        final double specificity = (double) nTrueNegative / N;
+
+        switch(nQualityChoice)
+        {
+            case 1:   //Sensitivity aka (True Positive rate or Recall) * Specificity (aka False Positive rate)       //Derived from Parpinelli paper
+                quality = sensitivity * specificity;    //sensitivity * specificity
+                break;
+            case 2:  //Precision aka (True Positive rate or Recall)   p/p+n
+                 quality = ((double) nTruePositive / (nTruePositive + nTrueNegative));
+                break;
+            case 3:  //Laplace (PSO/ACO2)
+                quality = ((double) (nTruePositive + 1) / (nTruePositive+nTrueNegative+1));
+                break;
+            case 4: //Accuracy
+                quality = nTruePositive - nTrueNegative;
+                break;
+            case 5: //Weighted Relative Accuracy  = Sensitivity - Specificity
+                quality = sensitivity - specificity;
+                break;
+            case 6: // Full Coverage      p+n / P+N
+                quality = ((double) (nTruePositive + nTrueNegative) / (nTruePositive + nFalseNegative + nFalsePositive + nTrueNegative));
+                break;
+            case 7:    //AntMiner+  Precision + Coverage  p/p+n + p/P+N
+                 quality = ((double) (nTruePositive / (nTruePositive + nTrueNegative)) + (nTruePositive / (P + N)));
+                break;
+            case 8:  // Specificity (aka False Positive rate)
+                 quality = specificity;
+                break;
+            case 9:  //Correlation  pN - nP / ( root(PN (p+n) (P-p+N-n) )
+                quality = ((double)  ((nTruePositive * N) - (nTrueNegative * P)) / (Math.sqrt(P * N * (nTruePositive + nTrueNegative) * (P - nTruePositive + N - nTrueNegative))));
+               break;
+            case 10: // cost measure c * p - (1 - c) * n
+                quality = ((double) nParam * nTruePositive - (1 - nParam) * nTrueNegative);
+                break;
+            case 11: // relative cost measure  cr * sensitivity - 1 (1 - cr) * specificity
+                quality = ((double) (nParam * nTruePositive / P) - (1 - nParam) * nTrueNegative / N);
+                break;
+            case 12: // F-measure
+                quality = ( (((nParam * nParam) + 1) * (nTruePositive / (nTruePositive + nTrueNegative))  * sensitivity) / (nParam * nParam * nTruePositive / (nTruePositive + nTrueNegative)+ sensitivity) );
+                break;
+            case 13: //m-estimate
+                quality = ((double) ((nTruePositive + nParam) * P / (P +N) ) / (nTruePositive + nTrueNegative + nParam));
+                break;
+            case 14:  //Klosgen measure
+                quality = ( Math.pow((((double) (nTruePositive + nTrueNegative) / (nTruePositive + nFalseNegative + nFalsePositive + nTrueNegative))), nParam) * ( nTruePositive / (nTruePositive + nTrueNegative) - (P / (P+N))));
+                break;
+            case 15: //Inverted Precision
+                quality = ( (double) (N - nTrueNegative) / ((P + N) - (nTruePositive + nTrueNegative)));
+                break;
+            case 16: //Inverted Laplace
+                quality = ((double) (N - nTrueNegative + 1) / ((P + N) - (nTruePositive + nTrueNegative - 2)));
+                break;
+            case 17: //Inverted m-estimate
+                quality = ((double) ((N - nTrueNegative + nParam) * (P / P + N)) / (P + N - (nTruePositive + nTrueNegative - nParam)));
+                break;
+            default:
+                quality = sensitivity * specificity;    //sensitivity * specificity
+                break;
+        }
+        return quality;
+    }
+
+    /**
 	 * Updates the ant list that contains the indexes of the instances/cases covered
 	 * by the ant rule. This method must be run when the ant rule changes.
 	 */
@@ -885,7 +995,7 @@ public class CrossValidation implements Runnable {
 	}
 	
 	/**
-	 * Prunes the rule of the ant.
+	 * Prunes the rule of the ant. Called if pruneRule is set to True
 	 * @param ant
 	 * @return
 	 * @throws CloneNotSupportedException
@@ -906,7 +1016,7 @@ public class CrossValidation implements Runnable {
 					antClone.getRulesArray()[a] = -1;
 					updateInstancesIndexList(antClone);
 					determineRuleConsequent(antClone);
-					calculateRuleQuality(antClone);
+					calculateRuleQuality(antClone, nParam);
 					if(antClone.getRuleQuality() >= greatestQuality){
 						greatestQuality = antClone.getRuleQuality(); 
 						antCloneWithBestPrunedRule = (Ant) antClone.clone();
@@ -925,7 +1035,7 @@ public class CrossValidation implements Runnable {
 	 * Updates the trail of pheromone.
 	 * @param ant
 	 */
-	private void updatePheromone(Ant ant){
+	private void updatePheromone(Ant ant, boolean normalizePheromoneOn, int cRate){
 		//update pheromone for used terms
 		for(int x=0; x < ant.getRulesArray().length; x++){
 			if(ant.getRulesArray()[x] != -1){
@@ -934,17 +1044,27 @@ public class CrossValidation implements Runnable {
 			}
 		}
 		//normalize pheromone
-		double sum=0;
-		for(int x=0; x < pheromoneArray.length; x++){
-			for(int y=0; y < pheromoneArray[x].length; y++){
-				sum += pheromoneArray[x][y];
-			}
-		}
-		for(int x=0; x < pheromoneArray.length; x++){
-			for(int y=0; y < pheromoneArray[x].length; y++){
-				pheromoneArray[x][y] /= sum;
-			}
-		}
+        if(normalizePheromoneOn) {
+            double sum = 0;
+            for (int x = 0; x < pheromoneArray.length; x++) {
+                for (int y = 0; y < pheromoneArray[x].length; y++) {
+                    sum += pheromoneArray[x][y];
+                }
+            }
+            for (int x = 0; x < pheromoneArray.length; x++) {
+                for (int y = 0; y < pheromoneArray[x].length; y++) {
+                    pheromoneArray[x][y] /= sum;
+                }
+            }
+        }
+        else //Constant rate
+        {
+            for (int x = 0; x < pheromoneArray.length; x++) {
+                for (int y = 0; y < pheromoneArray[x].length; y++) {
+                     pheromoneArray[x][y] = cRate;
+                }
+            }
+        }
 	}
 	
 	/**

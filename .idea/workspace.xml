@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50c5ef75-df7b-42b4-8cec-80ed630e837e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CrossValidation.java" afterPath="$PROJECT_DIR$/src/CrossValidation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUIAntMinerJFrame.java" afterPath="$PROJECT_DIR$/src/GUIAntMinerJFrame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="GUIAntMiner.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -128,29 +126,35 @@
       <file leaf-file-name="Ant.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Ant.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1003" max-vertical-offset="1717">
-              <caret line="59" column="54" selection-start-line="59" selection-start-column="31" selection-end-line="59" selection-end-column="31" />
+            <state vertical-scroll-proportion="11.0" vertical-offset="427" max-vertical-offset="1377">
+              <caret line="7" column="9" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GUIAntMinerJFrame.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="GUIAntMinerJFrame.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUIAntMinerJFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.57848835" vertical-offset="8590" max-vertical-offset="20944">
-              <caret line="546" column="103" selection-start-line="546" selection-start-column="103" selection-end-line="546" selection-end-column="103" />
-              <folding />
+            <state vertical-scroll-proportion="-7.678571" vertical-offset="10342" max-vertical-offset="21352">
+              <caret line="632" column="77" selection-start-line="632" selection-start-column="77" selection-end-line="632" selection-end-column="77" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#50845#51057#0" expanded="true" />
+                <element signature="e#51026#51027#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CrossValidation.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="CrossValidation.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CrossValidation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.071429" vertical-offset="15832" max-vertical-offset="17085">
-              <caret line="962" column="41" selection-start-line="962" selection-start-column="31" selection-end-line="962" selection-end-column="41" />
-              <folding />
+            <state vertical-scroll-proportion="0.33272058" vertical-offset="4239" max-vertical-offset="18598">
+              <caret line="315" column="63" selection-start-line="315" selection-start-column="63" selection-end-line="315" selection-end-column="63" />
+              <folding>
+                <element signature="method#CrossValidation#0;class#CrossValidation#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -169,8 +173,8 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/iraceIntegration/RServeExample1.java" />
-        <option value="$PROJECT_DIR$/src/CrossValidation.java" />
         <option value="$PROJECT_DIR$/src/GUIAntMinerJFrame.java" />
+        <option value="$PROJECT_DIR$/src/CrossValidation.java" />
       </list>
     </option>
   </component>
@@ -517,7 +521,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24886535" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32626426" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32626426" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Test Runs" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -578,7 +582,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="16305" max-vertical-offset="21913">
           <caret line="157" column="31" selection-start-line="157" selection-start-column="31" selection-end-line="157" selection-end-column="31" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#50845#51057#0" expanded="true" />
+            <element signature="e#51026#51027#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -586,7 +594,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="12966" max-vertical-offset="17085">
           <caret line="799" column="74" selection-start-line="799" selection-start-column="74" selection-end-line="799" selection-end-column="74" />
-          <folding />
+          <folding>
+            <element signature="method#CrossValidation#0;class#CrossValidation#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -602,7 +612,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="13164" max-vertical-offset="16422">
           <caret line="822" column="103" selection-start-line="822" selection-start-column="103" selection-end-line="822" selection-end-column="103" />
-          <folding />
+          <folding>
+            <element signature="method#CrossValidation#0;class#CrossValidation#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -618,7 +630,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="7599" max-vertical-offset="16422">
           <caret line="435" column="42" selection-start-line="435" selection-start-column="8" selection-end-line="435" selection-end-column="8" />
-          <folding />
+          <folding>
+            <element signature="method#CrossValidation#0;class#CrossValidation#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -641,7 +655,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="350" max-vertical-offset="16422">
           <caret line="853" column="34" selection-start-line="853" selection-start-column="12" selection-end-line="853" selection-end-column="34" />
-          <folding />
+          <folding>
+            <element signature="method#CrossValidation#0;class#CrossValidation#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -688,14 +704,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Ant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="1377">
-          <caret line="59" column="54" selection-start-line="59" selection-start-column="31" selection-end-line="59" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AboutGUIAntMinerJDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.812937" vertical-offset="5653" max-vertical-offset="6409">
@@ -704,19 +712,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CrossValidation.java">
+    <entry file="file://$PROJECT_DIR$/src/GUIAntMinerJFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.071429" vertical-offset="15832" max-vertical-offset="17085">
-          <caret line="962" column="41" selection-start-line="962" selection-start-column="31" selection-end-line="962" selection-end-column="41" />
+        <state vertical-scroll-proportion="-7.678571" vertical-offset="10342" max-vertical-offset="21352">
+          <caret line="632" column="77" selection-start-line="632" selection-start-column="77" selection-end-line="632" selection-end-column="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#50845#51057#0" expanded="true" />
+            <element signature="e#51026#51027#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="11.0" vertical-offset="427" max-vertical-offset="1377">
+          <caret line="7" column="9" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUIAntMinerJFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/CrossValidation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57848835" vertical-offset="8590" max-vertical-offset="20944">
-          <caret line="546" column="103" selection-start-line="546" selection-start-column="103" selection-end-line="546" selection-end-column="103" />
-          <folding />
+        <state vertical-scroll-proportion="0.33272058" vertical-offset="4239" max-vertical-offset="18598">
+          <caret line="315" column="63" selection-start-line="315" selection-start-column="63" selection-end-line="315" selection-end-column="63" />
+          <folding>
+            <element signature="method#CrossValidation#0;class#CrossValidation#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

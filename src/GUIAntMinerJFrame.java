@@ -69,7 +69,7 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
 
 
 	private JMenuBar jMenuBar1;
-	private JMenu jMenu1;
+	private JMenu jFileMenu;
 	private JMenuItem jMenuItem1;
 	private JLabel jLabelNumberOfInstances;
 	private JTable jTable1;
@@ -77,19 +77,19 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
 	private TableModel jTable1Model;
 	private TableModel jTable2Model;
 	private JLabel jLabel8;
-	private JLabel jLabel4;
-	private JLabel jLabel14;
-	private JLabel jLabel12;
-	private JLabel jLabel6;
+	private JLabel jFoldsLabel;
+	private JLabel jMaxRuleCasesLabel;
+	private JLabel jMinRuleCasesLabel;
+	private JLabel jConvergenceLabel;
 	private JTextField jTextField5;
 	private JTextField jTextField4;
 	private JTextField jTextField3;
 	private JTextField jTextField2;
 	private JPanel jPanel9;
 	private JTextField jTextField1;
-	private JLabel jLabel13;
+	private JLabel jNoAntsLabel;
 	private JPanel jPanel7;
-	private JButton jButton1;
+	private JButton jStartButton;
 	private JLabel jLabelDistinct;
 	private JLabel jLabel11;
 	private JPanel jPanel4;
@@ -110,21 +110,21 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
 	private JPanel jRelationPanel;
 	private JPanel jPanel2;
 	private JMenuItem jMenuItem3;
-	private JMenu jMenu2;
-	private JMenuItem jMenuItem2;
+	private JMenu jHelpMenu;
+	private JMenuItem jMenuItem_exit;
 	private JSeparator jSeparator1;
 	private MyFileReader myFileReader;
 	private Canvas canvas1;
 	private JTextField jTextField6;
 	private JLabel jLabel17;
-	private JButton jButton2;
+	private JButton jCancelButton;
 	private JProgressBar jProgressBar1;
 	private JPanel jPanel8;
     private JPanel jPanel10;
-	private JCheckBox jCheckBox3;
-	private JCheckBox jCheckBox2;
-	private JLabel jLabel15;
-	private JCheckBox jCheckBox1;
+	private JCheckBox jPrintTrainingSetCB;
+	private JCheckBox jPrintTestSetCB;
+	private JLabel jNoIterationsLabel;
+	private JCheckBox jOutputScreenCB;
 	private JTextArea jTextArea1;
 	private JScrollPane jScrollPane2;
     private JComboBox ruleQualityChoices;
@@ -161,14 +161,14 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                 setJMenuBar(jMenuBar1);
                 jMenuBar1.setPreferredSize(new java.awt.Dimension(392, 26));
                 {
-                    jMenu1 = new JMenu();
-                    jMenuBar1.add(jMenu1);
-                    jMenu1.setText("File");
-                    jMenu1.setDisplayedMnemonicIndex(0);
-                    jMenu1.setMnemonic(java.awt.event.KeyEvent.VK_F);
+                    jFileMenu = new JMenu();
+                    jMenuBar1.add(jFileMenu);
+                    jFileMenu.setText("File");
+                    jFileMenu.setDisplayedMnemonicIndex(0);
+                    jFileMenu.setMnemonic(java.awt.event.KeyEvent.VK_F);
                     {
                         jMenuItem1 = new JMenuItem();
-                        jMenu1.add(jMenuItem1);
+                        jFileMenu.add(jMenuItem1);
                         jMenuItem1.setText("Open...");
                         jMenuItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, Event.CTRL_MASK));
                         jMenuItem1.setDisplayedMnemonicIndex(0);
@@ -197,15 +197,15 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                     }
                     {
                         jSeparator1 = new JSeparator();
-                        jMenu1.add(jSeparator1);
+                        jFileMenu.add(jSeparator1);
                     }
                     {
-                        jMenuItem2 = new JMenuItem();
-                        jMenu1.add(jMenuItem2);
-                        jMenuItem2.setText("Exit");
-                        jMenuItem2.setDisplayedMnemonicIndex(1);
-                        jMenuItem2.setMnemonic(java.awt.event.KeyEvent.VK_X);
-                        jMenuItem2.addActionListener(new ActionListener() {
+                        jMenuItem_exit = new JMenuItem();
+                        jFileMenu.add(jMenuItem_exit);
+                        jMenuItem_exit.setText("Exit");
+                        jMenuItem_exit.setDisplayedMnemonicIndex(1);
+                        jMenuItem_exit.setMnemonic(java.awt.event.KeyEvent.VK_X);
+                        jMenuItem_exit.addActionListener(new ActionListener() {
                             public void actionPerformed(ActionEvent evt) {
                                 System.exit(0);
                             }
@@ -213,14 +213,14 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                     }
                 }
                 {
-                    jMenu2 = new JMenu();
-                    jMenuBar1.add(jMenu2);
-                    jMenu2.setText("Help");
-                    jMenu2.setDisplayedMnemonicIndex(0);
-                    jMenu2.setMnemonic(java.awt.event.KeyEvent.VK_H);
+                    jHelpMenu = new JMenu();
+                    jMenuBar1.add(jHelpMenu);
+                    jHelpMenu.setText("Help");
+                    jHelpMenu.setDisplayedMnemonicIndex(0);
+                    jHelpMenu.setMnemonic(java.awt.event.KeyEvent.VK_H);
                     {
                         jMenuItem3 = new JMenuItem();
-                        jMenu2.add(jMenuItem3);
+                        jHelpMenu.add(jMenuItem3);
                         jMenuItem3.setText("About GUI Ant-Miner");
                         jMenuItem3.setDisplayedMnemonicIndex(0);
                         jMenuItem3.setMnemonic(java.awt.event.KeyEvent.VK_A);
@@ -598,8 +598,8 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                         jPanel3Layout.rowHeights = new int[]{7};
                         jClassifyPanel.setLayout(jPanel3Layout);
                         {
-                            jButton1 = new JButton();
-                            jClassifyPanel.add(jButton1, new GridBagConstraints(
+                            jStartButton = new JButton();
+                            jClassifyPanel.add(jStartButton, new GridBagConstraints(
                                     0,
                                     0,
                                     1,
@@ -611,14 +611,14 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                                     new Insets(292, 10, 0, 0),
                                     0,
                                     0));
-                            jButton1.setText("Start");
-                            jButton1.setBounds(19, 234, 99, 24);
-                            jButton1.setToolTipText("Start classification. This operation may take a few minutes.");
-                            jButton1.setSize(75, 23);
-                            jButton1.setMinimumSize(new java.awt.Dimension(75, 23));
-                            jButton1.setMaximumSize(new java.awt.Dimension(75, 23));
-                            jButton1.setPreferredSize(new java.awt.Dimension(75, 23));
-                            jButton1.addActionListener(new ActionListener() {
+                            jStartButton.setText("Start");
+                            jStartButton.setBounds(19, 234, 99, 24);
+                            jStartButton.setToolTipText("Start classification. This operation may take a few minutes.");
+                            jStartButton.setSize(75, 23);
+                            jStartButton.setMinimumSize(new java.awt.Dimension(75, 23));
+                            jStartButton.setMaximumSize(new java.awt.Dimension(75, 23));
+                            jStartButton.setPreferredSize(new java.awt.Dimension(75, 23));
+                            jStartButton.addActionListener(new ActionListener() {
                                 public void actionPerformed(ActionEvent evt) {
                                     setIsClassifying(true);
                                     cv = new CrossValidation(GUIAntMinerJFrame.this);
@@ -662,8 +662,8 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                             jPanel7.setPreferredSize(new java.awt.Dimension(10, 150));
                             jPanel7.setSize(261, 150);
                             {
-                                jLabel13 = new JLabel();
-                                jPanel7.add(jLabel13, new GridBagConstraints(
+                                jNoAntsLabel = new JLabel();
+                                jPanel7.add(jNoAntsLabel, new GridBagConstraints(
                                         1,
                                         0,
                                         1,
@@ -675,8 +675,8 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                                         new Insets(0, 0, 0, 0),
                                         0,
                                         0));
-                                jLabel13.setText("Number of Ants:");
-                                jLabel13.setFont(new java.awt.Font("Dialog", 0, 12));
+                                jNoAntsLabel.setText("Number of Ants:");
+                                jNoAntsLabel.setFont(new java.awt.Font("Dialog", 0, 12));
                             }
                             {
                                 jTextField1 = new JTextField();
@@ -747,8 +747,8 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                                 jTextField5.setPreferredSize(new java.awt.Dimension(40, 20));
                             }
                             {
-                                jLabel6 = new JLabel();
-                                jPanel7.add(jLabel6, new GridBagConstraints(
+                                jConvergenceLabel = new JLabel();
+                                jPanel7.add(jConvergenceLabel, new GridBagConstraints(
                                         1,
                                         3,
                                         1,
@@ -760,12 +760,12 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                                         new Insets(0, 0, 0, 0),
                                         0,
                                         0));
-                                jLabel6.setText("Rules for Convergence:");
-                                jLabel6.setFont(new java.awt.Font("Dialog", 0, 12));
+                                jConvergenceLabel.setText("Rules for Convergence:");
+                                jConvergenceLabel.setFont(new java.awt.Font("Dialog", 0, 12));
                             }
                             {
-                                jLabel12 = new JLabel();
-                                jPanel7.add(jLabel12, new GridBagConstraints(
+                                jMinRuleCasesLabel = new JLabel();
+                                jPanel7.add(jMinRuleCasesLabel, new GridBagConstraints(
                                         1,
                                         1,
                                         1,
@@ -777,12 +777,12 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                                         new Insets(0, 0, 0, 0),
                                         0,
                                         0));
-                                jLabel12.setText("Min. Cases per Rule:");
-                                jLabel12.setFont(new java.awt.Font("Dialog", 0, 12));
+                                jMinRuleCasesLabel.setText("Min. Cases per Rule:");
+                                jMinRuleCasesLabel.setFont(new java.awt.Font("Dialog", 0, 12));
                             }
                             {
-                                jLabel14 = new JLabel();
-                                jPanel7.add(jLabel14, new GridBagConstraints(
+                                jMaxRuleCasesLabel = new JLabel();
+                                jPanel7.add(jMaxRuleCasesLabel, new GridBagConstraints(
                                         1,
                                         2,
                                         1,
@@ -794,12 +794,12 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                                         new Insets(0, 0, 0, 0),
                                         0,
                                         0));
-                                jLabel14.setText("Max. uncovered Cases:");
-                                jLabel14.setFont(new java.awt.Font("Dialog", 0, 12));
+                                jMaxRuleCasesLabel.setText("Max. uncovered Cases:");
+                                jMaxRuleCasesLabel.setFont(new java.awt.Font("Dialog", 0, 12));
                             }
                             {
-                                jLabel15 = new JLabel();
-                                jPanel7.add(jLabel15, new GridBagConstraints(
+                                jNoIterationsLabel = new JLabel();
+                                jPanel7.add(jNoIterationsLabel, new GridBagConstraints(
                                         1,
                                         4,
                                         1,
@@ -811,8 +811,8 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                                         new Insets(0, 0, 0, 0),
                                         0,
                                         0));
-                                jLabel15.setText("Number of Iterations:");
-                                jLabel15.setFont(new java.awt.Font("Dialog", 0, 12));
+                                jNoIterationsLabel.setText("Number of Iterations:");
+                                jNoIterationsLabel.setFont(new java.awt.Font("Dialog", 0, 12));
                             }
                             {
                                 jTextField6 = new JTextField();
@@ -856,8 +856,8 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                             jPanel9.setLayout(jPanel9Layout);
                             jPanel9.setBounds(7, 8, 260, 50);
                             {
-                                jLabel4 = new JLabel();
-                                jPanel9.add(jLabel4, new GridBagConstraints(
+                                jFoldsLabel = new JLabel();
+                                jPanel9.add(jFoldsLabel, new GridBagConstraints(
                                         1,
                                         0,
                                         1,
@@ -869,8 +869,8 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                                         new Insets(0, 0, 0, 0),
                                         0,
                                         0));
-                                jLabel4.setText("Folds: ");
-                                jLabel4.setFont(new java.awt.Font("Dialog", 0, 12));
+                                jFoldsLabel.setText("Folds: ");
+                                jFoldsLabel.setFont(new java.awt.Font("Dialog", 0, 12));
                             }
                             {
                                 jTextField2 = new JTextField();
@@ -915,8 +915,8 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                             }
                         }
                         {
-                            jCheckBox1 = new JCheckBox();
-                            jClassifyPanel.add(jCheckBox1, new GridBagConstraints(
+                            jOutputScreenCB = new JCheckBox();
+                            jClassifyPanel.add(jOutputScreenCB, new GridBagConstraints(
                                     0,
                                     0,
                                     1,
@@ -928,15 +928,15 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                                     new Insets(212, 10, 0, 0),
                                     0,
                                     0));
-                            jCheckBox1.setText("Clear output screen");
-                            jCheckBox1.setBounds(17, 201, 133, 30);
-                            jCheckBox1.setFont(new java.awt.Font("Dialog", 0, 12));
-                            jCheckBox1.setSelected(true);
-                            jCheckBox1.setToolTipText("Clear the output screen the next time a classification task is run.");
+                            jOutputScreenCB.setText("Clear output screen");
+                            jOutputScreenCB.setBounds(17, 201, 133, 30);
+                            jOutputScreenCB.setFont(new java.awt.Font("Dialog", 0, 12));
+                            jOutputScreenCB.setSelected(true);
+                            jOutputScreenCB.setToolTipText("Clear the output screen the next time a classification task is run.");
                         }
                         {
-                            jCheckBox2 = new JCheckBox();
-                            jClassifyPanel.add(jCheckBox2, new GridBagConstraints(
+                            jPrintTestSetCB = new JCheckBox();
+                            jClassifyPanel.add(jPrintTestSetCB, new GridBagConstraints(
                                     0,
                                     0,
                                     1,
@@ -948,12 +948,12 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                                     new Insets(235, 10, 0, 0),
                                     0,
                                     0));
-                            jCheckBox2.setText("Print test set");
-                            jCheckBox2.setFont(new java.awt.Font("Dialog", 0, 12));
+                            jPrintTestSetCB.setText("Print test set");
+                            jPrintTestSetCB.setFont(new java.awt.Font("Dialog", 0, 12));
                         }
                         {
-                            jCheckBox3 = new JCheckBox();
-                            jClassifyPanel.add(jCheckBox3, new GridBagConstraints(
+                            jPrintTrainingSetCB = new JCheckBox();
+                            jClassifyPanel.add(jPrintTrainingSetCB, new GridBagConstraints(
                                     0,
                                     0,
                                     1,
@@ -965,12 +965,12 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                                     new Insets(258, 10, 0, 0),
                                     0,
                                     0));
-                            jCheckBox3.setText("Print training set");
-                            jCheckBox3.setFont(new java.awt.Font("Dialog", 0, 12));
+                            jPrintTrainingSetCB.setText("Print training set");
+                            jPrintTrainingSetCB.setFont(new java.awt.Font("Dialog", 0, 12));
                         }
                         {
-                            jButton2 = new JButton();
-                            jClassifyPanel.add(jButton2, new GridBagConstraints(
+                            jCancelButton = new JButton();
+                            jClassifyPanel.add(jCancelButton, new GridBagConstraints(
                                     0,
                                     0,
                                     1,
@@ -982,18 +982,18 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
                                     new Insets(292, 95, 0, 0),
                                     0,
                                     0));
-                            jButton2.setText("Cancel");
-                            jButton2.setToolTipText("Cancel task.");
-                            jButton2.setPreferredSize(new java.awt.Dimension(75, 23));
-                            jButton2.setMaximumSize(new java.awt.Dimension(75, 23));
-                            jButton2.setMinimumSize(new java.awt.Dimension(75, 23));
-                            jButton2.setEnabled(false);
-                            jButton2.addActionListener(new ActionListener() {
+                            jCancelButton.setText("Cancel");
+                            jCancelButton.setToolTipText("Cancel task.");
+                            jCancelButton.setPreferredSize(new java.awt.Dimension(75, 23));
+                            jCancelButton.setMaximumSize(new java.awt.Dimension(75, 23));
+                            jCancelButton.setMinimumSize(new java.awt.Dimension(75, 23));
+                            jCancelButton.setEnabled(false);
+                            jCancelButton.addActionListener(new ActionListener() {
                                 public void actionPerformed(ActionEvent evt) {
                                     cv.stop();
                                 }
                             });
-                            jButton2.addMouseListener(new MouseAdapter() {
+                            jCancelButton.addMouseListener(new MouseAdapter() {
                                 public void mouseExited(MouseEvent evt) {
                                     if (isClassifying)
                                         jTabbedPane1
@@ -1091,13 +1091,13 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
 		return jLabel2;
 	}
 	public boolean getJCheckBox1IsSelected(){
-		return jCheckBox1.isSelected();
+		return jOutputScreenCB.isSelected();
 	}
 	public boolean getJCheckBox2IsSelected(){
-		return jCheckBox2.isSelected();
+		return jPrintTestSetCB.isSelected();
 	}
 	public boolean getJCheckBox3IsSelected(){
-		return jCheckBox3.isSelected();
+		return jPrintTrainingSetCB.isSelected();
 	}
 	public String getjTextField2Value(){
 		return jTextField2.getText();
@@ -1213,15 +1213,15 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
 			jLabel17.setText("Classifying " + jLabel2.getText() + "...");
 			isClassifying = true;
 			jMenuItem1.setEnabled(false);
-			jButton1.setEnabled(false);
-			jButton2.setEnabled(true);
+			jStartButton.setEnabled(false);
+			jCancelButton.setEnabled(true);
 			jTabbedPane1.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		}else{
 			jLabel17.setText("Idle");
 			isClassifying = false;
 			jMenuItem1.setEnabled(true);
-			jButton1.setEnabled(true);
-			jButton2.setEnabled(false);
+			jStartButton.setEnabled(true);
+			jCancelButton.setEnabled(false);
 			jTabbedPane1.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));			
 		}
 	}
