@@ -344,7 +344,8 @@ public class CrossValidation implements Runnable {
 					}else
 						deltaCount++;
 					
-					updatePheromone(antsArray[bestAntIndex]);
+					pheromoneUpdateType = true;
+                    updatePheromone(antsArray[bestAntIndex], pheromoneUpdateType, cPheromoneUpdate);
 					
 					iteration++;
 				}
@@ -1043,34 +1044,45 @@ public class CrossValidation implements Runnable {
 		}
 		return ant;
 	}
-	
-	/**
-	 * Updates the trail of pheromone.
-	 * @param ant
-	 */
-	private void updatePheromone(Ant ant){
-		//update pheromone for used terms
-		for(int x=0; x < ant.getRulesArray().length; x++){
-			if(ant.getRulesArray()[x] != -1){
-				double currentValue = pheromoneArray[x][ant.getRulesArray()[x]];
-				pheromoneArray[x][ant.getRulesArray()[x]] = currentValue + currentValue*(ant).getRuleQuality();
-			}
-		}
-		//normalize pheromone
-		double sum=0;
-		for(int x=0; x < pheromoneArray.length; x++){
-			for(int y=0; y < pheromoneArray[x].length; y++){
-				sum += pheromoneArray[x][y];
-			}
-		}
-		for(int x=0; x < pheromoneArray.length; x++){
-			for(int y=0; y < pheromoneArray[x].length; y++){
-				pheromoneArray[x][y] /= sum;
-			}
-		}
-	}
-	
-	/**
+
+    /**
+     * Updates the trail of pheromone.
+     * @param ant
+     */
+    private void updatePheromone(Ant ant, boolean normalizePheromoneOn, int cRate){
+        //update pheromone for used terms
+        for(int x=0; x < ant.getRulesArray().length; x++){
+            if(ant.getRulesArray()[x] != -1){
+                double currentValue = pheromoneArray[x][ant.getRulesArray()[x]];
+                pheromoneArray[x][ant.getRulesArray()[x]] = currentValue + currentValue*(ant).getRuleQuality();
+            }
+        }
+        //normalize pheromone
+        if(normalizePheromoneOn) {
+            double sum = 0;
+            for (int x = 0; x < pheromoneArray.length; x++) {
+                for (int y = 0; y < pheromoneArray[x].length; y++) {
+                    sum += pheromoneArray[x][y];
+                }
+            }
+            for (int x = 0; x < pheromoneArray.length; x++) {
+                for (int y = 0; y < pheromoneArray[x].length; y++) {
+                    pheromoneArray[x][y] /= sum;
+                }
+            }
+        }
+        else //Constant rate
+        {
+            for (int x = 0; x < pheromoneArray.length; x++) {
+                for (int y = 0; y < pheromoneArray[x].length; y++) {
+                    pheromoneArray[x][y] = cRate;
+                }
+            }
+        }
+    }
+
+
+    /**
 	 * Converts the rule from []int to a readable String
 	 * @param rule
 	 * @param ruleConsequent

@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="50c5ef75-df7b-42b4-8cec-80ed630e837e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CrossValidation.java" afterPath="$PROJECT_DIR$/src/CrossValidation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GUIAntMiner.iml" afterPath="$PROJECT_DIR$/GUIAntMiner.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="GUIAntMiner.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -166,8 +164,8 @@
       <file leaf-file-name="CrossValidation.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CrossValidation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.0367132" vertical-offset="4082" max-vertical-offset="18887">
-              <caret line="322" column="25" selection-start-line="322" selection-start-column="25" selection-end-line="322" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.5261628" vertical-offset="4902" max-vertical-offset="19091">
+              <caret line="346" column="47" selection-start-line="346" selection-start-column="47" selection-end-line="346" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#CrossValidation#0;class#CrossValidation#0" expanded="false" />
@@ -176,12 +174,12 @@
                 <element signature="e#6413#6421#0" expanded="true" />
                 <element signature="e#6474#6482#0" expanded="true" />
                 <element signature="e#7081#7089#0" expanded="true" />
-                <element signature="e#39249#39250#0" expanded="true" />
-                <element signature="e#39288#39289#0" expanded="true" />
-                <element signature="e#39423#39424#0" expanded="true" />
-                <element signature="e#39486#39487#0" expanded="true" />
-                <element signature="e#39527#39528#0" expanded="true" />
-                <element signature="e#39555#39556#0" expanded="true" />
+                <element signature="e#39922#39923#0" expanded="true" />
+                <element signature="e#39961#39962#0" expanded="true" />
+                <element signature="e#40096#40097#0" expanded="true" />
+                <element signature="e#40159#40160#0" expanded="true" />
+                <element signature="e#40200#40201#0" expanded="true" />
+                <element signature="e#40228#40229#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -192,7 +190,21 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="4001" max-vertical-offset="4573">
               <caret line="257" column="11" selection-start-line="257" selection-start-column="11" selection-end-line="257" selection-end-column="11" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <marker date="1436478890705" expanded="true" signature="467:791" placeholder="{...}" />
+                <marker date="1436478890705" expanded="true" signature="897:1212" placeholder="{...}" />
+                <marker date="1436478890705" expanded="true" signature="1318:1633" placeholder="{...}" />
+                <marker date="1436478890705" expanded="true" signature="1766:2102" placeholder="{...}" />
+                <marker date="1436478890705" expanded="true" signature="2255:2601" placeholder="{...}" />
+                <marker date="1436478890705" expanded="true" signature="2726:3073" placeholder="{...}" />
+                <marker date="1436478890705" expanded="true" signature="3200:3533" placeholder="{...}" />
+                <marker date="1436478890705" expanded="true" signature="3666:4007" placeholder="{...}" />
+                <marker date="1436478890705" expanded="true" signature="4223:4605" placeholder="{...}" />
+                <marker date="1436478890705" expanded="true" signature="4734:5068" placeholder="{...}" />
+                <marker date="1436478890705" expanded="true" signature="5167:5486" placeholder="{...}" />
+                <marker date="1436478890705" expanded="true" signature="5597:5922" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -548,7 +560,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -568,7 +580,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24886535" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32626426" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32626426" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Test Runs" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -598,7 +610,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/CrossValidation.java</url>
-          <line>921</line>
+          <line>922</line>
           <properties />
           <option name="timeStamp" value="5" />
         </line-breakpoint>
@@ -658,12 +670,12 @@
             <element signature="e#6413#6421#0" expanded="true" />
             <element signature="e#6474#6482#0" expanded="true" />
             <element signature="e#7081#7089#0" expanded="true" />
-            <element signature="e#39249#39250#0" expanded="true" />
-            <element signature="e#39288#39289#0" expanded="true" />
-            <element signature="e#39423#39424#0" expanded="true" />
-            <element signature="e#39486#39487#0" expanded="true" />
-            <element signature="e#39527#39528#0" expanded="true" />
-            <element signature="e#39555#39556#0" expanded="true" />
+            <element signature="e#39922#39923#0" expanded="true" />
+            <element signature="e#39961#39962#0" expanded="true" />
+            <element signature="e#40096#40097#0" expanded="true" />
+            <element signature="e#40159#40160#0" expanded="true" />
+            <element signature="e#40200#40201#0" expanded="true" />
+            <element signature="e#40228#40229#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -715,12 +727,12 @@
             <element signature="e#6413#6421#0" expanded="true" />
             <element signature="e#6474#6482#0" expanded="true" />
             <element signature="e#7081#7089#0" expanded="true" />
-            <element signature="e#39249#39250#0" expanded="true" />
-            <element signature="e#39288#39289#0" expanded="true" />
-            <element signature="e#39423#39424#0" expanded="true" />
-            <element signature="e#39486#39487#0" expanded="true" />
-            <element signature="e#39527#39528#0" expanded="true" />
-            <element signature="e#39555#39556#0" expanded="true" />
+            <element signature="e#39922#39923#0" expanded="true" />
+            <element signature="e#39961#39962#0" expanded="true" />
+            <element signature="e#40096#40097#0" expanded="true" />
+            <element signature="e#40159#40160#0" expanded="true" />
+            <element signature="e#40200#40201#0" expanded="true" />
+            <element signature="e#40228#40229#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -745,12 +757,12 @@
             <element signature="e#6413#6421#0" expanded="true" />
             <element signature="e#6474#6482#0" expanded="true" />
             <element signature="e#7081#7089#0" expanded="true" />
-            <element signature="e#39249#39250#0" expanded="true" />
-            <element signature="e#39288#39289#0" expanded="true" />
-            <element signature="e#39423#39424#0" expanded="true" />
-            <element signature="e#39486#39487#0" expanded="true" />
-            <element signature="e#39527#39528#0" expanded="true" />
-            <element signature="e#39555#39556#0" expanded="true" />
+            <element signature="e#39922#39923#0" expanded="true" />
+            <element signature="e#39961#39962#0" expanded="true" />
+            <element signature="e#40096#40097#0" expanded="true" />
+            <element signature="e#40159#40160#0" expanded="true" />
+            <element signature="e#40200#40201#0" expanded="true" />
+            <element signature="e#40228#40229#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -775,12 +787,12 @@
             <element signature="e#6413#6421#0" expanded="true" />
             <element signature="e#6474#6482#0" expanded="true" />
             <element signature="e#7081#7089#0" expanded="true" />
-            <element signature="e#39249#39250#0" expanded="true" />
-            <element signature="e#39288#39289#0" expanded="true" />
-            <element signature="e#39423#39424#0" expanded="true" />
-            <element signature="e#39486#39487#0" expanded="true" />
-            <element signature="e#39527#39528#0" expanded="true" />
-            <element signature="e#39555#39556#0" expanded="true" />
+            <element signature="e#39922#39923#0" expanded="true" />
+            <element signature="e#39961#39962#0" expanded="true" />
+            <element signature="e#40096#40097#0" expanded="true" />
+            <element signature="e#40159#40160#0" expanded="true" />
+            <element signature="e#40200#40201#0" expanded="true" />
+            <element signature="e#40228#40229#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -812,12 +824,12 @@
             <element signature="e#6413#6421#0" expanded="true" />
             <element signature="e#6474#6482#0" expanded="true" />
             <element signature="e#7081#7089#0" expanded="true" />
-            <element signature="e#39249#39250#0" expanded="true" />
-            <element signature="e#39288#39289#0" expanded="true" />
-            <element signature="e#39423#39424#0" expanded="true" />
-            <element signature="e#39486#39487#0" expanded="true" />
-            <element signature="e#39527#39528#0" expanded="true" />
-            <element signature="e#39555#39556#0" expanded="true" />
+            <element signature="e#39922#39923#0" expanded="true" />
+            <element signature="e#39961#39962#0" expanded="true" />
+            <element signature="e#40096#40097#0" expanded="true" />
+            <element signature="e#40159#40160#0" expanded="true" />
+            <element signature="e#40200#40201#0" expanded="true" />
+            <element signature="e#40228#40229#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -933,14 +945,28 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="4001" max-vertical-offset="4573">
           <caret line="257" column="11" selection-start-line="257" selection-start-column="11" selection-end-line="257" selection-end-column="11" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1436478890705" expanded="true" signature="467:791" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="897:1212" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="1318:1633" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="1766:2102" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="2255:2601" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="2726:3073" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="3200:3533" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="3666:4007" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="4223:4605" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="4734:5068" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="5167:5486" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="5597:5922" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CrossValidation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0367132" vertical-offset="4082" max-vertical-offset="18887">
-          <caret line="322" column="25" selection-start-line="322" selection-start-column="25" selection-end-line="322" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.5261628" vertical-offset="4902" max-vertical-offset="19091">
+          <caret line="346" column="47" selection-start-line="346" selection-start-column="47" selection-end-line="346" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#CrossValidation#0;class#CrossValidation#0" expanded="false" />
@@ -949,12 +975,12 @@
             <element signature="e#6413#6421#0" expanded="true" />
             <element signature="e#6474#6482#0" expanded="true" />
             <element signature="e#7081#7089#0" expanded="true" />
-            <element signature="e#39249#39250#0" expanded="true" />
-            <element signature="e#39288#39289#0" expanded="true" />
-            <element signature="e#39423#39424#0" expanded="true" />
-            <element signature="e#39486#39487#0" expanded="true" />
-            <element signature="e#39527#39528#0" expanded="true" />
-            <element signature="e#39555#39556#0" expanded="true" />
+            <element signature="e#39922#39923#0" expanded="true" />
+            <element signature="e#39961#39962#0" expanded="true" />
+            <element signature="e#40096#40097#0" expanded="true" />
+            <element signature="e#40159#40160#0" expanded="true" />
+            <element signature="e#40200#40201#0" expanded="true" />
+            <element signature="e#40228#40229#0" expanded="true" />
           </folding>
         </state>
       </provider>
