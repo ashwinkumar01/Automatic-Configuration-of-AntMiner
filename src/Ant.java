@@ -1,5 +1,4 @@
 
-
 import java.util.List;
 
 /**
@@ -17,7 +16,7 @@ import java.util.List;
  * 
  * A full copy of the license is available in gpl.txt and online at
  * http://www.gnu.org/licenses/gpl.txt
-*/
+ */
 
 public class Ant implements Cloneable{
 	private int [] rulesArray;

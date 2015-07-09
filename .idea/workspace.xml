@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50c5ef75-df7b-42b4-8cec-80ed630e837e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AboutGUIAntMinerJDialog.java" afterPath="$PROJECT_DIR$/src/AboutGUIAntMinerJDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Ant.java" afterPath="$PROJECT_DIR$/src/Ant.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CrossValidation.java" afterPath="$PROJECT_DIR$/src/CrossValidation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUIAntMinerJFrame.java" afterPath="$PROJECT_DIR$/src/GUIAntMinerJFrame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="GUIAntMiner.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,21 +27,21 @@
     <notCoveredStripe>-65536</notCoveredStripe>
     <projectRebuild class="com.atlassian.clover.idea.config.ProjectRebuild">ASK</projectRebuild>
     <flushPolicy>0</flushPolicy>
-    <viewIncludeAnnotation>true</viewIncludeAnnotation>
     <alwaysExpandTestClasses>false</alwaysExpandTestClasses>
+    <viewIncludeAnnotation>true</viewIncludeAnnotation>
     <languageLevel>1.8 - lambda functions, virtual extension methods.</languageLevel>
     <manualInitString null="true" />
     <autoRefreshInterval>2000</autoRefreshInterval>
-    <flushInterval>5000</flushInterval>
     <showInline>true</showInline>
+    <flushInterval>5000</flushInterval>
     <showSummaryInToolwindow>true</showSummaryInToolwindow>
     <autoRefresh>true</autoRefresh>
     <coveredHighlight>-3605816</coveredHighlight>
     <enabled>false</enabled>
     <modelScope class="com.atlassian.clover.idea.util.ModelScope">APP_CLASSES_ONLY</modelScope>
     <alwaysCollapseTestClasses>false</alwaysCollapseTestClasses>
-    <filteredStripe>-12566464</filteredStripe>
     <excludes null="true" />
+    <filteredStripe>-12566464</filteredStripe>
     <calculateTestCoverage>true</calculateTestCoverage>
     <instrumentTests>true</instrumentTests>
     <outOfDateHighlight>-32</outOfDateHighlight>
@@ -47,8 +50,8 @@
     <cloudReportIncludeSubpkgs>false</cloudReportIncludeSubpkgs>
     <includes null="true" />
     <includePassedTestCoverageOnly>true</includePassedTestCoverageOnly>
-    <contextFilterSpec />
     <viewCoverage>true</viewCoverage>
+    <contextFilterSpec />
     <coveredStripe>-16711936</coveredStripe>
     <autoScroll>true</autoScroll>
     <autoViewInCloudReport>true</autoViewInCloudReport>
@@ -58,9 +61,9 @@
     <testCaseLayout class="com.atlassian.clover.idea.config.TestCaseLayout">TEST_CASES</testCaseLayout>
     <failedCoveredStripe>-14336</failedCoveredStripe>
     <regexpContexts class="java.util.ArrayList" />
+    <showErrorMarks>true</showErrorMarks>
     <flattenPackages>false</flattenPackages>
     <autoScrollFromSource>false</autoScrollFromSource>
-    <showErrorMarks>true</showErrorMarks>
     <showTooltips>true</showTooltips>
     <showSummaryInToolbar>true</showSummaryInToolbar>
     <span>0</span>
@@ -114,8 +117,8 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <breakpoint_rules converted="true" />
     <ui_properties converted="true" />
+    <breakpoint_rules converted="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -126,8 +129,8 @@
       <file leaf-file-name="Ant.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Ant.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="11.0" vertical-offset="427" max-vertical-offset="1377">
-              <caret line="7" column="9" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="363" max-vertical-offset="1360">
+              <caret line="32" column="82" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -136,12 +139,27 @@
       <file leaf-file-name="GUIAntMinerJFrame.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUIAntMinerJFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.678571" vertical-offset="10342" max-vertical-offset="21352">
-              <caret line="632" column="77" selection-start-line="632" selection-start-column="77" selection-end-line="632" selection-end-column="77" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2647" max-vertical-offset="20808">
+              <caret line="204" column="0" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#50845#51057#0" expanded="true" />
-                <element signature="e#51026#51027#0" expanded="true" />
+                <element signature="e#5864#6830#0" expanded="true" />
+                <element signature="e#6821#6822#0" expanded="true" />
+                <element signature="e#7172#7289#0" expanded="true" />
+                <element signature="e#7280#7281#0" expanded="true" />
+                <element signature="e#7756#8048#0" expanded="true" />
+                <element signature="e#8039#8040#0" expanded="true" />
+                <element signature="e#19064#19790#0" expanded="true" />
+                <element signature="e#19781#19782#0" expanded="true" />
+                <element signature="e#28920#29032#0" expanded="true" />
+                <element signature="e#29023#29024#0" expanded="true" />
+                <element signature="e#30812#30813#0" expanded="true" />
+                <element signature="e#30841#30842#0" expanded="true" />
+                <element signature="e#30871#30872#0" expanded="true" />
+                <element signature="e#30892#30893#0" expanded="true" />
+                <element signature="e#30935#30936#0" expanded="true" />
+                <element signature="e#30972#30973#0" expanded="true" />
+                <element signature="e#35779#35780#0" expanded="true" />
+                <element signature="e#35801#35802#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -150,8 +168,8 @@
       <file leaf-file-name="CrossValidation.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CrossValidation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33272058" vertical-offset="4239" max-vertical-offset="18598">
-              <caret line="315" column="63" selection-start-line="315" selection-start-column="63" selection-end-line="315" selection-end-column="63" />
+            <state vertical-scroll-proportion="0.9375" vertical-offset="14892" max-vertical-offset="18173">
+              <caret line="936" column="5" selection-start-line="936" selection-start-column="5" selection-end-line="936" selection-end-column="5" />
               <folding>
                 <element signature="method#CrossValidation#0;class#CrossValidation#0" expanded="false" />
               </folding>
@@ -173,7 +191,16 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/iraceIntegration/RServeExample1.java" />
+        <option value="$PROJECT_DIR$/src/test/CrossValidationTest.java" />
         <option value="$PROJECT_DIR$/src/GUIAntMinerJFrame.java" />
+        <option value="$PROJECT_DIR$/src/Ant.java" />
+        <option value="$PROJECT_DIR$/src/MyFileReader.java" />
+        <option value="$PROJECT_DIR$/src/AboutGUIAntMinerJDialog.java" />
+        <option value="$PROJECT_DIR$/src/ArffFilter.java" />
+        <option value="$PROJECT_DIR$/src/AttGraph.java" />
+        <option value="$PROJECT_DIR$/src/Attribute.java" />
+        <option value="$PROJECT_DIR$/src/DataInstance.java" />
+        <option value="$PROJECT_DIR$/src/MyList.java" />
         <option value="$PROJECT_DIR$/src/CrossValidation.java" />
       </list>
     </option>
@@ -373,6 +400,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -398,19 +438,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -500,7 +527,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -509,7 +536,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39967373" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28711256" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -526,8 +553,8 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -550,19 +577,13 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Ant.java</url>
-          <line>29</line>
+          <url>file://$PROJECT_DIR$/src/CrossValidation.java</url>
+          <line>868</line>
           <properties />
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Ant.java</url>
-          <line>32</line>
-          <properties />
-          <option name="timeStamp" value="3" />
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="5" />
+      <option name="time" value="7" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -570,6 +591,51 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/Ant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1717">
+          <caret line="7" column="9" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUIAntMinerJFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="10744" max-vertical-offset="22219">
+          <caret line="632" column="77" selection-start-line="632" selection-start-column="77" selection-end-line="632" selection-end-column="77" />
+          <folding>
+            <element signature="e#5864#6830#0" expanded="true" />
+            <element signature="e#6821#6822#0" expanded="true" />
+            <element signature="e#7172#7289#0" expanded="true" />
+            <element signature="e#7280#7281#0" expanded="true" />
+            <element signature="e#7756#8048#0" expanded="true" />
+            <element signature="e#8039#8040#0" expanded="true" />
+            <element signature="e#19064#19790#0" expanded="true" />
+            <element signature="e#19781#19782#0" expanded="true" />
+            <element signature="e#28920#29032#0" expanded="true" />
+            <element signature="e#29023#29024#0" expanded="true" />
+            <element signature="e#30812#30813#0" expanded="true" />
+            <element signature="e#30841#30842#0" expanded="true" />
+            <element signature="e#30871#30872#0" expanded="true" />
+            <element signature="e#30892#30893#0" expanded="true" />
+            <element signature="e#30935#30936#0" expanded="true" />
+            <element signature="e#30972#30973#0" expanded="true" />
+            <element signature="e#35779#35780#0" expanded="true" />
+            <element signature="e#35801#35802#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CrossValidation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4239" max-vertical-offset="18598">
+          <caret line="315" column="63" selection-start-line="315" selection-start-column="63" selection-end-line="315" selection-end-column="63" />
+          <folding>
+            <element signature="method#CrossValidation#0;class#CrossValidation#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Ant.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1717">
@@ -583,9 +649,24 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="16305" max-vertical-offset="21913">
           <caret line="157" column="31" selection-start-line="157" selection-start-column="31" selection-end-line="157" selection-end-column="31" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#50845#51057#0" expanded="true" />
-            <element signature="e#51026#51027#0" expanded="true" />
+            <element signature="e#5864#6830#0" expanded="true" />
+            <element signature="e#6821#6822#0" expanded="true" />
+            <element signature="e#7172#7289#0" expanded="true" />
+            <element signature="e#7280#7281#0" expanded="true" />
+            <element signature="e#7756#8048#0" expanded="true" />
+            <element signature="e#8039#8040#0" expanded="true" />
+            <element signature="e#19064#19790#0" expanded="true" />
+            <element signature="e#19781#19782#0" expanded="true" />
+            <element signature="e#28920#29032#0" expanded="true" />
+            <element signature="e#29023#29024#0" expanded="true" />
+            <element signature="e#30812#30813#0" expanded="true" />
+            <element signature="e#30841#30842#0" expanded="true" />
+            <element signature="e#30871#30872#0" expanded="true" />
+            <element signature="e#30892#30893#0" expanded="true" />
+            <element signature="e#30935#30936#0" expanded="true" />
+            <element signature="e#30972#30973#0" expanded="true" />
+            <element signature="e#35779#35780#0" expanded="true" />
+            <element signature="e#35801#35802#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -675,67 +756,111 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DataInstance.java">
+    <entry file="file://$PROJECT_DIR$/src/test/CrossValidationTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.21505377" vertical-offset="386" max-vertical-offset="765">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="385">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AboutGUIAntMinerJDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6392">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ArffFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1003">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AttGraph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Attribute.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="935">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DataInstance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MyFileReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.2258065" vertical-offset="3" max-vertical-offset="2125">
+          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MyList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5696649" vertical-offset="0" max-vertical-offset="567">
-          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AttGraph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="134" max-vertical-offset="935">
-          <caret line="23" column="6" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AboutGUIAntMinerJDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.812937" vertical-offset="5653" max-vertical-offset="6409">
-          <caret line="59" column="13" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GUIAntMinerJFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.678571" vertical-offset="10342" max-vertical-offset="21352">
-          <caret line="632" column="77" selection-start-line="632" selection-start-column="77" selection-end-line="632" selection-end-column="77" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2647" max-vertical-offset="20808">
+          <caret line="204" column="0" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#50845#51057#0" expanded="true" />
-            <element signature="e#51026#51027#0" expanded="true" />
+            <element signature="e#5864#6830#0" expanded="true" />
+            <element signature="e#6821#6822#0" expanded="true" />
+            <element signature="e#7172#7289#0" expanded="true" />
+            <element signature="e#7280#7281#0" expanded="true" />
+            <element signature="e#7756#8048#0" expanded="true" />
+            <element signature="e#8039#8040#0" expanded="true" />
+            <element signature="e#19064#19790#0" expanded="true" />
+            <element signature="e#19781#19782#0" expanded="true" />
+            <element signature="e#28920#29032#0" expanded="true" />
+            <element signature="e#29023#29024#0" expanded="true" />
+            <element signature="e#30812#30813#0" expanded="true" />
+            <element signature="e#30841#30842#0" expanded="true" />
+            <element signature="e#30871#30872#0" expanded="true" />
+            <element signature="e#30892#30893#0" expanded="true" />
+            <element signature="e#30935#30936#0" expanded="true" />
+            <element signature="e#30972#30973#0" expanded="true" />
+            <element signature="e#35779#35780#0" expanded="true" />
+            <element signature="e#35801#35802#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Ant.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="11.0" vertical-offset="427" max-vertical-offset="1377">
-          <caret line="7" column="9" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="363" max-vertical-offset="1360">
+          <caret line="32" column="82" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CrossValidation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33272058" vertical-offset="4239" max-vertical-offset="18598">
-          <caret line="315" column="63" selection-start-line="315" selection-start-column="63" selection-end-line="315" selection-end-column="63" />
+        <state vertical-scroll-proportion="0.9375" vertical-offset="14892" max-vertical-offset="18173">
+          <caret line="936" column="5" selection-start-line="936" selection-start-column="5" selection-end-line="936" selection-end-column="5" />
           <folding>
             <element signature="method#CrossValidation#0;class#CrossValidation#0" expanded="false" />
           </folding>

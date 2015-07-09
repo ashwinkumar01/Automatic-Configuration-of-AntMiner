@@ -1,5 +1,6 @@
 
 
+
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Cursor;
@@ -15,7 +16,28 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.text.DecimalFormat;
 
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JDialog;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.KeyStroke;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -69,7 +91,7 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
 
 
 	private JMenuBar jMenuBar1;
-	private JMenu jFileMenu;
+	private JMenu jMenu1;
 	private JMenuItem jMenuItem1;
 	private JLabel jLabelNumberOfInstances;
 	private JTable jTable1;
@@ -77,19 +99,19 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
 	private TableModel jTable1Model;
 	private TableModel jTable2Model;
 	private JLabel jLabel8;
-	private JLabel jFoldsLabel;
-	private JLabel jMaxRuleCasesLabel;
-	private JLabel jMinRuleCasesLabel;
-	private JLabel jConvergenceLabel;
+	private JLabel jLabel4;
+	private JLabel jLabel14;
+	private JLabel jLabel12;
+	private JLabel jLabel6;
 	private JTextField jTextField5;
 	private JTextField jTextField4;
 	private JTextField jTextField3;
 	private JTextField jTextField2;
 	private JPanel jPanel9;
 	private JTextField jTextField1;
-	private JLabel jNoAntsLabel;
+	private JLabel jLabel13;
 	private JPanel jPanel7;
-	private JButton jStartButton;
+	private JButton jButton1;
 	private JLabel jLabelDistinct;
 	private JLabel jLabel11;
 	private JPanel jPanel4;
@@ -99,7 +121,7 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
 	private JScrollPane jScrollPane3;
 	private JPanel jPanel6;
 	private JPanel jPanel5;
-	private JPanel jClassifyPanel;
+	private JPanel jPanel3;
 	private JTabbedPane jTabbedPane1;
 	private JScrollPane jScrollPane1;
 	private JLabel jLabelNumberOfAttributes;
@@ -107,33 +129,29 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
 	private JLabel jLabel3;
 	private JLabel jLabel2;
 	private JLabel jLabel1;
-	private JPanel jRelationPanel;
+	private JPanel jPanel1;
 	private JPanel jPanel2;
 	private JMenuItem jMenuItem3;
-	private JMenu jHelpMenu;
-	private JMenuItem jMenuItem_exit;
+	private JMenu jMenu2;
+	private JMenuItem jMenuItem2;
 	private JSeparator jSeparator1;
 	private MyFileReader myFileReader;
 	private Canvas canvas1;
 	private JTextField jTextField6;
 	private JLabel jLabel17;
-	private JButton jCancelButton;
+	private JButton jButton2;
 	private JProgressBar jProgressBar1;
 	private JPanel jPanel8;
-    private JPanel jPanel10;
-	private JCheckBox jPrintTrainingSetCB;
-	private JCheckBox jPrintTestSetCB;
-	private JLabel jNoIterationsLabel;
-	private JCheckBox jOutputScreenCB;
+	private JCheckBox jCheckBox3;
+	private JCheckBox jCheckBox2;
+	private JLabel jLabel15;
+	private JCheckBox jCheckBox1;
 	private JTextArea jTextArea1;
 	private JScrollPane jScrollPane2;
-    private JComboBox ruleQualityChoices;
-
 	private boolean isClassifying;
 	private CrossValidation cv;
 	private Attribute [] attributesArray;
 	private DataInstance [] dataInstancesArray;
-    private int nRuleChoice;
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -155,880 +173,850 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
 	
 	private void initGUI() {
 		try {
-            {
-                nRuleChoice = 1;
-                jMenuBar1 = new JMenuBar();
-                setJMenuBar(jMenuBar1);
-                jMenuBar1.setPreferredSize(new java.awt.Dimension(392, 26));
-                {
-                    jFileMenu = new JMenu();
-                    jMenuBar1.add(jFileMenu);
-                    jFileMenu.setText("File");
-                    jFileMenu.setDisplayedMnemonicIndex(0);
-                    jFileMenu.setMnemonic(java.awt.event.KeyEvent.VK_F);
-                    {
-                        jMenuItem1 = new JMenuItem();
-                        jFileMenu.add(jMenuItem1);
-                        jMenuItem1.setText("Open...");
-                        jMenuItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, Event.CTRL_MASK));
-                        jMenuItem1.setDisplayedMnemonicIndex(0);
-                        jMenuItem1.setMnemonic(java.awt.event.KeyEvent.VK_O);
-                        jMenuItem1.addActionListener(new ActionListener() {
-                            public void actionPerformed(ActionEvent evt) {
-                                final JFileChooser fc = new JFileChooser();
-                                fc.setCurrentDirectory(new File(System.getProperty("user.dir")));
-                                fc.addChoosableFileFilter(new ArffFilter());
-                                int returnVal = fc.showOpenDialog(GUIAntMinerJFrame.this);
-                                if (returnVal == 0) {
-                                    myFileReader = new MyFileReader(fc.getSelectedFile());
-                                    if (myFileReader.fileIsOk()) {
-                                        attributesArray = myFileReader.getAttributesArray();
-                                        dataInstancesArray = myFileReader.getDataInstancesArray();
+			{
+				jMenuBar1 = new JMenuBar();
+				setJMenuBar(jMenuBar1);
+				jMenuBar1.setPreferredSize(new java.awt.Dimension(392, 26));
+				{
+					jMenu1 = new JMenu();
+					jMenuBar1.add(jMenu1);
+					jMenu1.setText("File");
+					jMenu1.setDisplayedMnemonicIndex(0);
+					jMenu1.setMnemonic(java.awt.event.KeyEvent.VK_F);
+					{
+					jMenuItem1 = new JMenuItem();
+						jMenu1.add(jMenuItem1);
+						jMenuItem1.setText("Open...");
+						jMenuItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O,Event.CTRL_MASK));
+						jMenuItem1.setDisplayedMnemonicIndex(0);
+						jMenuItem1.setMnemonic(java.awt.event.KeyEvent.VK_O);
+						jMenuItem1.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent evt) {
+								final JFileChooser fc = new JFileChooser();
+								fc.setCurrentDirectory(new File(System.getProperty("user.dir")));								
+								fc.addChoosableFileFilter(new ArffFilter());
+								int returnVal = fc.showOpenDialog(GUIAntMinerJFrame.this);
+								if(returnVal == 0){
+									myFileReader = new MyFileReader(fc.getSelectedFile());
+									if(myFileReader.fileIsOk()){
+										attributesArray = myFileReader.getAttributesArray();
+										dataInstancesArray = myFileReader.getDataInstancesArray();
 
-                                        setLabel2(myFileReader.getRelation());
-                                        jLabelNumberOfAttributes.setText(String.valueOf(myFileReader.getAttributesNo()));
-                                        jLabelNumberOfInstances.setText(String.valueOf(myFileReader.getInstancesNo()));
-                                        setTableAtt1(myFileReader.getAttributesArray());
-                                        jTabbedPane1.setEnabledAt(1, true);
-                                    }
-                                }
-                            }
-                        });
-                    }
-                    {
-                        jSeparator1 = new JSeparator();
-                        jFileMenu.add(jSeparator1);
-                    }
-                    {
-                        jMenuItem_exit = new JMenuItem();
-                        jFileMenu.add(jMenuItem_exit);
-                        jMenuItem_exit.setText("Exit");
-                        jMenuItem_exit.setDisplayedMnemonicIndex(1);
-                        jMenuItem_exit.setMnemonic(java.awt.event.KeyEvent.VK_X);
-                        jMenuItem_exit.addActionListener(new ActionListener() {
-                            public void actionPerformed(ActionEvent evt) {
-                                System.exit(0);
-                            }
-                        });
-                    }
-                }
-                {
-                    jHelpMenu = new JMenu();
-                    jMenuBar1.add(jHelpMenu);
-                    jHelpMenu.setText("Help");
-                    jHelpMenu.setDisplayedMnemonicIndex(0);
-                    jHelpMenu.setMnemonic(java.awt.event.KeyEvent.VK_H);
-                    {
-                        jMenuItem3 = new JMenuItem();
-                        jHelpMenu.add(jMenuItem3);
-                        jMenuItem3.setText("About GUI Ant-Miner");
-                        jMenuItem3.setDisplayedMnemonicIndex(0);
-                        jMenuItem3.setMnemonic(java.awt.event.KeyEvent.VK_A);
-                        jMenuItem3.addActionListener(new ActionListener() {
-                            public void actionPerformed(ActionEvent evt) {
-                                JDialog dialog = new JDialog(GUIAntMinerJFrame.this, true);
-                                AboutGUIAntMinerJDialog inst = new AboutGUIAntMinerJDialog(dialog, GUIAntMinerJFrame.this);
-                                inst.setVisible(true);
-                            }
-                        });
-                    }
-                }
-            }
-            setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-            BorderLayout thisLayout = new BorderLayout();
-            this.getContentPane().setLayout(thisLayout);
-            this.setTitle("GUI Ant-Miner");
-            {
-                jTabbedPane1 = new JTabbedPane();
-                this.getContentPane().add(jTabbedPane1, BorderLayout.CENTER);
-                jTabbedPane1.setPreferredSize(new java.awt.Dimension(792, 542));
-                {
-                    jPanel2 = new JPanel();
-                    GridBagLayout jPanel2Layout = new GridBagLayout();
-                    jPanel2Layout.columnWeights = new double[]{1.0, 1.0};
-                    jPanel2Layout.columnWidths = new int[]{400, 420};
-                    jPanel2Layout.rowWeights = new double[]{1.0};
-                    jPanel2Layout.rowHeights = new int[]{};
-                    jTabbedPane1.addTab("Preprocess", null, jPanel2, null);
-                    //jPanel2.setLayout(jPanel2Layout);
-                    jPanel2.setPreferredSize(new java.awt.Dimension(787, 514));
-                    jPanel2.setLayout(jPanel2Layout);
-                    jPanel2.setMinimumSize(new java.awt.Dimension(400, 400));
-                    {
-                        jScrollPane1 = new JScrollPane();
-                        jPanel2.add(jScrollPane1, new GridBagConstraints(
-                                0,
-                                0,
-                                1,
-                                1,
-                                1.0,
-                                0.0,
-                                GridBagConstraints.NORTH,
-                                GridBagConstraints.HORIZONTAL,
-                                new Insets(72, 5, 5, 2),
-                                0,
-                                0));
-                        jScrollPane1.setBounds(7, 80, 385, 200);
-                        jScrollPane1.setBorder(BorderFactory.createTitledBorder("Attributes"));
-                        jScrollPane1.setSize(364, 200);
-                        jScrollPane1.setMinimumSize(new java.awt.Dimension(23, 240));
-                        jScrollPane1.setPreferredSize(new java.awt.Dimension(385, 250));
+										setLabel2(myFileReader.getRelation());
+										jLabelNumberOfAttributes.setText(String.valueOf(myFileReader.getAttributesNo()));
+										jLabelNumberOfInstances.setText(String.valueOf(myFileReader.getInstancesNo()));
+										setTableAtt1(myFileReader.getAttributesArray());
+										jTabbedPane1.setEnabledAt(1,true);
+									}
+								}
+							}
+						});
+					}
+					{
+						jSeparator1 = new JSeparator();
+						jMenu1.add(jSeparator1);
+					}
+					{
+						jMenuItem2 = new JMenuItem();
+						jMenu1.add(jMenuItem2);
+						jMenuItem2.setText("Exit");
+						jMenuItem2.setDisplayedMnemonicIndex(1);
+						jMenuItem2.setMnemonic(java.awt.event.KeyEvent.VK_X);
+						jMenuItem2.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent evt) {
+								System.exit(0);
+							}
+						});
+					}
+				}
+				{
+					jMenu2 = new JMenu();
+					jMenuBar1.add(jMenu2);
+					jMenu2.setText("Help");
+					jMenu2.setDisplayedMnemonicIndex(0);
+					jMenu2.setMnemonic(java.awt.event.KeyEvent.VK_H);
+					{
+						jMenuItem3 = new JMenuItem();
+						jMenu2.add(jMenuItem3);
+						jMenuItem3.setText("About GUI Ant-Miner");
+						jMenuItem3.setDisplayedMnemonicIndex(0);
+						jMenuItem3.setMnemonic(java.awt.event.KeyEvent.VK_A);
+						jMenuItem3.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent evt) {
+								JDialog dialog = new JDialog(GUIAntMinerJFrame.this, true);
+								AboutGUIAntMinerJDialog inst = new AboutGUIAntMinerJDialog(dialog, GUIAntMinerJFrame.this);
+								inst.setVisible(true);
+							}
+						});
+					}
+				}
+			}
+			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+			BorderLayout thisLayout = new BorderLayout();
+			this.getContentPane().setLayout(thisLayout);
+			this.setTitle("GUI Ant-Miner");
+			{
+				jTabbedPane1 = new JTabbedPane();
+				this.getContentPane().add(jTabbedPane1, BorderLayout.CENTER);
+				jTabbedPane1.setPreferredSize(new java.awt.Dimension(792, 542));
+				{
+					jPanel2 = new JPanel();
+					GridBagLayout jPanel2Layout = new GridBagLayout();
+					jPanel2Layout.columnWeights = new double[] {1.0,1.0};
+					jPanel2Layout.columnWidths = new int[] {400,420};
+					jPanel2Layout.rowWeights = new double[] {1.0};
+					jPanel2Layout.rowHeights = new int[] {};
+					jTabbedPane1.addTab("Preprocess", null, jPanel2, null);
+					//jPanel2.setLayout(jPanel2Layout);
+					jPanel2.setPreferredSize(new java.awt.Dimension(787, 514));
+					jPanel2.setLayout(jPanel2Layout);
+					jPanel2.setMinimumSize(new java.awt.Dimension(400, 400));
+					{
+						jScrollPane1 = new JScrollPane();
+						jPanel2.add(jScrollPane1, new GridBagConstraints(
+							0,
+							0,
+							1,
+							1,
+							1.0,
+							0.0,
+							GridBagConstraints.NORTH,
+							GridBagConstraints.HORIZONTAL,
+							new Insets(72, 5, 5, 2),
+							0,
+							0));
+						jScrollPane1.setBounds(7, 80, 385, 200);
+						jScrollPane1.setBorder(BorderFactory.createTitledBorder("Attributes"));
+						jScrollPane1.setSize(364, 200);
+						jScrollPane1.setMinimumSize(new java.awt.Dimension(23, 240));
+						jScrollPane1.setPreferredSize(new java.awt.Dimension(385, 250));
 
-                    }
-                    {
-                        jRelationPanel = new JPanel();
-                        jPanel2.add(jRelationPanel, new GridBagConstraints(
-                                0,
-                                0,
-                                1,
-                                1,
-                                1.0,
-                                0.0,
-                                GridBagConstraints.NORTH,
-                                GridBagConstraints.HORIZONTAL,
-                                new Insets(5, 5, 5, 2),
-                                0,
-                                0));
-                        GridBagLayout jPanel1Layout = new GridBagLayout();
-                        jPanel1Layout.columnWeights = new double[]{0.1, 0.1,
-                                0.1, 0.1, 0.1, 0.1};
-                        jPanel1Layout.columnWidths = new int[]{30, 66, 120, 63, 100, 20};
-                        jPanel1Layout.rowHeights = new int[]{18, 18};
-                        jPanel1Layout.rowWeights = new double[]{0.1, 0.1};
-                        jRelationPanel.setLayout(jPanel1Layout);
+					}
+					{
+						jPanel1 = new JPanel();
+						jPanel2.add(jPanel1, new GridBagConstraints(
+							0,
+							0,
+							1,
+							1,
+							1.0,
+							0.0,
+							GridBagConstraints.NORTH,
+							GridBagConstraints.HORIZONTAL,
+							new Insets(5, 5, 5, 2),
+							0,
+							0));
+						GridBagLayout jPanel1Layout = new GridBagLayout();
+						jPanel1Layout.columnWeights = new double[] { 0.1, 0.1,
+								0.1, 0.1, 0.1, 0.1 };
+						jPanel1Layout.columnWidths = new int[] {30,66,120,63,100,20};
+						jPanel1Layout.rowHeights = new int[] {18,18};
+						jPanel1Layout.rowWeights = new double[] {0.1,0.1};
+						jPanel1.setLayout(jPanel1Layout);
 
-                        jRelationPanel.setBounds(7, 8, 385, 72);
-                        jRelationPanel.setBorder(BorderFactory.createTitledBorder("Relation"));
-                        jRelationPanel.setSize(320, 59);
-                        {
-                            jLabel1 = new JLabel();
-                            jRelationPanel.add(jLabel1, new GridBagConstraints(
-                                    1,
-                                    0,
-                                    1,
-                                    1,
-                                    0.0,
-                                    0.0,
-                                    GridBagConstraints.WEST,
-                                    GridBagConstraints.NONE,
-                                    new Insets(0, 0, 0, 0),
-                                    0,
-                                    0));
-                            jLabel1.setText("Relation: ");
-                            jLabel1
-                                    .setHorizontalTextPosition(SwingConstants.RIGHT);
-                            jLabel1
-                                    .setHorizontalAlignment(SwingConstants.RIGHT);
-                            jLabel1.setFont(new java.awt.Font("Dialog", 0, 12));
-                        }
-                        {
-                            jLabel2 = new JLabel();
-                            jRelationPanel.add(jLabel2, new GridBagConstraints(
-                                    2,
-                                    0,
-                                    1,
-                                    1,
-                                    0.0,
-                                    0.0,
-                                    GridBagConstraints.WEST,
-                                    GridBagConstraints.NONE,
-                                    new Insets(0, 0, 0, 0),
-                                    0,
-                                    0));
-                            jLabel2.setFont(new java.awt.Font("Dialog", 0, 12));
-                            jLabel2.setName("                   ");
-                            jLabel2.setText("                ");
-                        }
-                        {
-                            jLabel3 = new JLabel();
-                            jRelationPanel.add(jLabel3, new GridBagConstraints(
-                                    1,
-                                    1,
-                                    1,
-                                    1,
-                                    0.0,
-                                    0.0,
-                                    GridBagConstraints.WEST,
-                                    GridBagConstraints.NONE,
-                                    new Insets(0, 0, 0, 0),
-                                    0,
-                                    0));
-                            jLabel3.setText("Instances: ");
-                            jLabel3.setLayout(null);
-                            jLabel3.setFont(new java.awt.Font("Dialog", 0, 12));
-                        }
-                        {
-                            jLabelNumberOfInstances = new JLabel();
-                            jRelationPanel.add(
-                                    jLabelNumberOfInstances,
-                                    new GridBagConstraints(
-                                            2,
-                                            1,
-                                            1,
-                                            1,
-                                            0.0,
-                                            0.0,
-                                            GridBagConstraints.WEST,
-                                            GridBagConstraints.NONE,
-                                            new Insets(0, 0, 0, 0),
-                                            0,
-                                            0));
-                            jLabelNumberOfInstances.setFont(new java.awt.Font("Dialog", 0, 12));
-                            jLabelNumberOfInstances.setText(" ");
-                        }
-                        {
-                            jLabel5 = new JLabel();
-                            jRelationPanel.add(jLabel5, new GridBagConstraints(
-                                    3,
-                                    1,
-                                    1,
-                                    1,
-                                    0.0,
-                                    0.0,
-                                    GridBagConstraints.WEST,
-                                    GridBagConstraints.NONE,
-                                    new Insets(0, 0, 0, 0),
-                                    0,
-                                    0));
-                            jLabel5.setText("Attributes: ");
-                            jLabel5.setBounds(0, 0, 41, 16);
-                            jLabel5.setFont(new java.awt.Font("Dialog", 0, 12));
-                        }
-                        {
-                            jLabelNumberOfAttributes = new JLabel();
-                            jRelationPanel.add(
-                                    jLabelNumberOfAttributes,
-                                    new GridBagConstraints(
-                                            4,
-                                            1,
-                                            1,
-                                            1,
-                                            0.0,
-                                            0.0,
-                                            GridBagConstraints.WEST,
-                                            GridBagConstraints.NONE,
-                                            new Insets(0, 0, 0, 0),
-                                            0,
-                                            0));
-                            jLabelNumberOfAttributes.setBounds(0, 0, 41, 16);
-                            jLabelNumberOfAttributes.setFont(new java.awt.Font("Dialog", 0, 12));
-                            jLabelNumberOfAttributes.setText("  ");
-                        }
+						jPanel1.setBounds(7, 8, 385, 72);
+						jPanel1.setBorder(BorderFactory.createTitledBorder("Relation"));
+						jPanel1.setSize(320, 59);
+						{
+							jLabel1 = new JLabel();
+							jPanel1.add(jLabel1, new GridBagConstraints(
+								1,
+								0,
+								1,
+								1,
+								0.0,
+								0.0,
+								GridBagConstraints.WEST,
+								GridBagConstraints.NONE,
+								new Insets(0, 0, 0, 0),
+								0,
+								0));
+							jLabel1.setText("Relation: ");
+							jLabel1
+								.setHorizontalTextPosition(SwingConstants.RIGHT);
+							jLabel1
+								.setHorizontalAlignment(SwingConstants.RIGHT);
+							jLabel1.setFont(new java.awt.Font("Dialog", 0, 12));
+						}
+						{
+							jLabel2 = new JLabel();
+							jPanel1.add(jLabel2, new GridBagConstraints(
+								2,
+								0,
+								1,
+								1,
+								0.0,
+								0.0,
+								GridBagConstraints.WEST,
+								GridBagConstraints.NONE,
+								new Insets(0, 0, 0, 0),
+								0,
+								0));
+							jLabel2.setFont(new java.awt.Font("Dialog", 0, 12));
+							jLabel2.setName("                   ");
+							jLabel2.setText("                ");
+						}
+						{
+							jLabel3 = new JLabel();
+							jPanel1.add(jLabel3, new GridBagConstraints(
+								1,
+								1,
+								1,
+								1,
+								0.0,
+								0.0,
+								GridBagConstraints.WEST,
+								GridBagConstraints.NONE,
+								new Insets(0, 0, 0, 0),
+								0,
+								0));
+							jLabel3.setText("Instances: ");
+							jLabel3.setLayout(null);
+							jLabel3.setFont(new java.awt.Font("Dialog", 0, 12));
+						}
+						{
+							jLabelNumberOfInstances = new JLabel();
+							jPanel1.add(
+								jLabelNumberOfInstances,
+								new GridBagConstraints(
+									2,
+									1,
+									1,
+									1,
+									0.0,
+									0.0,
+									GridBagConstraints.WEST,
+									GridBagConstraints.NONE,
+									new Insets(0, 0, 0, 0),
+									0,
+									0));
+							jLabelNumberOfInstances.setFont(new java.awt.Font("Dialog", 0, 12));
+							jLabelNumberOfInstances.setText(" ");
+						}
+						{
+							jLabel5 = new JLabel();
+							jPanel1.add(jLabel5, new GridBagConstraints(
+								3,
+								1,
+								1,
+								1,
+								0.0,
+								0.0,
+								GridBagConstraints.WEST,
+								GridBagConstraints.NONE,
+								new Insets(0, 0, 0, 0),
+								0,
+								0));
+							jLabel5.setText("Attributes: ");
+							jLabel5.setBounds(0, 0, 41, 16);
+							jLabel5.setFont(new java.awt.Font("Dialog", 0, 12));
+						}
+						{
+							jLabelNumberOfAttributes = new JLabel();
+							jPanel1.add(
+								jLabelNumberOfAttributes,
+								new GridBagConstraints(
+									4,
+									1,
+									1,
+									1,
+									0.0,
+									0.0,
+									GridBagConstraints.WEST,
+									GridBagConstraints.NONE,
+									new Insets(0, 0, 0, 0),
+									0,
+									0));
+							jLabelNumberOfAttributes.setBounds(0, 0, 41, 16);
+							jLabelNumberOfAttributes.setFont(new java.awt.Font("Dialog", 0, 12));
+							jLabelNumberOfAttributes.setText("  ");
+						}
 
-                    }
-                    {
-                        jPanel5 = new JPanel();
-                        BoxLayout jPanel5Layout = new BoxLayout(jPanel5, javax.swing.BoxLayout.Y_AXIS);
-                        jPanel2.add(jPanel5, new GridBagConstraints(
-                                1,
-                                0,
-                                1,
-                                1,
-                                1.0,
-                                0.0,
-                                GridBagConstraints.NORTH,
-                                GridBagConstraints.HORIZONTAL,
-                                new Insets(5, 2, 0, 5),
-                                0,
-                                0));
-                        jPanel5.setBounds(396, 8, 385, 250);
-                        jPanel5.setLayout(jPanel5Layout);
-                        jPanel5.setBorder(BorderFactory.createTitledBorder("Selected Attribute"));
-                        jPanel5.setMinimumSize(new java.awt.Dimension(300, 250));
-                        jPanel5.setSize(318, 250);
-                        {
-                            jPanel6 = new JPanel();
-                            GridBagLayout jPanel6Layout = new GridBagLayout();
-                            jPanel6Layout.columnWeights = new double[]{0.1, 0.1, 0.1, 0.1, 0.1, 0.1};
-                            jPanel6Layout.columnWidths = new int[]{30, 52, 120, 92, 58, 25};
-                            jPanel6Layout.rowWeights = new double[]{1.0, 1.0, 0.1};
-                            jPanel6Layout.rowHeights = new int[]{18, 22, 4};
-                            jPanel5.add(jPanel6);
-                            jPanel6.setLayout(jPanel6Layout);
-                            jPanel6.setBounds(6, 19, 369, 41);
-                            jPanel6.setPreferredSize(new java.awt.Dimension(376, 35));
-                            jPanel6.setMinimumSize(new java.awt.Dimension(10, 35));
-                            {
-                                jLabel8 = new JLabel();
-                                jPanel6.add(jLabel8, new GridBagConstraints(
-                                        2,
-                                        0,
-                                        1,
-                                        1,
-                                        0.0,
-                                        0.0,
-                                        GridBagConstraints.WEST,
-                                        GridBagConstraints.NONE,
-                                        new Insets(0, 0, 0, 0),
-                                        0,
-                                        0));
-                                jLabel8.setFont(new java.awt.Font("Dialog", 0, 12));
-                                jLabel8.setText(" ");
-                            }
-                            {
-                                jLabel9 = new JLabel();
-                                jPanel6.add(jLabel9, new GridBagConstraints(
-                                        1,
-                                        1,
-                                        1,
-                                        1,
-                                        0.0,
-                                        0.0,
-                                        GridBagConstraints.WEST,
-                                        GridBagConstraints.NONE,
-                                        new Insets(0, 0, 0, 0),
-                                        0,
-                                        0));
-                                jLabel9.setText("Missing: ");
-                                jLabel9.setFont(new java.awt.Font("Dialog", 0, 12));
-                                jLabel9.setHorizontalAlignment(SwingConstants.RIGHT);
-                                jLabel9.setHorizontalTextPosition(SwingConstants.RIGHT);
-                            }
-                            {
-                                jLabel10 = new JLabel();
-                                jPanel6.add(jLabel10, new GridBagConstraints(
-                                        2,
-                                        1,
-                                        1,
-                                        1,
-                                        0.0,
-                                        0.0,
-                                        GridBagConstraints.WEST,
-                                        GridBagConstraints.NONE,
-                                        new Insets(0, 0, 0, 0),
-                                        0,
-                                        0));
-                                jLabel10.setFont(new java.awt.Font("Dialog", 0, 12));
-                                jLabel10.setText(" ");
-                            }
-                            {
-                                jLabel11 = new JLabel();
-                                jPanel6.add(jLabel11, new GridBagConstraints(
-                                        3,
-                                        1,
-                                        1,
-                                        1,
-                                        0.0,
-                                        0.0,
-                                        GridBagConstraints.WEST,
-                                        GridBagConstraints.NONE,
-                                        new Insets(0, 0, 0, 0),
-                                        0,
-                                        0));
-                                jLabel11.setText("Distinct Values: ");
-                                jLabel11.setFont(new java.awt.Font("Dialog", 0, 12));
-                            }
-                            {
-                                jLabelDistinct = new JLabel();
-                                jPanel6.add(
-                                        jLabelDistinct,
-                                        new GridBagConstraints(
-                                                4,
-                                                1,
-                                                1,
-                                                1,
-                                                0.0,
-                                                0.0,
-                                                GridBagConstraints.WEST,
-                                                GridBagConstraints.NONE,
-                                                new Insets(0, 0, 0, 0),
-                                                0,
-                                                0));
-                                jLabelDistinct.setFont(new java.awt.Font("Dialog", 0, 12));
-                                jLabelDistinct.setText(" ");
-                            }
-                            {
-                                String[] choices = {"Choice of rule quality", "Sensitivity * Specificity", "Precision", "Laplace", "Precision + Coverage", "Weighted Relative Accuracy", "Full Coverage", "AntMiner+", "Specificity", ""};
-                                ruleQualityChoices = new JComboBox(choices);
-                                ruleQualityChoices.setSelectedIndex(0);
+					}
+					{
+						jPanel5 = new JPanel();
+						BoxLayout jPanel5Layout = new BoxLayout(jPanel5, javax.swing.BoxLayout.Y_AXIS);
+						jPanel2.add(jPanel5, new GridBagConstraints(
+							1,
+							0,
+							1,
+							1,
+							1.0,
+							0.0,
+							GridBagConstraints.NORTH,
+							GridBagConstraints.HORIZONTAL,
+							new Insets(5, 2, 0, 5),
+							0,
+							0));
+						jPanel5.setBounds(396, 8, 385, 250);
+						jPanel5.setLayout(jPanel5Layout);
+						jPanel5.setBorder(BorderFactory.createTitledBorder("Selected Attribute"));
+						jPanel5.setMinimumSize(new java.awt.Dimension(300, 250));
+						jPanel5.setSize(318, 250);
+						{
+							jPanel6 = new JPanel();
+							GridBagLayout jPanel6Layout = new GridBagLayout();
+							jPanel6Layout.columnWeights = new double[] {0.1,0.1,0.1,0.1,0.1,0.1};
+							jPanel6Layout.columnWidths = new int[] {30,52,120,92,58,25};
+							jPanel6Layout.rowWeights = new double[] {1.0,1.0,0.1};
+							jPanel6Layout.rowHeights = new int[] {18,22,4};
+							jPanel5.add(jPanel6);
+							jPanel6.setLayout(jPanel6Layout);
+							jPanel6.setBounds(6, 19, 369, 41);
+							jPanel6.setPreferredSize(new java.awt.Dimension(376, 35));
+							jPanel6.setMinimumSize(new java.awt.Dimension(10, 35));
+							{
+								jLabel8 = new JLabel();
+								jPanel6.add(jLabel8, new GridBagConstraints(
+									2,
+									0,
+									1,
+									1,
+									0.0,
+									0.0,
+									GridBagConstraints.WEST,
+									GridBagConstraints.NONE,
+									new Insets(0, 0, 0, 0),
+									0,
+									0));
+								jLabel8.setFont(new java.awt.Font("Dialog",0,12));
+								jLabel8.setText(" ");
+							}
+							{
+								jLabel9 = new JLabel();
+								jPanel6.add(jLabel9, new GridBagConstraints(
+									1,
+									1,
+									1,
+									1,
+									0.0,
+									0.0,
+									GridBagConstraints.WEST,
+									GridBagConstraints.NONE,
+									new Insets(0, 0, 0, 0),
+									0,
+									0));
+								jLabel9.setText("Missing: ");
+								jLabel9.setFont(new java.awt.Font("Dialog",0,12));
+								jLabel9.setHorizontalAlignment(SwingConstants.RIGHT);
+								jLabel9.setHorizontalTextPosition(SwingConstants.RIGHT);
+							}
+							{
+								jLabel10 = new JLabel();
+								jPanel6.add(jLabel10, new GridBagConstraints(
+									2,
+									1,
+									1,
+									1,
+									0.0,
+									0.0,
+									GridBagConstraints.WEST,
+									GridBagConstraints.NONE,
+									new Insets(0, 0, 0, 0),
+									0,
+									0));
+								jLabel10.setFont(new java.awt.Font("Dialog",0,12));
+								jLabel10.setText(" ");
+							}
+							{
+								jLabel11 = new JLabel();
+								jPanel6.add(jLabel11, new GridBagConstraints(
+									3,
+									1,
+									1,
+									1,
+									0.0,
+									0.0,
+									GridBagConstraints.WEST,
+									GridBagConstraints.NONE,
+									new Insets(0, 0, 0, 0),
+									0,
+									0));
+								jLabel11.setText("Distinct Values: ");
+								jLabel11.setFont(new java.awt.Font("Dialog",0,12));
+							}
+							{
+								jLabelDistinct = new JLabel();
+								jPanel6.add(
+									jLabelDistinct,
+									new GridBagConstraints(
+										4,
+										1,
+										1,
+										1,
+										0.0,
+										0.0,
+										GridBagConstraints.WEST,
+										GridBagConstraints.NONE,
+										new Insets(0, 0, 0, 0),
+										0,
+										0));
+								jLabelDistinct.setFont(new java.awt.Font("Dialog",0,12));
+								jLabelDistinct.setText(" ");
+							}
+							{
+								jLabel7 = new JLabel();
+								jPanel6.add(jLabel7, new GridBagConstraints(
+									1,
+									0,
+									1,
+									1,
+									0.0,
+									0.0,
+									GridBagConstraints.WEST,
+									GridBagConstraints.NONE,
+									new Insets(0, 0, 0, 0),
+									0,
+									0));
+								jLabel7.setText("Name: ");
+								jLabel7.setFont(new java.awt.Font(
+									"Dialog",
+									0,
+									12));
+								jLabel7.setBounds(0, 0, 45, 16);
+							}
+						}
+						{
+							jScrollPane3 = new JScrollPane();
+							jPanel5.add(jScrollPane3);
+							jScrollPane3.setBounds(5, 63, 374, 181);
+							jScrollPane3.setPreferredSize(new java.awt.Dimension(368, 181));
+						}
+					}
+					{
+						jPanel4 = new JPanel();						
+						BorderLayout jPanel4Layout = new BorderLayout();
+						jPanel4.setLayout(jPanel4Layout);
+						jPanel2.add(jPanel4, new GridBagConstraints(1, 0, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(263, 4, 5, 7), 0, 0));
+						jPanel4.setBounds(398, 264, 381, 225);
+						jPanel4.setBorder(BorderFactory.createEtchedBorder(BevelBorder.LOWERED));
+						jPanel4.setMinimumSize(new java.awt.Dimension(10, 210));
+						jPanel4.setSize(337, 200);
+						jPanel4.setPreferredSize(new java.awt.Dimension(381, 210));
+					}
+				}
+				{
+					jPanel3 = new JPanel();
+					jTabbedPane1.addTab("Classify", null, jPanel3, null);
+					GridBagLayout jPanel3Layout = new GridBagLayout();
+					jPanel3Layout.columnWeights = new double[] {0.0,1.0};
+					jPanel3Layout.columnWidths = new int[] {150,500};
+					jPanel3Layout.rowWeights = new double[] {1.0};
+					jPanel3Layout.rowHeights = new int[] {7};
+					jPanel3.setLayout(jPanel3Layout);
+					{
+						jButton1 = new JButton();
+						jPanel3.add(jButton1, new GridBagConstraints(
+							0,
+							0,
+							1,
+							1,
+							0.0,
+							0.0,
+							GridBagConstraints.NORTHWEST,
+							GridBagConstraints.NONE,
+							new Insets(292, 10, 0, 0),
+							0,
+							0));
+						jButton1.setText("Start");
+						jButton1.setBounds(19, 234, 99, 24);
+						jButton1.setToolTipText("Start classification. This operation may take a few minutes.");
+						jButton1.setSize(75, 23);
+						jButton1.setMinimumSize(new java.awt.Dimension(75, 23));
+						jButton1.setMaximumSize(new java.awt.Dimension(75, 23));
+						jButton1.setPreferredSize(new java.awt.Dimension(75, 23));
+						jButton1.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent evt) {
+								setIsClassifying(true);
+								cv = new CrossValidation(GUIAntMinerJFrame.this);
 
-                                ruleQualityChoices.addActionListener(new ActionListener() {
-                                    public void actionPerformed(ActionEvent evt) {
-                                        nRuleChoice = ((JComboBox) evt.getSource()).getSelectedIndex();
-                                    }
-                                });
-                                {
-                                    jLabel7 = new JLabel();
-                                    jPanel6.add(jLabel7, new GridBagConstraints(
-                                            1,
-                                            0,
-                                            1,
-                                            1,
-                                            0.0,
-                                            0.0,
-                                            GridBagConstraints.WEST,
-                                            GridBagConstraints.NONE,
-                                            new Insets(0, 0, 0, 0),
-                                            0,
-                                            0));
-                                    jLabel7.setText("Name: ");
-                                    jLabel7.setFont(new java.awt.Font(
-                                            "Dialog",
-                                            0,
-                                            12));
-                                    jLabel7.setBounds(0, 0, 45, 16);
-                                }
-                            }
-                            {
-                                jScrollPane3 = new JScrollPane();
-                                jPanel5.add(jScrollPane3);
-                                jScrollPane3.setBounds(5, 63, 374, 181);
-                                jScrollPane3.setPreferredSize(new java.awt.Dimension(368, 181));
-                            }
-                        }
-                        {
-                            jPanel4 = new JPanel();
-                            BorderLayout jPanel4Layout = new BorderLayout();
-                            jPanel4.setLayout(jPanel4Layout);
-                            jPanel2.add(jPanel4, new GridBagConstraints(1, 0, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(263, 4, 5, 7), 0, 0));
-                            jPanel4.setBounds(398, 264, 381, 225);
-                            jPanel4.setBorder(BorderFactory.createEtchedBorder(BevelBorder.LOWERED));
-                            jPanel4.setMinimumSize(new java.awt.Dimension(10, 210));
-                            jPanel4.setSize(337, 200);
-                            jPanel4.setPreferredSize(new java.awt.Dimension(381, 210));
-                        }
-                    }
-                    {
-                        jClassifyPanel = new JPanel();
-                        jTabbedPane1.addTab("Classify", null, jClassifyPanel, null);
-                        GridBagLayout jPanel3Layout = new GridBagLayout();
-                        jPanel3Layout.columnWeights = new double[]{0.0, 1.0};
-                        jPanel3Layout.columnWidths = new int[]{150, 500};
-                        jPanel3Layout.rowWeights = new double[]{1.0};
-                        jPanel3Layout.rowHeights = new int[]{7};
-                        jClassifyPanel.setLayout(jPanel3Layout);
-                        {
-                            jStartButton = new JButton();
-                            jClassifyPanel.add(jStartButton, new GridBagConstraints(
-                                    0,
-                                    0,
-                                    1,
-                                    1,
-                                    0.0,
-                                    0.0,
-                                    GridBagConstraints.NORTHWEST,
-                                    GridBagConstraints.NONE,
-                                    new Insets(292, 10, 0, 0),
-                                    0,
-                                    0));
-                            jStartButton.setText("Start");
-                            jStartButton.setBounds(19, 234, 99, 24);
-                            jStartButton.setToolTipText("Start classification. This operation may take a few minutes.");
-                            jStartButton.setSize(75, 23);
-                            jStartButton.setMinimumSize(new java.awt.Dimension(75, 23));
-                            jStartButton.setMaximumSize(new java.awt.Dimension(75, 23));
-                            jStartButton.setPreferredSize(new java.awt.Dimension(75, 23));
-                            jStartButton.addActionListener(new ActionListener() {
-                                public void actionPerformed(ActionEvent evt) {
-                                    setIsClassifying(true);
-                                    cv = new CrossValidation(GUIAntMinerJFrame.this);
-
-                                    cv.setAttributesArray(attributesArray);
-                                    cv.setDataInstancesArray(dataInstancesArray);
-                                    cv.setNumAnts(Integer.parseInt(jTextField1.getText()));
-                                    cv.setFolds(Integer.parseInt(jTextField2.getText()));
-                                    cv.setMinCasesRule(Integer.parseInt(jTextField3.getText()));
-                                    cv.setConvergenceTest(Integer.parseInt(jTextField5.getText()));
-                                    cv.setNumIterations(Integer.parseInt(jTextField6.getText()));
-                                    cv.setMaxUncoveredCases(Integer.parseInt(jTextField4.getText()));
-
-                                    cv.start();
-                                }
-                            });
-                        }
-                        {
-                            jPanel7 = new JPanel();
-                            GridBagLayout jPanel7Layout = new GridBagLayout();
-                            jPanel7Layout.columnWeights = new double[]{0.0, 0.0, 0.0};
-                            jPanel7Layout.columnWidths = new int[]{20, 135, 60};
-                            jPanel7Layout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0};
-                            jPanel7Layout.rowHeights = new int[]{22, 22, 22, 22, 22};
-                            jClassifyPanel.add(jPanel7, new GridBagConstraints(
-                                    0,
-                                    0,
-                                    1,
-                                    1,
-                                    0.0,
-                                    0.0,
-                                    GridBagConstraints.NORTH,
-                                    GridBagConstraints.HORIZONTAL,
-                                    new Insets(60, 5, 0, 2),
-                                    0,
-                                    0));
-                            jPanel7.setBounds(7, 58, 260, 141);
-                            jPanel7.setLayout(jPanel7Layout);
-                            jPanel7.setBorder(BorderFactory.createTitledBorder("Other Parameters"));
-                            jPanel7.setMinimumSize(new java.awt.Dimension(10, 150));
-                            jPanel7.setPreferredSize(new java.awt.Dimension(10, 150));
-                            jPanel7.setSize(261, 150);
-                            {
-                                jNoAntsLabel = new JLabel();
-                                jPanel7.add(jNoAntsLabel, new GridBagConstraints(
-                                        1,
-                                        0,
-                                        1,
-                                        1,
-                                        0.0,
-                                        0.0,
-                                        GridBagConstraints.WEST,
-                                        GridBagConstraints.NONE,
-                                        new Insets(0, 0, 0, 0),
-                                        0,
-                                        0));
-                                jNoAntsLabel.setText("Number of Ants:");
-                                jNoAntsLabel.setFont(new java.awt.Font("Dialog", 0, 12));
-                            }
-                            {
-                                jTextField1 = new JTextField();
-                                jPanel7.add(jTextField1, new GridBagConstraints(
-                                        2,
-                                        0,
-                                        1,
-                                        1,
-                                        0.0,
-                                        0.0,
-                                        GridBagConstraints.WEST,
-                                        GridBagConstraints.NONE,
-                                        new Insets(0, 0, 0, 0),
-                                        0,
-                                        0));
-                                jTextField1.setText("5");
-                                jTextField1.setPreferredSize(new java.awt.Dimension(40, 20));
-                            }
-                            {
-                                jTextField3 = new JTextField();
-                                jPanel7.add(jTextField3, new GridBagConstraints(
-                                        2,
-                                        1,
-                                        1,
-                                        1,
-                                        0.0,
-                                        0.0,
-                                        GridBagConstraints.WEST,
-                                        GridBagConstraints.NONE,
-                                        new Insets(0, 0, 0, 0),
-                                        0,
-                                        0));
-                                jTextField3.setText("5");
-                                jTextField3.setPreferredSize(new java.awt.Dimension(40, 20));
-                            }
-                            {
-                                jTextField4 = new JTextField();
-                                jPanel7.add(jTextField4, new GridBagConstraints(
-                                        2,
-                                        2,
-                                        1,
-                                        1,
-                                        0.0,
-                                        0.0,
-                                        GridBagConstraints.WEST,
-                                        GridBagConstraints.NONE,
-                                        new Insets(0, 0, 0, 0),
-                                        0,
-                                        0));
-                                jTextField4.setText("10");
-                                jTextField4.setPreferredSize(new java.awt.Dimension(40, 20));
-                            }
-                            {
-                                jTextField5 = new JTextField();
-                                jPanel7.add(jTextField5, new GridBagConstraints(
-                                        2,
-                                        3,
-                                        1,
-                                        1,
-                                        0.0,
-                                        0.0,
-                                        GridBagConstraints.WEST,
-                                        GridBagConstraints.NONE,
-                                        new Insets(0, 0, 0, 0),
-                                        0,
-                                        0));
-                                jTextField5.setText("10");
-                                jTextField5.setPreferredSize(new java.awt.Dimension(40, 20));
-                            }
-                            {
-                                jConvergenceLabel = new JLabel();
-                                jPanel7.add(jConvergenceLabel, new GridBagConstraints(
-                                        1,
-                                        3,
-                                        1,
-                                        1,
-                                        0.0,
-                                        0.0,
-                                        GridBagConstraints.WEST,
-                                        GridBagConstraints.NONE,
-                                        new Insets(0, 0, 0, 0),
-                                        0,
-                                        0));
-                                jConvergenceLabel.setText("Rules for Convergence:");
-                                jConvergenceLabel.setFont(new java.awt.Font("Dialog", 0, 12));
-                            }
-                            {
-                                jMinRuleCasesLabel = new JLabel();
-                                jPanel7.add(jMinRuleCasesLabel, new GridBagConstraints(
-                                        1,
-                                        1,
-                                        1,
-                                        1,
-                                        0.0,
-                                        0.0,
-                                        GridBagConstraints.WEST,
-                                        GridBagConstraints.NONE,
-                                        new Insets(0, 0, 0, 0),
-                                        0,
-                                        0));
-                                jMinRuleCasesLabel.setText("Min. Cases per Rule:");
-                                jMinRuleCasesLabel.setFont(new java.awt.Font("Dialog", 0, 12));
-                            }
-                            {
-                                jMaxRuleCasesLabel = new JLabel();
-                                jPanel7.add(jMaxRuleCasesLabel, new GridBagConstraints(
-                                        1,
-                                        2,
-                                        1,
-                                        1,
-                                        0.0,
-                                        0.0,
-                                        GridBagConstraints.WEST,
-                                        GridBagConstraints.NONE,
-                                        new Insets(0, 0, 0, 0),
-                                        0,
-                                        0));
-                                jMaxRuleCasesLabel.setText("Max. uncovered Cases:");
-                                jMaxRuleCasesLabel.setFont(new java.awt.Font("Dialog", 0, 12));
-                            }
-                            {
-                                jNoIterationsLabel = new JLabel();
-                                jPanel7.add(jNoIterationsLabel, new GridBagConstraints(
-                                        1,
-                                        4,
-                                        1,
-                                        1,
-                                        0.0,
-                                        0.0,
-                                        GridBagConstraints.WEST,
-                                        GridBagConstraints.NONE,
-                                        new Insets(0, 0, 0, 0),
-                                        0,
-                                        0));
-                                jNoIterationsLabel.setText("Number of Iterations:");
-                                jNoIterationsLabel.setFont(new java.awt.Font("Dialog", 0, 12));
-                            }
-                            {
-                                jTextField6 = new JTextField();
-                                jPanel7.add(jTextField6, new GridBagConstraints(
-                                        2,
-                                        4,
-                                        1,
-                                        1,
-                                        0.0,
-                                        0.0,
-                                        GridBagConstraints.WEST,
-                                        GridBagConstraints.NONE,
-                                        new Insets(0, 0, 0, 0),
-                                        0,
-                                        0));
-                                jTextField6.setPreferredSize(new java.awt.Dimension(40, 20));
-                                jTextField6.setText("100");
-                            }
-                        }
-                        {
-                            jPanel9 = new JPanel();
-                            jClassifyPanel.add(jPanel9, new GridBagConstraints(
-                                    0,
-                                    0,
-                                    1,
-                                    1,
-                                    0.0,
-                                    0.0,
-                                    GridBagConstraints.NORTH,
-                                    GridBagConstraints.HORIZONTAL,
-                                    new Insets(5, 5, 0, 2),
-                                    0,
-                                    0));
-                            GridBagLayout jPanel9Layout = new GridBagLayout();
-                            jPanel9Layout.columnWidths = new int[]{20, 135, 60};
-                            jPanel9Layout.columnWeights = new double[]{0.0, 0.0, 0.0};
-                            jPanel9Layout.rowHeights = new int[]{22};
-                            jPanel9Layout.rowWeights = new double[]{0.1};
-                            jPanel9.setBorder(BorderFactory
-                                    .createTitledBorder("Cross Validation"));
-                            jPanel9.setLayout(jPanel9Layout);
-                            jPanel9.setBounds(7, 8, 260, 50);
-                            {
-                                jFoldsLabel = new JLabel();
-                                jPanel9.add(jFoldsLabel, new GridBagConstraints(
-                                        1,
-                                        0,
-                                        1,
-                                        1,
-                                        0.0,
-                                        0.0,
-                                        GridBagConstraints.WEST,
-                                        GridBagConstraints.NONE,
-                                        new Insets(0, 0, 0, 0),
-                                        0,
-                                        0));
-                                jFoldsLabel.setText("Folds: ");
-                                jFoldsLabel.setFont(new java.awt.Font("Dialog", 0, 12));
-                            }
-                            {
-                                jTextField2 = new JTextField();
-                                jPanel9.add(jTextField2, new GridBagConstraints(
-                                        2,
-                                        0,
-                                        1,
-                                        1,
-                                        0.0,
-                                        0.0,
-                                        GridBagConstraints.WEST,
-                                        GridBagConstraints.NONE,
-                                        new Insets(0, 0, 0, 0),
-                                        0,
-                                        0));
-                                jTextField2.setText("10");
-                                jTextField2
-                                        .setPreferredSize(new java.awt.Dimension(40, 20));
-                            }
-                        }
-                        {
-                            jScrollPane2 = new JScrollPane();
-                            jClassifyPanel.add(jScrollPane2, new GridBagConstraints(
-                                    1,
-                                    0,
-                                    1,
-                                    1,
-                                    1.0,
-                                    1.0,
-                                    GridBagConstraints.CENTER,
-                                    GridBagConstraints.BOTH,
-                                    new Insets(5, 2, 0, 3),
-                                    0,
-                                    0));
-                            jScrollPane2.setBounds(271, 8, 509, 501);
-                            jScrollPane2.setBorder(BorderFactory.createTitledBorder("Output"));
-                            {
-                                jTextArea1 = new JTextArea();
-                                jScrollPane2.setViewportView(jTextArea1);
-                                jTextArea1.setBorder(BorderFactory.createEtchedBorder(BevelBorder.LOWERED));
-                                jTextArea1.setEditable(false);
-                            }
-                        }
-                        {
-                            jOutputScreenCB = new JCheckBox();
-                            jClassifyPanel.add(jOutputScreenCB, new GridBagConstraints(
-                                    0,
-                                    0,
-                                    1,
-                                    1,
-                                    0.0,
-                                    0.0,
-                                    GridBagConstraints.NORTHWEST,
-                                    GridBagConstraints.NONE,
-                                    new Insets(212, 10, 0, 0),
-                                    0,
-                                    0));
-                            jOutputScreenCB.setText("Clear output screen");
-                            jOutputScreenCB.setBounds(17, 201, 133, 30);
-                            jOutputScreenCB.setFont(new java.awt.Font("Dialog", 0, 12));
-                            jOutputScreenCB.setSelected(true);
-                            jOutputScreenCB.setToolTipText("Clear the output screen the next time a classification task is run.");
-                        }
-                        {
-                            jPrintTestSetCB = new JCheckBox();
-                            jClassifyPanel.add(jPrintTestSetCB, new GridBagConstraints(
-                                    0,
-                                    0,
-                                    1,
-                                    1,
-                                    0.0,
-                                    0.0,
-                                    GridBagConstraints.NORTHWEST,
-                                    GridBagConstraints.NONE,
-                                    new Insets(235, 10, 0, 0),
-                                    0,
-                                    0));
-                            jPrintTestSetCB.setText("Print test set");
-                            jPrintTestSetCB.setFont(new java.awt.Font("Dialog", 0, 12));
-                        }
-                        {
-                            jPrintTrainingSetCB = new JCheckBox();
-                            jClassifyPanel.add(jPrintTrainingSetCB, new GridBagConstraints(
-                                    0,
-                                    0,
-                                    1,
-                                    1,
-                                    0.0,
-                                    0.0,
-                                    GridBagConstraints.NORTHWEST,
-                                    GridBagConstraints.NONE,
-                                    new Insets(258, 10, 0, 0),
-                                    0,
-                                    0));
-                            jPrintTrainingSetCB.setText("Print training set");
-                            jPrintTrainingSetCB.setFont(new java.awt.Font("Dialog", 0, 12));
-                        }
-                        {
-                            jCancelButton = new JButton();
-                            jClassifyPanel.add(jCancelButton, new GridBagConstraints(
-                                    0,
-                                    0,
-                                    1,
-                                    1,
-                                    0.0,
-                                    0.0,
-                                    GridBagConstraints.NORTHWEST,
-                                    GridBagConstraints.NONE,
-                                    new Insets(292, 95, 0, 0),
-                                    0,
-                                    0));
-                            jCancelButton.setText("Cancel");
-                            jCancelButton.setToolTipText("Cancel task.");
-                            jCancelButton.setPreferredSize(new java.awt.Dimension(75, 23));
-                            jCancelButton.setMaximumSize(new java.awt.Dimension(75, 23));
-                            jCancelButton.setMinimumSize(new java.awt.Dimension(75, 23));
-                            jCancelButton.setEnabled(false);
-                            jCancelButton.addActionListener(new ActionListener() {
-                                public void actionPerformed(ActionEvent evt) {
-                                    cv.stop();
-                                }
-                            });
-                            jCancelButton.addMouseListener(new MouseAdapter() {
-                                public void mouseExited(MouseEvent evt) {
-                                    if (isClassifying)
-                                        jTabbedPane1
-                                                .setCursor(Cursor
-                                                        .getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                }
-
-                                public void mouseEntered(MouseEvent evt) {
-                                    jTabbedPane1
-                                            .setCursor(Cursor
-                                                    .getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-                                }
-                            });
-                        }
-                    }
-                    {
-                        jPanel10 = new JPanel();
-                        jPanel10.add(ruleQualityChoices);
-                        jPanel10.setVisible(true);
-                        jClassifyPanel.add(jPanel10, new GridBagConstraints(
-                                0,
-                                0,
-                                1,
-                                1,
-                                0.0,
-                                0.0,
-                                GridBagConstraints.NORTHWEST,
-                                GridBagConstraints.NONE,
-                                new Insets(322, 10, 0, 0),
-                                0,
-                                0));
-                    }
-                }
-            }
-        }catch (Exception e) {
+								cv.setAttributesArray(attributesArray);
+								cv.setDataInstancesArray(dataInstancesArray);
+								cv.setNumAnts(Integer.parseInt(jTextField1.getText()));
+								cv.setFolds(Integer.parseInt(jTextField2.getText()));
+								cv.setMinCasesRule(Integer.parseInt(jTextField3.getText()));
+								cv.setConvergenceTest(Integer.parseInt(jTextField5.getText()));
+								cv.setNumIterations(Integer.parseInt(jTextField6.getText()));
+								cv.setMaxUncoveredCases(Integer.parseInt(jTextField4.getText()));
+								
+								cv.start();
+							}
+						});
+					}
+					{
+						jPanel7 = new JPanel();
+						GridBagLayout jPanel7Layout = new GridBagLayout();
+						jPanel7Layout.columnWeights = new double[] {0.0,0.0,0.0};
+						jPanel7Layout.columnWidths = new int[] {20,135,60};
+						jPanel7Layout.rowWeights = new double[] {0.0,0.0,0.0,0.0,0.0};
+						jPanel7Layout.rowHeights = new int[] {22,22,22,22,22};
+						jPanel3.add(jPanel7, new GridBagConstraints(
+							0,
+							0,
+							1,
+							1,
+							0.0,
+							0.0,
+							GridBagConstraints.NORTH,
+							GridBagConstraints.HORIZONTAL,
+							new Insets(60, 5, 0, 2),
+							0,
+							0));
+						jPanel7.setBounds(7, 58, 260, 141);
+						jPanel7.setLayout(jPanel7Layout);
+						jPanel7.setBorder(BorderFactory.createTitledBorder("Other Parameters"));
+						jPanel7.setMinimumSize(new java.awt.Dimension(10, 150));
+						jPanel7.setPreferredSize(new java.awt.Dimension(10, 150));
+						jPanel7.setSize(261, 150);
+						{
+							jLabel13 = new JLabel();
+							jPanel7.add(jLabel13, new GridBagConstraints(
+								1,
+								0,
+								1,
+								1,
+								0.0,
+								0.0,
+								GridBagConstraints.WEST,
+								GridBagConstraints.NONE,
+								new Insets(0, 0, 0, 0),
+								0,
+								0));
+							jLabel13.setText("Number of Ants:");
+							jLabel13.setFont(new java.awt.Font("Dialog",0,12));
+						}
+						{
+							jTextField1 = new JTextField();
+							jPanel7.add(jTextField1, new GridBagConstraints(
+								2,
+								0,
+								1,
+								1,
+								0.0,
+								0.0,
+								GridBagConstraints.WEST,
+								GridBagConstraints.NONE,
+								new Insets(0, 0, 0, 0),
+								0,
+								0));
+							jTextField1.setText("5");
+							jTextField1.setPreferredSize(new java.awt.Dimension(40, 20));
+						}
+						{
+							jTextField3 = new JTextField();
+							jPanel7.add(jTextField3, new GridBagConstraints(
+								2,
+								1,
+								1,
+								1,
+								0.0,
+								0.0,
+								GridBagConstraints.WEST,
+								GridBagConstraints.NONE,
+								new Insets(0, 0, 0, 0),
+								0,
+								0));
+							jTextField3.setText("5");
+							jTextField3.setPreferredSize(new java.awt.Dimension(40, 20));
+						}
+						{
+							jTextField4 = new JTextField();
+							jPanel7.add(jTextField4, new GridBagConstraints(
+								2,
+								2,
+								1,
+								1,
+								0.0,
+								0.0,
+								GridBagConstraints.WEST,
+								GridBagConstraints.NONE,
+								new Insets(0, 0, 0, 0),
+								0,
+								0));
+							jTextField4.setText("10");
+							jTextField4.setPreferredSize(new java.awt.Dimension(40, 20));
+						}
+						{
+							jTextField5 = new JTextField();
+							jPanel7.add(jTextField5, new GridBagConstraints(
+								2,
+								3,
+								1,
+								1,
+								0.0,
+								0.0,
+								GridBagConstraints.WEST,
+								GridBagConstraints.NONE,
+								new Insets(0, 0, 0, 0),
+								0,
+								0));
+							jTextField5.setText("10");
+							jTextField5.setPreferredSize(new java.awt.Dimension(40, 20));
+						}
+						{
+							jLabel6 = new JLabel();
+							jPanel7.add(jLabel6, new GridBagConstraints(
+								1,
+								3,
+								1,
+								1,
+								0.0,
+								0.0,
+								GridBagConstraints.WEST,
+								GridBagConstraints.NONE,
+								new Insets(0, 0, 0, 0),
+								0,
+								0));
+							jLabel6.setText("Rules for Convergence:");
+							jLabel6.setFont(new java.awt.Font("Dialog",0,12));
+						}
+						{
+							jLabel12 = new JLabel();
+							jPanel7.add(jLabel12, new GridBagConstraints(
+								1,
+								1,
+								1,
+								1,
+								0.0,
+								0.0,
+								GridBagConstraints.WEST,
+								GridBagConstraints.NONE,
+								new Insets(0, 0, 0, 0),
+								0,
+								0));
+							jLabel12.setText("Min. Cases per Rule:");
+							jLabel12.setFont(new java.awt.Font("Dialog",0,12));
+						}
+						{
+							jLabel14 = new JLabel();
+							jPanel7.add(jLabel14, new GridBagConstraints(
+								1,
+								2,
+								1,
+								1,
+								0.0,
+								0.0,
+								GridBagConstraints.WEST,
+								GridBagConstraints.NONE,
+								new Insets(0, 0, 0, 0),
+								0,
+								0));
+							jLabel14.setText("Max. uncovered Cases:");
+							jLabel14.setFont(new java.awt.Font("Dialog",0,12));
+						}
+						{
+							jLabel15 = new JLabel();
+							jPanel7.add(jLabel15, new GridBagConstraints(
+								1,
+								4,
+								1,
+								1,
+								0.0,
+								0.0,
+								GridBagConstraints.WEST,
+								GridBagConstraints.NONE,
+								new Insets(0, 0, 0, 0),
+								0,
+								0));
+							jLabel15.setText("Number of Iterations:");
+							jLabel15.setFont(new java.awt.Font("Dialog",0,12));
+						}
+						{
+							jTextField6 = new JTextField();
+							jPanel7.add(jTextField6, new GridBagConstraints(
+								2,
+								4,
+								1,
+								1,
+								0.0,
+								0.0,
+								GridBagConstraints.WEST,
+								GridBagConstraints.NONE,
+								new Insets(0, 0, 0, 0),
+								0,
+								0));
+							jTextField6.setPreferredSize(new java.awt.Dimension(40, 20));
+							jTextField6.setText("100");
+						}
+					}
+					{
+						jPanel9 = new JPanel();
+						jPanel3.add(jPanel9, new GridBagConstraints(
+							0,
+							0,
+							1,
+							1,
+							0.0,
+							0.0,
+							GridBagConstraints.NORTH,
+							GridBagConstraints.HORIZONTAL,
+							new Insets(5, 5, 0, 2),
+							0,
+							0));
+						GridBagLayout jPanel9Layout = new GridBagLayout();
+						jPanel9Layout.columnWidths = new int[] {20,135,60};
+						jPanel9Layout.columnWeights = new double[] {0.0,0.0,0.0};
+						jPanel9Layout.rowHeights = new int[] {22};
+						jPanel9Layout.rowWeights = new double[] {0.1};
+						jPanel9.setBorder(BorderFactory
+							.createTitledBorder("Cross Validation"));
+						jPanel9.setLayout(jPanel9Layout);
+						jPanel9.setBounds(7, 8, 260, 50);
+						{
+							jLabel4 = new JLabel();
+							jPanel9.add(jLabel4, new GridBagConstraints(
+								1,
+								0,
+								1,
+								1,
+								0.0,
+								0.0,
+								GridBagConstraints.WEST,
+								GridBagConstraints.NONE,
+								new Insets(0, 0, 0, 0),
+								0,
+								0));
+							jLabel4.setText("Folds: ");
+							jLabel4.setFont(new java.awt.Font("Dialog", 0, 12));
+						}
+						{
+							jTextField2 = new JTextField();
+							jPanel9.add(jTextField2, new GridBagConstraints(
+								2,
+								0,
+								1,
+								1,
+								0.0,
+								0.0,
+								GridBagConstraints.WEST,
+								GridBagConstraints.NONE,
+								new Insets(0, 0, 0, 0),
+								0,
+								0));
+							jTextField2.setText("10");
+							jTextField2
+								.setPreferredSize(new java.awt.Dimension(40, 20));
+						}
+					}
+					{
+						jScrollPane2 = new JScrollPane();
+						jPanel3.add(jScrollPane2, new GridBagConstraints(
+							1,
+							0,
+							1,
+							1,
+							1.0,
+							1.0,
+							GridBagConstraints.CENTER,
+							GridBagConstraints.BOTH,
+							new Insets(5, 2, 0, 3),
+							0,
+							0));
+						jScrollPane2.setBounds(271, 8, 509, 501);
+						jScrollPane2.setBorder(BorderFactory.createTitledBorder("Output"));
+						{
+							jTextArea1 = new JTextArea();
+							jScrollPane2.setViewportView(jTextArea1);
+							jTextArea1.setBorder(BorderFactory.createEtchedBorder(BevelBorder.LOWERED));
+							jTextArea1.setEditable(false);
+						}
+					}
+					{
+						jCheckBox1 = new JCheckBox();
+						jPanel3.add(jCheckBox1, new GridBagConstraints(
+							0,
+							0,
+							1,
+							1,
+							0.0,
+							0.0,
+							GridBagConstraints.NORTHWEST,
+							GridBagConstraints.NONE,
+							new Insets(212, 10, 0, 0),
+							0,
+							0));
+						jCheckBox1.setText("Clear output screen");
+						jCheckBox1.setBounds(17, 201, 133, 30);
+						jCheckBox1.setFont(new java.awt.Font("Dialog",0,12));
+						jCheckBox1.setSelected(true);
+						jCheckBox1.setToolTipText("Clear the output screen the next time a classification task is run.");
+					}
+					{
+						jCheckBox2 = new JCheckBox();
+						jPanel3.add(jCheckBox2, new GridBagConstraints(
+							0,
+							0,
+							1,
+							1,
+							0.0,
+							0.0,
+							GridBagConstraints.NORTHWEST,
+							GridBagConstraints.NONE,
+							new Insets(235, 10, 0, 0),
+							0,
+							0));
+						jCheckBox2.setText("Print test set");
+						jCheckBox2.setFont(new java.awt.Font("Dialog",0,12));
+					}
+					{
+						jCheckBox3 = new JCheckBox();
+						jPanel3.add(jCheckBox3, new GridBagConstraints(
+							0,
+							0,
+							1,
+							1,
+							0.0,
+							0.0,
+							GridBagConstraints.NORTHWEST,
+							GridBagConstraints.NONE,
+							new Insets(258, 10, 0, 0),
+							0,
+							0));
+						jCheckBox3.setText("Print training set");
+						jCheckBox3.setFont(new java.awt.Font("Dialog",0,12));
+					}
+					{
+						jButton2 = new JButton();
+						jPanel3.add(jButton2, new GridBagConstraints(
+							0,
+							0,
+							1,
+							1,
+							0.0,
+							0.0,
+							GridBagConstraints.NORTHWEST,
+							GridBagConstraints.NONE,
+							new Insets(292, 95, 0, 0),
+							0,
+							0));
+						jButton2.setText("Cancel");
+						jButton2.setToolTipText("Cancel task.");
+						jButton2.setPreferredSize(new java.awt.Dimension(75, 23));
+						jButton2.setMaximumSize(new java.awt.Dimension(75, 23));
+						jButton2.setMinimumSize(new java.awt.Dimension(75, 23));
+						jButton2.setEnabled(false);
+						jButton2.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent evt) {
+								cv.stop();
+							}
+						});
+						jButton2.addMouseListener(new MouseAdapter() {
+							public void mouseExited(MouseEvent evt) {
+								if (isClassifying)
+									jTabbedPane1
+										.setCursor(Cursor
+											.getPredefinedCursor(Cursor.WAIT_CURSOR));
+							}
+							public void mouseEntered(MouseEvent evt) {
+								jTabbedPane1
+									.setCursor(Cursor
+										.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+							}
+						});
+					}
+				}
+			}
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
@@ -1091,13 +1079,13 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
 		return jLabel2;
 	}
 	public boolean getJCheckBox1IsSelected(){
-		return jOutputScreenCB.isSelected();
+		return jCheckBox1.isSelected();
 	}
 	public boolean getJCheckBox2IsSelected(){
-		return jPrintTestSetCB.isSelected();
+		return jCheckBox2.isSelected();
 	}
 	public boolean getJCheckBox3IsSelected(){
-		return jPrintTrainingSetCB.isSelected();
+		return jCheckBox3.isSelected();
 	}
 	public String getjTextField2Value(){
 		return jTextField2.getText();
@@ -1213,15 +1201,15 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
 			jLabel17.setText("Classifying " + jLabel2.getText() + "...");
 			isClassifying = true;
 			jMenuItem1.setEnabled(false);
-			jStartButton.setEnabled(false);
-			jCancelButton.setEnabled(true);
+			jButton1.setEnabled(false);
+			jButton2.setEnabled(true);
 			jTabbedPane1.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		}else{
 			jLabel17.setText("Idle");
 			isClassifying = false;
 			jMenuItem1.setEnabled(true);
-			jStartButton.setEnabled(true);
-			jCancelButton.setEnabled(false);
+			jButton1.setEnabled(true);
+			jButton2.setEnabled(false);
 			jTabbedPane1.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));			
 		}
 	}
@@ -1297,5 +1285,6 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
 		}
 		return returnArray;
 	}
+
 
 }
