@@ -28,67 +28,118 @@ import javax.swing.JOptionPane;
  */
 
 public class CrossValidation implements Runnable {
-	private Attribute [] attributesArray;
-	private DataInstance [] dataInstancesArray;
-	
-	private int folds;
-	
-	private DataInstance [] testSet;
-	private DataInstance [] trainingSet;
-	private int numAnts;
-	private double [][] pheromoneArray;
-	private int numClasses;
-	private int [][][] freqTij;
-	private double [][] infoTij;
-	private int [] freqT;
-	private int [] control;
-	private double [][] hArray;
-	private double [][] probabilitiesArray;
-	private boolean [][] unusableAttributeVsValueArray;
-	private int minCasesRule;
-	private int convergenceTest;
-	private int numIterations;
-	private int maxUncoveredCases;
-	private GUIAntMinerJFrame caller;
-	private boolean interrupted;
-	private Thread cvThread;
-    private int nParam;
-	
-	public CrossValidation(GUIAntMinerJFrame caller){
-		this.caller = caller;
-		interrupted = false;
-	}
-	
-	public void setAttributesArray(Attribute [] attributesArray){
-		this.attributesArray = attributesArray;
-	}
-	public void setDataInstancesArray(DataInstance [] dataInstancesArray){
-		this.dataInstancesArray = dataInstancesArray;
-	}
-	public void setNumAnts(int numAnts){
-		this.numAnts = numAnts;
-	}
-	public void setFolds(int folds){
-		this.folds = folds;
-	}
-	public void setMinCasesRule(int minCasesRule){
-		this.minCasesRule = minCasesRule;
-	}
-	public void setConvergenceTest(int convergenceTest){
-		this.convergenceTest = convergenceTest;
-	}
-	public void setNumIterations(int numIterations){
-		this.numIterations = numIterations;
-	}
-	public void setMaxUncoveredCases(int maxUncoveredCases) {
-		this.maxUncoveredCases = maxUncoveredCases;
-	}
-    public void setRuleParam(int nParam)
-    {
+    private Attribute [] attributesArray;
+    private DataInstance [] dataInstancesArray;
+
+    private int folds;
+
+    private DataInstance [] testSet;
+    private DataInstance [] trainingSet;
+    private int numAnts;
+    private double [][] pheromoneArray;
+    private int numClasses;
+    private int [][][] freqTij;
+    private double [][] infoTij;
+    private int [] freqT;
+    private int [] control;
+    private double [][] hArray;
+    private double [][] probabilitiesArray;
+    private boolean [][] unusableAttributeVsValueArray;
+    private int minCasesRule;
+    private int convergenceTest;
+    private int numIterations;
+    private int maxUncoveredCases;
+    private GUIAntMinerJFrame caller;
+    private boolean interrupted;
+    private boolean pruneRule;  //boolean to turn pruning of rule on or off
+    private int cPheromoneUpdate; //constant rate of pheromone update
+    private int nParam; //paramter to be sent for parameterized heuristics
+    private boolean pheromoneUpdateType; //True for nomalized, False for constant
+    private Thread cvThread;
+
+    public int getnParam() {
+        return nParam;
+    }
+
+    public int getcPheromoneUpdate() {
+        return cPheromoneUpdate;
+    }
+
+    public int getNumAnts() {
+        return numAnts;
+    }
+
+    public int getFolds() {
+        return folds;
+    }
+
+    public int getMinCasesRule() {
+        return minCasesRule;
+    }
+
+    public int getConvergenceTest() {
+        return convergenceTest;
+    }
+
+    public int getNumIterations() {
+        return numIterations;
+    }
+
+    public int getMaxUncoveredCases() {
+        return maxUncoveredCases;
+    }
+
+    public boolean isPruneRule() {
+        return pruneRule;
+    }
+
+    public boolean isPheromoneUpdateType() {
+        return pheromoneUpdateType;
+    }
+
+    public CrossValidation(GUIAntMinerJFrame caller){
+        this.caller = caller;
+        interrupted = false;
+    }
+
+    public void setAttributesArray(Attribute [] attributesArray){
+        this.attributesArray = attributesArray;
+    }
+    public void setDataInstancesArray(DataInstance [] dataInstancesArray){
+        this.dataInstancesArray = dataInstancesArray;
+    }
+    public void setNumAnts(int numAnts){
+        this.numAnts = numAnts;
+    }
+    public void setFolds(int folds){
+        this.folds = folds;
+    }
+    public void setMinCasesRule(int minCasesRule){
+        this.minCasesRule = minCasesRule;
+    }
+    public void setConvergenceTest(int convergenceTest){
+        this.convergenceTest = convergenceTest;
+    }
+    public void setNumIterations(int numIterations){
+        this.numIterations = numIterations;
+    }
+    public void setMaxUncoveredCases(int maxUncoveredCases) {
+        this.maxUncoveredCases = maxUncoveredCases;
+    }
+    public void setPruning(boolean pruneRule){
+        this.pruneRule = pruneRule;
+    }
+    public void setPheromoneUpdateType(boolean pheromoneUpdateType){
+        this.pheromoneUpdateType = pheromoneUpdateType;
+    }
+    public void setcPheromoneUpdate(int cPheromoneUpdate) {
+        this.cPheromoneUpdate = cPheromoneUpdate;
+    }
+    public void setnParam(int nParam) {
         this.nParam = nParam;
     }
-	
-	public void start() {
+
+    public void start() {
 	  	cvThread = new Thread(this);
 	  	try {
 			initialize();
@@ -262,12 +313,14 @@ public class CrossValidation implements Runnable {
 						
 						determineRuleConsequent(currentAnt);
 						calculateRuleQuality(currentAnt, nParam);
-						
-						try {
-							currentAnt = pruneRule(currentAnt);
-						} catch (CloneNotSupportedException e) {
-							e.printStackTrace();
-						}
+
+                        if(pruneRule == true) {
+                            try {
+                                currentAnt = pruneRule(currentAnt);
+                            } catch (CloneNotSupportedException e) {
+                                e.printStackTrace();
+                            }
+                        }
 						antsArray[antIndex] = currentAnt;
 						
 						if(currentAnt.getRuleQuality() >= bestQuality){
