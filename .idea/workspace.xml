@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="50c5ef75-df7b-42b4-8cec-80ed630e837e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CrossValidation.java" afterPath="$PROJECT_DIR$/src/CrossValidation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="GUIAntMiner.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,12 +24,12 @@
     <notCoveredStripe>-65536</notCoveredStripe>
     <projectRebuild class="com.atlassian.clover.idea.config.ProjectRebuild">ASK</projectRebuild>
     <flushPolicy>0</flushPolicy>
-    <alwaysExpandTestClasses>false</alwaysExpandTestClasses>
     <viewIncludeAnnotation>true</viewIncludeAnnotation>
+    <alwaysExpandTestClasses>false</alwaysExpandTestClasses>
     <languageLevel>1.8 - lambda functions, virtual extension methods.</languageLevel>
     <manualInitString null="true" />
-    <autoRefreshInterval>2000</autoRefreshInterval>
     <showInline>true</showInline>
+    <autoRefreshInterval>2000</autoRefreshInterval>
     <flushInterval>5000</flushInterval>
     <showSummaryInToolwindow>true</showSummaryInToolwindow>
     <autoRefresh>true</autoRefresh>
@@ -49,17 +50,17 @@
     <viewCoverage>true</viewCoverage>
     <contextFilterSpec />
     <coveredStripe>-16711936</coveredStripe>
-    <autoScroll>true</autoScroll>
     <autoViewInCloudReport>true</autoViewInCloudReport>
-    <useGeneratedInitString>true</useGeneratedInitString>
+    <autoScroll>true</autoScroll>
     <showGutter>true</showGutter>
+    <useGeneratedInitString>true</useGeneratedInitString>
     <dumpInstrumentedSources>false</dumpInstrumentedSources>
     <testCaseLayout class="com.atlassian.clover.idea.config.TestCaseLayout">TEST_CASES</testCaseLayout>
     <failedCoveredStripe>-14336</failedCoveredStripe>
     <regexpContexts class="java.util.ArrayList" />
-    <showErrorMarks>true</showErrorMarks>
     <flattenPackages>false</flattenPackages>
     <autoScrollFromSource>false</autoScrollFromSource>
+    <showErrorMarks>true</showErrorMarks>
     <showTooltips>true</showTooltips>
     <showSummaryInToolbar>true</showSummaryInToolbar>
     <span>0</span>
@@ -125,7 +126,7 @@
       <file leaf-file-name="Ant.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Ant.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="363" max-vertical-offset="1360">
+            <state vertical-scroll-proportion="0.0" vertical-offset="544" max-vertical-offset="1700">
               <caret line="32" column="82" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
               <folding />
             </state>
@@ -135,28 +136,9 @@
       <file leaf-file-name="GUIAntMinerJFrame.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUIAntMinerJFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2647" max-vertical-offset="20808">
-              <caret line="204" column="0" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
-              <folding>
-                <element signature="e#5864#6830#0" expanded="true" />
-                <element signature="e#6821#6822#0" expanded="true" />
-                <element signature="e#7172#7289#0" expanded="true" />
-                <element signature="e#7280#7281#0" expanded="true" />
-                <element signature="e#7756#8048#0" expanded="true" />
-                <element signature="e#8039#8040#0" expanded="true" />
-                <element signature="e#19064#19790#0" expanded="true" />
-                <element signature="e#19781#19782#0" expanded="true" />
-                <element signature="e#28920#29032#0" expanded="true" />
-                <element signature="e#29023#29024#0" expanded="true" />
-                <element signature="e#30812#30813#0" expanded="true" />
-                <element signature="e#30841#30842#0" expanded="true" />
-                <element signature="e#30871#30872#0" expanded="true" />
-                <element signature="e#30892#30893#0" expanded="true" />
-                <element signature="e#30935#30936#0" expanded="true" />
-                <element signature="e#30972#30973#0" expanded="true" />
-                <element signature="e#35779#35780#0" expanded="true" />
-                <element signature="e#35801#35802#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="10693" max-vertical-offset="22032">
+              <caret line="629" column="80" selection-start-line="629" selection-start-column="55" selection-end-line="629" selection-end-column="55" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -164,23 +146,9 @@
       <file leaf-file-name="CrossValidation.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CrossValidation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5261628" vertical-offset="4902" max-vertical-offset="19091">
-              <caret line="346" column="47" selection-start-line="346" selection-start-column="47" selection-end-line="346" selection-end-column="47" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#CrossValidation#0;class#CrossValidation#0" expanded="false" />
-                <element signature="method#setDataInstancesArray#0;class#CrossValidation#0" expanded="false" />
-                <element signature="e#6352#6360#0" expanded="true" />
-                <element signature="e#6413#6421#0" expanded="true" />
-                <element signature="e#6474#6482#0" expanded="true" />
-                <element signature="e#7081#7089#0" expanded="true" />
-                <element signature="e#39922#39923#0" expanded="true" />
-                <element signature="e#39961#39962#0" expanded="true" />
-                <element signature="e#40096#40097#0" expanded="true" />
-                <element signature="e#40159#40160#0" expanded="true" />
-                <element signature="e#40200#40201#0" expanded="true" />
-                <element signature="e#40228#40229#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.23837209" vertical-offset="4967" max-vertical-offset="18972">
+              <caret line="347" column="22" selection-start-line="347" selection-start-column="22" selection-end-line="347" selection-end-column="22" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -188,10 +156,9 @@
       <file leaf-file-name="CrossValidationTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/CrossValidationTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4001" max-vertical-offset="4573">
+            <state vertical-scroll-proportion="0.0" vertical-offset="4369" max-vertical-offset="4607">
               <caret line="257" column="11" selection-start-line="257" selection-start-column="11" selection-end-line="257" selection-end-column="11" />
               <folding>
-                <element signature="imports" expanded="false" />
                 <marker date="1436478890705" expanded="true" signature="467:791" placeholder="{...}" />
                 <marker date="1436478890705" expanded="true" signature="897:1212" placeholder="{...}" />
                 <marker date="1436478890705" expanded="true" signature="1318:1633" placeholder="{...}" />
@@ -270,7 +237,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -337,6 +303,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -560,7 +527,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -572,7 +539,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28711256" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32626426" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32463294" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cloverage" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -580,7 +547,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24886535" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32626426" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32626426" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Test Runs" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -610,12 +577,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/CrossValidation.java</url>
-          <line>922</line>
+          <line>1062</line>
           <properties />
-          <option name="timeStamp" value="5" />
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/CrossValidation.java</url>
+          <line>1083</line>
+          <properties />
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="7" />
+      <option name="time" value="14" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -623,6 +596,96 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/Ant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1700">
+          <caret line="32" column="82" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUIAntMinerJFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="10693" max-vertical-offset="22032">
+          <caret line="629" column="80" selection-start-line="629" selection-start-column="55" selection-end-line="629" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CrossValidation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="7673" max-vertical-offset="18938">
+          <caret line="346" column="47" selection-start-line="346" selection-start-column="47" selection-end-line="346" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/CrossValidationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4369" max-vertical-offset="4607">
+          <caret line="257" column="11" selection-start-line="257" selection-start-column="11" selection-end-line="257" selection-end-column="11" />
+          <folding>
+            <marker date="1436478890705" expanded="true" signature="467:791" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="897:1212" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="1318:1633" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="1766:2102" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="2255:2601" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="2726:3073" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="3200:3533" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="3666:4007" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="4223:4605" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="4734:5068" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="5167:5486" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="5597:5922" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1700">
+          <caret line="32" column="82" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUIAntMinerJFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="9832" max-vertical-offset="20808">
+          <caret line="630" column="44" selection-start-line="630" selection-start-column="41" selection-end-line="630" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CrossValidation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5882" max-vertical-offset="19890">
+          <caret line="346" column="47" selection-start-line="346" selection-start-column="47" selection-end-line="346" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/CrossValidationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4369" max-vertical-offset="4607">
+          <caret line="257" column="11" selection-start-line="257" selection-start-column="11" selection-end-line="257" selection-end-column="11" />
+          <folding>
+            <marker date="1436478890705" expanded="true" signature="467:791" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="897:1212" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="1318:1633" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="1766:2102" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="2255:2601" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="2726:3073" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="3200:3533" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="3666:4007" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="4223:4605" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="4734:5068" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="5167:5486" placeholder="{...}" />
+            <marker date="1436478890705" expanded="true" signature="5597:5922" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Ant.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1717">
@@ -635,26 +698,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="10744" max-vertical-offset="22219">
           <caret line="632" column="77" selection-start-line="632" selection-start-column="77" selection-end-line="632" selection-end-column="77" />
-          <folding>
-            <element signature="e#5864#6830#0" expanded="true" />
-            <element signature="e#6821#6822#0" expanded="true" />
-            <element signature="e#7172#7289#0" expanded="true" />
-            <element signature="e#7280#7281#0" expanded="true" />
-            <element signature="e#7756#8048#0" expanded="true" />
-            <element signature="e#8039#8040#0" expanded="true" />
-            <element signature="e#19064#19790#0" expanded="true" />
-            <element signature="e#19781#19782#0" expanded="true" />
-            <element signature="e#28920#29032#0" expanded="true" />
-            <element signature="e#29023#29024#0" expanded="true" />
-            <element signature="e#30812#30813#0" expanded="true" />
-            <element signature="e#30841#30842#0" expanded="true" />
-            <element signature="e#30871#30872#0" expanded="true" />
-            <element signature="e#30892#30893#0" expanded="true" />
-            <element signature="e#30935#30936#0" expanded="true" />
-            <element signature="e#30972#30973#0" expanded="true" />
-            <element signature="e#35779#35780#0" expanded="true" />
-            <element signature="e#35801#35802#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -662,21 +706,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="4239" max-vertical-offset="18598">
           <caret line="315" column="63" selection-start-line="315" selection-start-column="63" selection-end-line="315" selection-end-column="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#CrossValidation#0;class#CrossValidation#0" expanded="false" />
-            <element signature="method#setDataInstancesArray#0;class#CrossValidation#0" expanded="false" />
-            <element signature="e#6352#6360#0" expanded="true" />
-            <element signature="e#6413#6421#0" expanded="true" />
-            <element signature="e#6474#6482#0" expanded="true" />
-            <element signature="e#7081#7089#0" expanded="true" />
-            <element signature="e#39922#39923#0" expanded="true" />
-            <element signature="e#39961#39962#0" expanded="true" />
-            <element signature="e#40096#40097#0" expanded="true" />
-            <element signature="e#40159#40160#0" expanded="true" />
-            <element signature="e#40200#40201#0" expanded="true" />
-            <element signature="e#40228#40229#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -692,26 +722,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="16305" max-vertical-offset="21913">
           <caret line="157" column="31" selection-start-line="157" selection-start-column="31" selection-end-line="157" selection-end-column="31" />
-          <folding>
-            <element signature="e#5864#6830#0" expanded="true" />
-            <element signature="e#6821#6822#0" expanded="true" />
-            <element signature="e#7172#7289#0" expanded="true" />
-            <element signature="e#7280#7281#0" expanded="true" />
-            <element signature="e#7756#8048#0" expanded="true" />
-            <element signature="e#8039#8040#0" expanded="true" />
-            <element signature="e#19064#19790#0" expanded="true" />
-            <element signature="e#19781#19782#0" expanded="true" />
-            <element signature="e#28920#29032#0" expanded="true" />
-            <element signature="e#29023#29024#0" expanded="true" />
-            <element signature="e#30812#30813#0" expanded="true" />
-            <element signature="e#30841#30842#0" expanded="true" />
-            <element signature="e#30871#30872#0" expanded="true" />
-            <element signature="e#30892#30893#0" expanded="true" />
-            <element signature="e#30935#30936#0" expanded="true" />
-            <element signature="e#30972#30973#0" expanded="true" />
-            <element signature="e#35779#35780#0" expanded="true" />
-            <element signature="e#35801#35802#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -719,21 +730,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="12966" max-vertical-offset="17085">
           <caret line="799" column="74" selection-start-line="799" selection-start-column="74" selection-end-line="799" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#CrossValidation#0;class#CrossValidation#0" expanded="false" />
-            <element signature="method#setDataInstancesArray#0;class#CrossValidation#0" expanded="false" />
-            <element signature="e#6352#6360#0" expanded="true" />
-            <element signature="e#6413#6421#0" expanded="true" />
-            <element signature="e#6474#6482#0" expanded="true" />
-            <element signature="e#7081#7089#0" expanded="true" />
-            <element signature="e#39922#39923#0" expanded="true" />
-            <element signature="e#39961#39962#0" expanded="true" />
-            <element signature="e#40096#40097#0" expanded="true" />
-            <element signature="e#40159#40160#0" expanded="true" />
-            <element signature="e#40200#40201#0" expanded="true" />
-            <element signature="e#40228#40229#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -749,21 +746,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="13164" max-vertical-offset="16422">
           <caret line="822" column="103" selection-start-line="822" selection-start-column="103" selection-end-line="822" selection-end-column="103" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#CrossValidation#0;class#CrossValidation#0" expanded="false" />
-            <element signature="method#setDataInstancesArray#0;class#CrossValidation#0" expanded="false" />
-            <element signature="e#6352#6360#0" expanded="true" />
-            <element signature="e#6413#6421#0" expanded="true" />
-            <element signature="e#6474#6482#0" expanded="true" />
-            <element signature="e#7081#7089#0" expanded="true" />
-            <element signature="e#39922#39923#0" expanded="true" />
-            <element signature="e#39961#39962#0" expanded="true" />
-            <element signature="e#40096#40097#0" expanded="true" />
-            <element signature="e#40159#40160#0" expanded="true" />
-            <element signature="e#40200#40201#0" expanded="true" />
-            <element signature="e#40228#40229#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -779,21 +762,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="7599" max-vertical-offset="16422">
           <caret line="435" column="42" selection-start-line="435" selection-start-column="8" selection-end-line="435" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#CrossValidation#0;class#CrossValidation#0" expanded="false" />
-            <element signature="method#setDataInstancesArray#0;class#CrossValidation#0" expanded="false" />
-            <element signature="e#6352#6360#0" expanded="true" />
-            <element signature="e#6413#6421#0" expanded="true" />
-            <element signature="e#6474#6482#0" expanded="true" />
-            <element signature="e#7081#7089#0" expanded="true" />
-            <element signature="e#39922#39923#0" expanded="true" />
-            <element signature="e#39961#39962#0" expanded="true" />
-            <element signature="e#40096#40097#0" expanded="true" />
-            <element signature="e#40159#40160#0" expanded="true" />
-            <element signature="e#40200#40201#0" expanded="true" />
-            <element signature="e#40228#40229#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -816,21 +785,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="350" max-vertical-offset="16422">
           <caret line="853" column="34" selection-start-line="853" selection-start-column="12" selection-end-line="853" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#CrossValidation#0;class#CrossValidation#0" expanded="false" />
-            <element signature="method#setDataInstancesArray#0;class#CrossValidation#0" expanded="false" />
-            <element signature="e#6352#6360#0" expanded="true" />
-            <element signature="e#6413#6421#0" expanded="true" />
-            <element signature="e#6474#6482#0" expanded="true" />
-            <element signature="e#7081#7089#0" expanded="true" />
-            <element signature="e#39922#39923#0" expanded="true" />
-            <element signature="e#39961#39962#0" expanded="true" />
-            <element signature="e#40096#40097#0" expanded="true" />
-            <element signature="e#40159#40160#0" expanded="true" />
-            <element signature="e#40200#40201#0" expanded="true" />
-            <element signature="e#40228#40229#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -852,7 +807,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6392">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -860,7 +814,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1003">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -868,7 +821,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -876,7 +828,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -892,9 +843,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.2258065" vertical-offset="3" max-vertical-offset="2125">
           <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -902,34 +850,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUIAntMinerJFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2647" max-vertical-offset="20808">
-          <caret line="204" column="0" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
-          <folding>
-            <element signature="e#5864#6830#0" expanded="true" />
-            <element signature="e#6821#6822#0" expanded="true" />
-            <element signature="e#7172#7289#0" expanded="true" />
-            <element signature="e#7280#7281#0" expanded="true" />
-            <element signature="e#7756#8048#0" expanded="true" />
-            <element signature="e#8039#8040#0" expanded="true" />
-            <element signature="e#19064#19790#0" expanded="true" />
-            <element signature="e#19781#19782#0" expanded="true" />
-            <element signature="e#28920#29032#0" expanded="true" />
-            <element signature="e#29023#29024#0" expanded="true" />
-            <element signature="e#30812#30813#0" expanded="true" />
-            <element signature="e#30841#30842#0" expanded="true" />
-            <element signature="e#30871#30872#0" expanded="true" />
-            <element signature="e#30892#30893#0" expanded="true" />
-            <element signature="e#30935#30936#0" expanded="true" />
-            <element signature="e#30972#30973#0" expanded="true" />
-            <element signature="e#35779#35780#0" expanded="true" />
-            <element signature="e#35801#35802#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -946,7 +866,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="4001" max-vertical-offset="4573">
           <caret line="257" column="11" selection-start-line="257" selection-start-column="11" selection-end-line="257" selection-end-column="11" />
           <folding>
-            <element signature="imports" expanded="false" />
             <marker date="1436478890705" expanded="true" signature="467:791" placeholder="{...}" />
             <marker date="1436478890705" expanded="true" signature="897:1212" placeholder="{...}" />
             <marker date="1436478890705" expanded="true" signature="1318:1633" placeholder="{...}" />
@@ -963,25 +882,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUIAntMinerJFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="9679" max-vertical-offset="20434">
+          <caret line="629" column="80" selection-start-line="629" selection-start-column="55" selection-end-line="629" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/CrossValidation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5261628" vertical-offset="4902" max-vertical-offset="19091">
-          <caret line="346" column="47" selection-start-line="346" selection-start-column="47" selection-end-line="346" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#CrossValidation#0;class#CrossValidation#0" expanded="false" />
-            <element signature="method#setDataInstancesArray#0;class#CrossValidation#0" expanded="false" />
-            <element signature="e#6352#6360#0" expanded="true" />
-            <element signature="e#6413#6421#0" expanded="true" />
-            <element signature="e#6474#6482#0" expanded="true" />
-            <element signature="e#7081#7089#0" expanded="true" />
-            <element signature="e#39922#39923#0" expanded="true" />
-            <element signature="e#39961#39962#0" expanded="true" />
-            <element signature="e#40096#40097#0" expanded="true" />
-            <element signature="e#40159#40160#0" expanded="true" />
-            <element signature="e#40200#40201#0" expanded="true" />
-            <element signature="e#40228#40229#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.23837209" vertical-offset="4967" max-vertical-offset="18972">
+          <caret line="347" column="22" selection-start-line="347" selection-start-column="22" selection-end-line="347" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
