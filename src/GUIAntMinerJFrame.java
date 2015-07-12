@@ -1174,7 +1174,12 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
 		//canvas1.setSize(347, 220);
 		canvas1.setBounds(2, 2, 377, 221);
 	}
-	
+
+	public CrossValidation getThread()
+    {
+        return cv;
+    }
+
 	public void setInitialState(){
 		jTabbedPane1.setEnabledAt(1,false);
 		jTabbedPane1.setSelectedIndex(0);

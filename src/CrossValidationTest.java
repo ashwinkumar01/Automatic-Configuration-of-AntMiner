@@ -1,8 +1,9 @@
- package test;
-
-import org.junit.Test; 
+import org.junit.Test;
 import org.junit.Before; 
-import org.junit.After; 
+import org.junit.After;
+
+import java.io.File;
+import java.lang.reflect.Method;
 
 /** 
 * CrossValidation Tester. 
@@ -11,11 +12,14 @@ import org.junit.After;
 * @since <pre>Jul 9, 2015</pre> 
 * @version 1.0 
 */ 
-public class CrossValidationTest { 
-
+public class CrossValidationTest {
+    GUIAntMinerJFrame frame;
 @Before
-public void before() throws Exception { 
-} 
+public void before() throws Exception {
+    frame = new GUIAntMinerJFrame();
+    frame.setVisible(true);
+}
+
 
 @After
 public void after() throws Exception { 
@@ -168,7 +172,8 @@ try {
 */ 
 @Test
 public void testCalculateRuleQuality() throws Exception { 
-//TODO: Test goes here... 
+     CrossValidation cv = frame.getThread();
+    cv.calculateRuleQuality(frame.getAnt(), )
 /* 
 try { 
    Method method = CrossValidation.getClass().getMethod("calculateRuleQuality", Ant.class, int.class); 

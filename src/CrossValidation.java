@@ -853,7 +853,7 @@ public class CrossValidation implements Runnable {
      * @param ant
      * @return
      */
-    private double calculateRuleQuality(Ant ant, int nParam){   //, int nQualityChoice, int param - for F measure, cost measure, relative cost measure, Klosgen measure or m-estimate
+    protected double calculateRuleQuality(Ant ant, int nParam){   //, int nQualityChoice, int param - for F measure, cost measure, relative cost measure, Klosgen measure or m-estimate
         double quality = 0;
         int nTruePositive, nFalsePositive, nFalseNegative, nTrueNegative, nQualityChoice = 0;
         int totalNumExamples = 0;
@@ -895,6 +895,10 @@ public class CrossValidation implements Runnable {
         return quality;
     }
 
+
+    /**
+     * Values for test case
+     */
     /**
      * Depending on the choice, it calculate the rule quality of the ant
      * @param nTruePositive
@@ -922,19 +926,20 @@ public class CrossValidation implements Runnable {
         else
             dSpecificity = nTrueNegative / N;
 
+        //All rules also consistent with Myra's implementation except Laplace and Cost Measure
         switch(nQualityChoice)
         {
             case 1:   //Sensitivity aka (True Positive rate or Recall) * Specificity (aka False Positive rate)       //Derived from Parpinelli paper
                 quality = dSensitivity * dSpecificity;    //dSensitivity * dSpecificity
                 break;
             case 2:  //Precision aka (True Positive rate or Recall)   p/p+n
-                quality = ((double) nTruePositive / (nTruePositive + nTrueNegative));
+                quality = ((double) nTruePositive / (nTruePositive + nFalsePositive));
                 break;
             case 3:  //Laplace (PSO/ACO2)
                 quality = ((double) (nTruePositive + 1) / (nTruePositive+nTrueNegative+1));
                 break;
-            case 4: //Accuracy
-                quality = nTruePositive - nTrueNegative;
+            case 4: //Accuracy       Myra
+                quality = (nTrueNegative + nTruePositive) / (nTrueNegative + nTruePositive + nFalseNegative + nFalsePositive);
                 break;
             case 5: //Weighted Relative Accuracy  = Sensitivity - Specificity
                 quality = dSensitivity - dSpecificity;
@@ -955,16 +960,19 @@ public class CrossValidation implements Runnable {
                 quality = ((double) nParam * nTruePositive - (1 - nParam) * nTrueNegative);
                 break;
             case 11: // relative cost measure  cr * dSensitivity - 1 (1 - cr) * dSpecificity
-                quality = ((double) (nParam * nTruePositive / P) - (1 - nParam) * nTrueNegative / N);
+                quality = ((double) (nParam * nTruePositive / P) - ((1 - nParam) * nTrueNegative / N));
                 break;
             case 12: // F-measure
-                quality = ( (((nParam * nParam) + 1) * (nTruePositive / (nTruePositive + nTrueNegative))  * dSensitivity) / (nParam * nParam * nTruePositive / (nTruePositive + nTrueNegative)+ dSensitivity) );
+                quality = ( (((nParam * nParam) + 1) * (nTruePositive / (nTruePositive + nFalsePositive))  * dSensitivity) / ( (nParam * nParam * nTruePositive / (nTruePositive + nFalsePositive)) + dSensitivity) );
                 break;
             case 13: //m-estimate
                 quality = ((double) ((nTruePositive + nParam) * P / (P +N) ) / (nTruePositive + nTrueNegative + nParam));
                 break;
             case 14:  //Klosgen measure
-                quality = ( Math.pow((((double) (nTruePositive + nTrueNegative) / (nTruePositive + nFalseNegative + nFalsePositive + nTrueNegative))), nParam) * ( nTruePositive / (nTruePositive + nTrueNegative) - (P / (P+N))));
+                quality = ( Math.pow((((double) (nTruePositive + nFalsePositive) / (nTruePositive + nFalseNegative + nFalsePositive + nTrueNegative))), nParam) * ( nTruePositive / (nTruePositive + nTrueNegative) - (P / (P+N))));
+                break;
+            case 15: //Jaccard rule based on Jaccard co-efficient
+                 quality = nTruePositive / (nTruePositive + nFalsePositive + nFalseNegative);
                 break;
             default:
                 quality = dSensitivity * dSpecificity;    //Sensitivity * Specificity
