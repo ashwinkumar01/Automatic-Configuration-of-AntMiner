@@ -172,8 +172,8 @@ try {
 */ 
 @Test
 public void testCalculateRuleQuality() throws Exception { 
-     CrossValidation cv = frame.getThread();
-    cv.calculateRuleQuality(frame.getAnt(), )
+    // CrossValidation cv = frame.getThread();
+    //cv.calculateRuleQuality(frame.getAnt(), )
 /* 
 try { 
    Method method = CrossValidation.getClass().getMethod("calculateRuleQuality", Ant.class, int.class); 
