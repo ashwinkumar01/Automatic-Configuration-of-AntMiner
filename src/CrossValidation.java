@@ -314,7 +314,7 @@ public class CrossValidation implements Runnable {
                         }
 
                         determineRuleConsequent(currentAnt);
-                        calculateRuleQuality(currentAnt, nParam);
+                        calculateRuleQuality(currentAnt, nParam, false);
 
                         if(pruneRule == true) {
                             try {
@@ -855,9 +855,10 @@ public class CrossValidation implements Runnable {
     /**
      * Calculates the rule quality of the ant.
      * @param ant
+     * @param ruleRefinement
      * @return
      */
-    protected double calculateRuleQuality(Ant ant, int nParam){   //, int nQualityChoice, int param - for F measure, cost measure, relative cost measure, Klosgen measure or m-estimate
+    protected double calculateRuleQuality(Ant ant, int nParam, boolean ruleRefinement){   //, int nQualityChoice, int param - for F measure, cost measure, relative cost measure, Klosgen measure or m-estimate
         double quality = 0;
         int nTruePositive, nFalsePositive, nFalseNegative, nTrueNegative, nQualityChoice = 0;
         int totalNumExamples = 0;
@@ -889,9 +890,10 @@ public class CrossValidation implements Runnable {
             }
         }
 
-        quality = ruleQualityChoice(nTruePositive, nFalsePositive, nFalseNegative, nTrueNegative, nQualityChoice, nParam);
-
-
+        if(!ruleRefinement)
+            quality = ruleQualityChoice(nTruePositive, nFalsePositive, nFalseNegative, nTrueNegative, nQualityChoice, nParam);
+        else
+            quality = ruleRefinementChoice(nTruePositive, nTrueNegative, nTruePositive + nFalseNegative, nFalsePositive + nTrueNegative, 1, nParam);
         if(Double.isNaN(quality))
             quality = 0.0;
         ant.setRuleQuality(quality);
@@ -1050,7 +1052,7 @@ public class CrossValidation implements Runnable {
                     antClone.getRulesArray()[a] = -1;
                     updateInstancesIndexList(antClone);
                     determineRuleConsequent(antClone);
-                    calculateRuleQuality(antClone, nParam);
+                    calculateRuleQuality(antClone, nParam, true);
                     if(antClone.getRuleQuality() >= greatestQuality){
                         greatestQuality = antClone.getRuleQuality();
                         antCloneWithBestPrunedRule = (Ant) antClone.clone();
@@ -1187,12 +1189,22 @@ public class CrossValidation implements Runnable {
         CrossValidation cv = new CrossValidation(new GUIAntMinerJFrame());
         System.setProperty("java.awt.headless", "true");
 
-        MyFileReader myFileReader = new MyFileReader(new File("breast-cancer.arff"));
+        File folder = new File("instances/");
+
         Attribute[] attributesArray = null;
         DataInstance[] dataInstancesArray = null;
-        if(myFileReader.fileIsOk()) {
-            attributesArray = myFileReader.getAttributesArray();
-            dataInstancesArray = myFileReader.getDataInstancesArray();
+
+        for (final File fileEntry : folder.listFiles()) {
+            if (fileEntry.isDirectory()) {
+
+            } else {
+                MyFileReader myFileReader = new MyFileReader(fileEntry);
+                if(myFileReader.fileIsOk()) {
+                    attributesArray = myFileReader.getAttributesArray();
+                    dataInstancesArray = myFileReader.getDataInstancesArray();
+                }
+
+            }
         }
 
         cv.setAttributesArray(attributesArray);
@@ -1204,6 +1216,8 @@ public class CrossValidation implements Runnable {
         cv.setNumIterations(100);
         cv.setMaxUncoveredCases(10);
         cv.start();
+
     }
+
 
 }
