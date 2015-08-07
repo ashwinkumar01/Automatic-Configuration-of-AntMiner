@@ -52,7 +52,7 @@ public class CrossValidation implements Runnable {
     private GUIAntMinerJFrame caller;
     private boolean interrupted;
     private boolean pruneRule;  //boolean to turn pruning of rule on or off
-    private int cPheromoneUpdate; //constant rate of pheromone update
+    private double cPheromoneUpdate; //constant rate of pheromone update
     private int nParam; //paramter to be sent for parameterized heuristics
     private boolean pheromoneUpdateType; //True for nomalized, False for constant
     private Thread cvThread;
@@ -61,7 +61,7 @@ public class CrossValidation implements Runnable {
         return nParam;
     }
 
-    public int getcPheromoneUpdate() {
+    public double getcPheromoneUpdate() {
         return cPheromoneUpdate;
     }
 
@@ -132,7 +132,7 @@ public class CrossValidation implements Runnable {
     public void setPheromoneUpdateType(boolean pheromoneUpdateType){
         this.pheromoneUpdateType = pheromoneUpdateType;
     }
-    public void setcPheromoneUpdate(int cPheromoneUpdate) {
+    public void setcPheromoneUpdate(double cPheromoneUpdate) {
         this.cPheromoneUpdate = cPheromoneUpdate;
     }
     public void setnParam(int nParam) {
@@ -229,6 +229,7 @@ public class CrossValidation implements Runnable {
             Date date2 = new Date();
 
             splitDataSet(crossValidation);
+
             DataInstance [] trainingSetClone = (DataInstance[])trainingSet.clone();
 
             int bestAntIndex=-1;
@@ -348,7 +349,7 @@ public class CrossValidation implements Runnable {
 
                     //FLAG HERE IS FIXED AND NEEDS TO GO
                     //pheromoneUpdateType = true;
-                    //cPheromoneUpdate = 2;
+                    //cPheromoneUpdate = 0.5-0.95;
                     updatePheromone(antsArray[bestAntIndex], pheromoneUpdateType, cPheromoneUpdate);
 
                     iteration++;
@@ -1078,7 +1079,7 @@ public class CrossValidation implements Runnable {
      * Updates the trail of pheromone.
      * @param ant
      */
-    private void updatePheromone(Ant ant, boolean normalizePheromoneOn, int cRate){
+    private void updatePheromone(Ant ant, boolean normalizePheromoneOn, double cRate){
         //update pheromone for used terms
         for(int x=0; x < ant.getRulesArray().length; x++){
             if(ant.getRulesArray()[x] != -1){
@@ -1104,7 +1105,7 @@ public class CrossValidation implements Runnable {
         {
             for (int x = 0; x < pheromoneArray.length; x++) {
                 for (int y = 0; y < pheromoneArray[x].length; y++) {
-                    pheromoneArray[x][y] /= cRate;
+                    pheromoneArray[x][y] *= cRate;
                 }
             }
         }
@@ -1196,32 +1197,23 @@ public class CrossValidation implements Runnable {
         CrossValidation cv = new CrossValidation(new GUIAntMinerJFrame());
         System.setProperty("java.awt.headless", "true");
 
-        File folder = new File("instances/");
-
+        MyFileReader myFileReader = new MyFileReader(new File("breast-cancer.arff"));
         Attribute[] attributesArray = null;
         DataInstance[] dataInstancesArray = null;
-
-        for (final File fileEntry : folder.listFiles()) {
-            if (fileEntry.isDirectory()) {
-
-            } else {
-                MyFileReader myFileReader = new MyFileReader(fileEntry);
-                if(myFileReader.fileIsOk()) {
-                    attributesArray = myFileReader.getAttributesArray();
-                    dataInstancesArray = myFileReader.getDataInstancesArray();
-                }
-
-            }
+        if(myFileReader.fileIsOk()) {
+            attributesArray = myFileReader.getAttributesArray();
+            dataInstancesArray = myFileReader.getDataInstancesArray();
         }
 
         cv.setAttributesArray(attributesArray);
         cv.setDataInstancesArray(dataInstancesArray);
         cv.setNumAnts(5);
-        cv.setFolds(10);
+        cv.setFolds(1);
         cv.setMinCasesRule(5);
         cv.setConvergenceTest(10);
         cv.setNumIterations(100);
         cv.setMaxUncoveredCases(10);
+        cv.setcPheromoneUpdate(0.6);
         cv.start();
 
     }
