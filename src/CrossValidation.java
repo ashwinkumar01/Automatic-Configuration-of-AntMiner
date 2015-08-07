@@ -975,11 +975,13 @@ public class CrossValidation implements Runnable {
                 quality = ((double) ((nTruePositive + nParam) * P / (P +N) ) / (nTruePositive + nTrueNegative + nParam));
                 break;
             case 14:  //Klosgen measure
-                quality = ( Math.pow((((double) (nTruePositive + nFalsePositive) / (nTruePositive + nFalseNegative + nFalsePositive + nTrueNegative))
-                ), nParam) * ( nTruePositive / (nTruePositive + nTrueNegative) - (P / (P+N))));
+                double part1 = ( Math.pow((((double) (nTruePositive + nFalsePositive) / (nTruePositive + nFalseNegative + nFalsePositive + nTrueNegative))), nParam));
+                double part2 =  (double) nTruePositive / (double)(nTruePositive + nTrueNegative);
+                double part3 = ((double)P / (double)(P+N));
+                quality = part1 * (part2 - part3);
                 break;
             case 15: //Jaccard rule based on Jaccard co-efficient
-                quality = nTruePositive / (nTruePositive + nFalsePositive + nFalseNegative);
+                quality = (double) nTruePositive / (nTruePositive + nFalsePositive + nFalseNegative);
                 break;
             default:
                 quality = dSensitivity * dSpecificity;    //Sensitivity * Specificity
@@ -996,13 +998,18 @@ public class CrossValidation implements Runnable {
         double quality = 0;
         switch(choice) {
             case 1: //Inverted Precision
-                quality = ((double) (N - nTrueNegative) / ((P + N) - (nTruePositive + nTrueNegative)));
+                quality = (double) ( (N - nTrueNegative) / ((P + N) - (nTruePositive + nTrueNegative)));
                 return quality;
             case 2: //Inverted Laplace
-                quality = ((double) (N - nTrueNegative + 1) / ((P + N) - (nTruePositive + nTrueNegative - 2)));
+                double num = (double)  (N - nTrueNegative + 1)   ;
+                double denom = ((P + N) - (nTruePositive + nTrueNegative - 2));
+                quality = num / denom;
                 break;
             case 3: //Inverted m-estimate
-                quality = ((double) ((N - nTrueNegative + nParam) * (P / P + N)) / (P + N - (nTruePositive + nTrueNegative - nParam)));
+                num = (double)(N - nTrueNegative + nParam);
+                double num2 = ((double)P / (double)(P + N));
+                denom = (double)(P + N - (nTruePositive + nTrueNegative - nParam));
+                quality = num * num2 / denom;
                 break;
             default:
                 quality = ((double) (N - nTrueNegative) / ((P + N) - (nTruePositive + nTrueNegative)));

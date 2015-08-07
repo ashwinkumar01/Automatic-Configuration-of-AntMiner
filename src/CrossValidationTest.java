@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After;
@@ -14,10 +15,13 @@ import java.lang.reflect.Method;
 */ 
 public class CrossValidationTest {
     GUIAntMinerJFrame frame;
+    CrossValidation cv;
+
 @Before
 public void before() throws Exception {
     frame = new GUIAntMinerJFrame();
     frame.setVisible(true);
+    cv = new CrossValidation(null);
 }
 
 
@@ -192,19 +196,24 @@ try {
 * 
 */ 
 @Test
-public void testRuleQualityChoice() throws Exception { 
-//TODO: Test goes here... 
-/* 
-try { 
-   Method method = CrossValidation.getClass().getMethod("ruleQualityChoice", int.class, int.class, int.class, int.class, int.class, int.class); 
-   method.setAccessible(true); 
-   method.invoke(<Object>, <Parameters>); 
-} catch(NoSuchMethodException e) { 
-} catch(IllegalAccessException e) { 
-} catch(InvocationTargetException e) { 
-} 
-*/ 
-} 
+    public void testRuleQualityChoice() throws Exception {
+      Assert.assertEquals(cv.ruleQualityChoice(5, 0, 177, 75, 1, 0), 0.0273224, 0.001);    //  ntp =5, nFP = 0, nFN = 177, nTN = 75, P = 182.0, N = 75.0
+      Assert.assertEquals(cv.ruleQualityChoice(5, 0, 177, 75, 2, 0), 1, 0.001);
+      Assert.assertEquals(cv.ruleQualityChoice(5, 0, 177, 75, 3, 0), 0.074074, 0.001);
+      Assert.assertEquals(cv.ruleQualityChoice(5, 0, 177, 75, 4, 0), 0.31007, 0.01);  //80/
+      Assert.assertEquals(cv.ruleQualityChoice(5, 0, 177, 75, 5, 0), -1.0126776, 0.1);
+      Assert.assertEquals(cv.ruleQualityChoice(5, 0, 177, 75, 6, 0), 0.3217, 0.1);    //83/
+      Assert.assertEquals(cv.ruleQualityChoice(5, 0, 177, 75, 7, 0), 1.0193798, 0.001); //0.71428571+
+      Assert.assertEquals(cv.ruleQualityChoice(5, 0, 177, 75, 8, 0), 1, 0.001);
+      Assert.assertEquals(cv.ruleQualityChoice(5, 0, 177, 75, 9, 0), -0.962, 0.1);
+      Assert.assertEquals(cv.ruleQualityChoice(5, 0, 177, 75, 10, 1), 5, 0.01);
+      Assert.assertEquals(cv.ruleQualityChoice(5, 0, 177, 75, 11, 1), 0.0274725, 0.001);
+      Assert.assertEquals(cv.ruleQualityChoice(5, 0, 177, 75, 12, 1), 0.053191481, 0.001);
+      Assert.assertEquals(cv.ruleQualityChoice(5, 0, 177, 75, 13, 1), 0.05245712, 0.001);
+      Assert.assertEquals(cv.ruleQualityChoice(5, 0, 177, 75, 14, 1), -0.01256, 0.001);
+      Assert.assertEquals(cv.ruleQualityChoice(5, 0, 177, 75, 15, 1), 0.027472527, 0.001);
+
+}
 
 /** 
 * 
@@ -212,18 +221,10 @@ try {
 * 
 */ 
 @Test
-public void testUpdateInstancesIndexList() throws Exception { 
-//TODO: Test goes here... 
-/* 
-try { 
-   Method method = CrossValidation.getClass().getMethod("updateInstancesIndexList", Ant.class); 
-   method.setAccessible(true); 
-   method.invoke(<Object>, <Parameters>); 
-} catch(NoSuchMethodException e) { 
-} catch(IllegalAccessException e) { 
-} catch(InvocationTargetException e) { 
-} 
-*/ 
+public void testRuleRefinementChoice() throws Exception {
+    Assert.assertEquals(cv.ruleRefinementChoice(5, 75, 182, 75, 1, 0), 0, 0.001);
+    Assert.assertEquals(cv.ruleRefinementChoice(5, 75, 182, 75, 2, 0), 0.00558659, 0.001);
+    Assert.assertEquals(cv.ruleRefinementChoice(5, 75, 182, 75, 3, 1), 0.00397848, 0.001);
 } 
 
 /** 
