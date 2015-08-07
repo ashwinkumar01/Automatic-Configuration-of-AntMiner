@@ -3,9 +3,6 @@ import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After;
 
-import java.io.File;
-import java.lang.reflect.Method;
-
 /** 
 * CrossValidation Tester. 
 * 

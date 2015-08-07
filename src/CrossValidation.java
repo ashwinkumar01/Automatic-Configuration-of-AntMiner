@@ -53,11 +53,15 @@ public class CrossValidation implements Runnable {
     private boolean interrupted;
     private boolean pruneRule;  //boolean to turn pruning of rule on or off
     private double cPheromoneUpdate; //constant rate of pheromone update
-    private int nParam; //paramter to be sent for parameterized heuristics
+    private double nParam; //paramter to be sent for parameterized heuristics
     private boolean pheromoneUpdateType; //True for nomalized, False for constant
+    private int nQualityChoice;
+    private int nRefinementChoice;
     private Thread cvThread;
 
-    public int getnParam() {
+    private double[] accuracyRate = new double[2];
+
+    public double getnParam() {
         return nParam;
     }
 
@@ -67,6 +71,14 @@ public class CrossValidation implements Runnable {
 
     public int getNumAnts() {
         return numAnts;
+    }
+
+    public int getNQualityChoice(){
+        return nQualityChoice;
+    }
+
+    public int getNRefinementChoice(){
+        return nRefinementChoice;
     }
 
     public int getFolds() {
@@ -135,8 +147,14 @@ public class CrossValidation implements Runnable {
     public void setcPheromoneUpdate(double cPheromoneUpdate) {
         this.cPheromoneUpdate = cPheromoneUpdate;
     }
-    public void setnParam(int nParam) {
+    public void setnParam(double nParam) {
         this.nParam = nParam;
+    }
+    public void setnQualityChoice(int nQualityChoice){
+        this.nQualityChoice = nQualityChoice;
+    }
+    public void setnRefinementChoice(int nRefinementChoice){
+        this.nRefinementChoice = nRefinementChoice;
     }
 
     public void start() {
@@ -159,7 +177,7 @@ public class CrossValidation implements Runnable {
         int n=0;
         int arraysSize;
 
-        if(numAnts==0 || folds<2 || minCasesRule==0 ||
+        if(numAnts==0 || folds==0 || minCasesRule==0 ||
                 convergenceTest==0 || numIterations==0 || maxUncoveredCases==0){
             caller.getJProgressBar1().setIndeterminate(false);
             caller.setIsClassifying(false);
@@ -224,7 +242,7 @@ public class CrossValidation implements Runnable {
         group();
 
         for(int crossValidation=0; crossValidation < folds && currentThread == cvThread; crossValidation++){
-            System.out.println("Cross Validation "+(crossValidation+1)+" of "+folds);
+           // System.out.println("Cross Validation "+(crossValidation+1)+" of "+folds);
 
             Date date2 = new Date();
 
@@ -237,7 +255,7 @@ public class CrossValidation implements Runnable {
             List antsFoundRuleList = new ArrayList();
 
             while(trainingSet.length > maxUncoveredCases && currentThread == cvThread){
-                System.out.print(".");
+              //  System.out.print(".");
                 bestAntIndex=0;
 
                 initializePheromoneTrails();
@@ -315,7 +333,7 @@ public class CrossValidation implements Runnable {
                         }
 
                         determineRuleConsequent(currentAnt);
-                        calculateRuleQuality(currentAnt, nParam, false);
+                        calculateRuleQuality(currentAnt, nParam, nQualityChoice, false);
 
                         if(pruneRule == true) {
                             try {
@@ -459,15 +477,22 @@ public class CrossValidation implements Runnable {
             }
             caller.getJTextArea1().append("Default rule: "+attributesArray[attributesArray.length-1].getTypes()[defaultClassIndex]+"\n");
 
-            System.out.println("\nAccuracy rate on the training set: "+trainingAccuracyRate+" %");
-            System.out.println("Accuracy rate on the test set:     "+testAccuracyRate+" %");
+           // System.out.println("\nAccuracy rate on the training set: "+trainingAccuracyRate+" %");
+            //System.out.println("Accuracy rate on the test set:     "+testAccuracyRate+" %");
+            if(accuracyRate[0] == 0)
+                accuracyRate[0] = trainingAccuracyRate;
+            else
+            {
+                accuracyRate[1] = trainingAccuracyRate;
+                System.out.println( (accuracyRate[0] + accuracyRate[1]) / 2 );
+            }
 
             caller.getJTextArea1().append("\nAccuracy rate on the training set: "+trainingAccuracyRate+" %\n");
-            caller.getJTextArea1().append("Accuracy rate on the test set:     "+testAccuracyRate+" %\n\n");
-            caller.getJTextArea1().append("Time taken:                        "+((new Date().getTime() - date2.getTime())/1000.0)+" s.\n"
+            caller.getJTextArea1().append("Accuracy rate on the test set:     " + testAccuracyRate + " %\n\n");
+            caller.getJTextArea1().append("Time taken:                        " + ((new Date().getTime() - date2.getTime()) / 1000.0) + " s.\n"
             );
 
-            System.out.println("Time taken: "+((new Date().getTime() - date2.getTime())/1000.0)+" s.\n");
+            //System.out.println("Time taken: "+((new Date().getTime() - date2.getTime())/1000.0)+" s.\n");
 
         }
 
@@ -502,7 +527,7 @@ public class CrossValidation implements Runnable {
         caller.getJTextArea1().setCaretPosition(caller.getJTextArea1().getText().length());
         caller.getJProgressBar1().setIndeterminate(false);
         caller.setIsClassifying(false);
-        if(folds == 10)
+        if(folds >= 1)
             System.exit(0);
     }
 
@@ -859,9 +884,9 @@ public class CrossValidation implements Runnable {
      * @param ruleRefinement
      * @return
      */
-    protected double calculateRuleQuality(Ant ant, int nParam, boolean ruleRefinement){   //, int nQualityChoice, int param - for F measure, cost measure, relative cost measure, Klosgen measure or m-estimate
+    protected double calculateRuleQuality(Ant ant, double nParam, int nQualityChoice, boolean ruleRefinement){   //, int nQualityChoice, int param - for F measure, cost measure, relative cost measure, Klosgen measure or m-estimate
         double quality = 0;
-        int nTruePositive, nFalsePositive, nFalseNegative, nTrueNegative, nQualityChoice = 0;
+        int nTruePositive, nFalsePositive, nFalseNegative, nTrueNegative;
         int totalNumExamples = 0;
         nTruePositive=nFalsePositive=nFalseNegative=nTrueNegative=0;
 
@@ -914,7 +939,7 @@ public class CrossValidation implements Runnable {
      * @param nQualityChoice
      * @return
      */
-    public double ruleQualityChoice(int nTruePositive, int nFalsePositive, int nFalseNegative, int nTrueNegative, int nQualityChoice, int nParam) {
+    public double ruleQualityChoice(int nTruePositive, int nFalsePositive, int nFalseNegative, int nTrueNegative, int nQualityChoice, double nParam) {
         //int nParam
         double quality = 0;
         //p =  nTruePositive; P = nTruePositive + nFalseNegative;
@@ -995,7 +1020,7 @@ public class CrossValidation implements Runnable {
         return ruleQualityChoice(nTruePositive, nFalsePositive, nFalseNegative, nTrueNegative, nQualityChoice, nParam);
     }
 
-    public double ruleRefinementChoice(int nTruePositive, int nTrueNegative, int P, int N, int choice, int nParam) {
+    public double ruleRefinementChoice(int nTruePositive, int nTrueNegative, int P, int N, int choice, double nParam) {
         double quality = 0;
         switch(choice) {
             case 1: //Inverted Precision
@@ -1060,7 +1085,7 @@ public class CrossValidation implements Runnable {
                     antClone.getRulesArray()[a] = -1;
                     updateInstancesIndexList(antClone);
                     determineRuleConsequent(antClone);
-                    calculateRuleQuality(antClone, nParam, true);
+                    calculateRuleQuality(antClone, nParam, nRefinementChoice, true);
                     if(antClone.getRuleQuality() >= greatestQuality){
                         greatestQuality = antClone.getRuleQuality();
                         antCloneWithBestPrunedRule = (Ant) antClone.clone();
@@ -1197,7 +1222,7 @@ public class CrossValidation implements Runnable {
         CrossValidation cv = new CrossValidation(new GUIAntMinerJFrame());
         System.setProperty("java.awt.headless", "true");
 
-        MyFileReader myFileReader = new MyFileReader(new File("breast-cancer.arff"));
+        MyFileReader myFileReader = new MyFileReader(new File(args[0]));
         Attribute[] attributesArray = null;
         DataInstance[] dataInstancesArray = null;
         if(myFileReader.fileIsOk()) {
@@ -1207,13 +1232,21 @@ public class CrossValidation implements Runnable {
 
         cv.setAttributesArray(attributesArray);
         cv.setDataInstancesArray(dataInstancesArray);
-        cv.setNumAnts(5);
-        cv.setFolds(1);
-        cv.setMinCasesRule(5);
-        cv.setConvergenceTest(10);
-        cv.setNumIterations(100);
-        cv.setMaxUncoveredCases(10);
-        cv.setcPheromoneUpdate(0.6);
+
+        cv.setNumAnts(Integer.parseInt(args[1]));
+        cv.setFolds(2);
+        cv.setMinCasesRule(Integer.parseInt(args[2]));
+        cv.setMaxUncoveredCases(Integer.parseInt(args[3]));
+        cv.setConvergenceTest(Integer.parseInt(args[4]));
+        cv.setNumIterations(Integer.parseInt(args[5]));
+        cv.setnQualityChoice(Integer.parseInt(args[6]));
+        cv.setnRefinementChoice(Integer.parseInt(args[7]));
+        cv.setcPheromoneUpdate(Integer.parseInt(args[9]));
+        if(Integer.parseInt(args[8]) == 1)
+            cv.setPruning(true);
+        else
+            cv.setPruning(false);
+        cv.setnParam(0.2);
         cv.start();
 
     }
