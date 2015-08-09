@@ -939,7 +939,7 @@ public class CrossValidation implements Runnable {
      * @param nQualityChoice
      * @return
      */
-    public double ruleQualityChoice(int nTruePositive, int nFalsePositive, int nFalseNegative, int nTrueNegative, int nQualityChoice, double nParam) {
+    public double ruleQualityChoice(double nTruePositive, double nFalsePositive, double nFalseNegative, double nTrueNegative, int nQualityChoice, double nParam) {
         //int nParam
         double quality = 0;
         //p =  nTruePositive; P = nTruePositive + nFalseNegative;
@@ -965,13 +965,13 @@ public class CrossValidation implements Runnable {
                 quality = dSensitivity * dSpecificity;    //dSensitivity * dSpecificity
                 break;
             case 2:  //Precision   p/p+n
-                quality = ((double) nTruePositive / (nTruePositive + nFalsePositive));
+                quality = ( nTruePositive / (nTruePositive + nFalsePositive));
                 break;
             case 3:  //Laplace (PSO/ACO2)
-                quality = ((double) (nTruePositive + 1) / (nTruePositive+nTrueNegative+1));
+                quality = ( (nTruePositive + 1) / (nTruePositive+nTrueNegative+1));
                 break;
             case 4: //Accuracy       Myra
-                quality = ((double) (nTrueNegative + nTruePositive) / (nTrueNegative + nTruePositive + nFalseNegative + nFalsePositive));
+                quality = ( (nTrueNegative + nTruePositive) / (nTrueNegative + nTruePositive + nFalseNegative + nFalsePositive));
                 break;
             case 5: //Weighted Relative Accuracy  = Sensitivity - Specificity
                 quality = dSensitivity - dSpecificity;
@@ -986,38 +986,33 @@ public class CrossValidation implements Runnable {
                 quality = dSpecificity;
                 break;
             case 9:  //Correlation  pN - nP / ( root(PN (p+n) (P-p+N-n) )
-                quality = ((double)  ((nTruePositive * N) - (nTrueNegative * P)) / (Math.sqrt(P * N * (nTruePositive + nTrueNegative) * (P - nTruePositive + N - nTrueNegative))));
+                quality = (  ((nTruePositive * N) - (nTrueNegative * P)) / (Math.sqrt(P * N * (nTruePositive + nTrueNegative) * (P - nTruePositive + N - nTrueNegative))));
                 break;
             case 10: // cost measure c * p - (1 - c) * n
-                quality = ((double) nParam * nTruePositive - (1 - nParam) * nTrueNegative);
+                quality = ( nParam * nTruePositive - (1 - nParam) * nTrueNegative);
                 break;
             case 11: // relative cost measure  cr * dSensitivity - 1 (1 - cr) * dSpecificity
-                quality = ((double) (nParam * nTruePositive / P) - ((1 - nParam) * nTrueNegative / N));
+                quality = ( (nParam * nTruePositive / P) - ((1 - nParam) * nTrueNegative / N));
                 break;
             case 12: // F-measure
                 quality = ( (((nParam * nParam) + 1) * (nTruePositive / (nTruePositive + nFalsePositive))  * dSensitivity) / ( (nParam * nParam * nTruePositive / (nTruePositive + nFalsePositive)) + dSensitivity) );
                 break;
             case 13: //m-estimate
-                quality = ((double) ((nTruePositive + nParam) * P / (P +N) ) / (nTruePositive + nTrueNegative + nParam));
+                quality = ( ((nTruePositive + nParam) * P / (P +N) ) / (nTruePositive + nTrueNegative + nParam));
                 break;
             case 14:  //Klosgen measure
-                double part1 = ( Math.pow((((double) (nTruePositive + nFalsePositive) / (nTruePositive + nFalseNegative + nFalsePositive + nTrueNegative))), nParam));
-                double part2 =  (double) nTruePositive / (double)(nTruePositive + nTrueNegative);
-                double part3 = ((double)P / (double)(P+N));
-                quality = part1 * (part2 - part3);
+                double total =  (nTruePositive + nFalseNegative + nFalsePositive + nTrueNegative);
+                quality = ( Math.pow((( (nTruePositive + nFalsePositive) / total)), nParam)) * ( ( nTruePositive / (nTruePositive + nFalsePositive)) - ( (nTruePositive + nFalseNegative) /total ));
+
                 break;
             case 15: //Jaccard rule based on Jaccard co-efficient
-                quality = (double) nTruePositive / (nTruePositive + nFalsePositive + nFalseNegative);
+                quality =  nTruePositive / (nTruePositive + nFalsePositive + nFalseNegative);
                 break;
             default:
                 quality = dSensitivity * dSpecificity;    //Sensitivity * Specificity
                 break;
         }
         return quality;
-    }
-    public double testRuleQualityChoice(int nTruePositive, int nFalsePositive, int nFalseNegative, int nTrueNegative, int nQualityChoice, int nParam)
-    {
-        return ruleQualityChoice(nTruePositive, nFalsePositive, nFalseNegative, nTrueNegative, nQualityChoice, nParam);
     }
 
     public double ruleRefinementChoice(int nTruePositive, int nTrueNegative, int P, int N, int choice, double nParam) {
@@ -1222,7 +1217,7 @@ public class CrossValidation implements Runnable {
         CrossValidation cv = new CrossValidation(new GUIAntMinerJFrame());
         System.setProperty("java.awt.headless", "true");
 
-        MyFileReader myFileReader = new MyFileReader(new File(args[0]));
+        MyFileReader myFileReader = new MyFileReader(new File("breast-cancer.arff"));
         Attribute[] attributesArray = null;
         DataInstance[] dataInstancesArray = null;
         if(myFileReader.fileIsOk()) {
@@ -1232,20 +1227,21 @@ public class CrossValidation implements Runnable {
 
         cv.setAttributesArray(attributesArray);
         cv.setDataInstancesArray(dataInstancesArray);
+        cv.setFolds(2);
 
         cv.setNumAnts(Integer.parseInt(args[1]));
-        cv.setFolds(2);
-        cv.setMinCasesRule(Integer.parseInt(args[2]));
-        cv.setMaxUncoveredCases(Integer.parseInt(args[3]));
-        cv.setConvergenceTest(Integer.parseInt(args[4]));
-        cv.setNumIterations(Integer.parseInt(args[5]));
-        cv.setnQualityChoice(Integer.parseInt(args[6]));
-        cv.setnRefinementChoice(Integer.parseInt(args[7]));
-        cv.setcPheromoneUpdate(Integer.parseInt(args[9]));
-        if(Integer.parseInt(args[8]) == 1)
+        cv.setMinCasesRule(Integer.parseInt(args[3]));
+        cv.setMaxUncoveredCases(Integer.parseInt(args[5]));
+        cv.setConvergenceTest(Integer.parseInt(args[7]));
+        cv.setNumIterations(Integer.parseInt(args[9]));
+        cv.setnQualityChoice(Integer.parseInt(args[11]));
+        cv.setnRefinementChoice(Integer.parseInt(args[13]));
+        cv.setcPheromoneUpdate(Double.parseDouble(args[14].substring(args[14].length()-1)));
+        if (Integer.parseInt(args[15].substring(args[15].length()-1)) == 1)
             cv.setPruning(true);
         else
             cv.setPruning(false);
+
         cv.setnParam(0.2);
         cv.start();
 
