@@ -474,7 +474,7 @@ public class CrossValidation implements Runnable {
             for(ListIterator i=antsFoundRuleList.listIterator(); i.hasNext();){
                 Object antObj = i.next();
                 int [] rule = ((Ant)antObj).getRulesArray();
-                caller.getJTextArea1().append(getRuleString(rule, ((Ant)antObj).getRuleConsequent()) + "\n");
+               // caller.getJTextArea1().append(getRuleString(rule, ((Ant)antObj).getRuleConsequent()) + "\n");
             }
             caller.getJTextArea1().append("Default rule: "+attributesArray[attributesArray.length-1].getTypes()[defaultClassIndex]+"\n");
 
@@ -927,10 +927,6 @@ public class CrossValidation implements Runnable {
         return quality;
     }
 
-
-    /**
-     * Values for test case
-     */
     /**
      * Depending on the choice, it calculate the rule quality of the ant
      * @param nTruePositive
@@ -942,7 +938,7 @@ public class CrossValidation implements Runnable {
      */
     public double ruleQualityChoice(int nTruePositive, int nFalsePositive, int nFalseNegative, int nTrueNegative, int nQualityChoice, double nParam) {
         //int nParam
-        double quality = 0;
+        double quality;
         //p =  nTruePositive; P = nTruePositive + nFalseNegative;
         //n = nTrueNegative;  N =  nFalsePositive + nTrueNegative;
         double P = nTruePositive + nFalseNegative;
@@ -951,11 +947,11 @@ public class CrossValidation implements Runnable {
         double dSpecificity;
 
         if(P == 0.0)
-            dSensitivity = 0;
+            dSensitivity = 0.0;
         else
             dSensitivity = nTruePositive / P;
         if(N == 0.0)
-            dSpecificity = 0;
+            dSpecificity = 0.0;
         else
             dSpecificity = nTrueNegative / N;
 
@@ -968,7 +964,7 @@ public class CrossValidation implements Runnable {
                 case 2:  //Precision   p/p+n
                     quality = ((double) nTruePositive / (nTruePositive + nTrueNegative));
                     break;
-                case 3:  //Laplace (PSO/ACO2)
+                case 3:  //Laplace
                     quality = ((double) (nTruePositive + 1) / (nTruePositive + nTrueNegative + 2));
                     break;
                 case 4: //Hider 3
@@ -983,27 +979,31 @@ public class CrossValidation implements Runnable {
                 case 7:  // Accuracy
                     quality = nTruePositive - nTrueNegative;
                     break;
-                case 8:  //Information Content PRISM log2(p/p+n)
-                    quality = Math.log(2) * nTruePositive / (nTruePositive + nTrueNegative);
+                case 8:  //Correlation
+                    quality = (nTruePositive*N - nTrueNegative*P) / (Math.sqrt(P * N * (nTrueNegative + nTruePositive) * (P - nTruePositive + N - nTrueNegative)));
                     break;
                 case 9: // cost measure c * p - (1 - c) * n
                     quality = (nParam * nTruePositive - (1 - nParam) * nTrueNegative);
                     break;
                 case 10: // relative cost measure  cr * dSensitivity - 1 (1 - cr) * dSpecificity
-                    quality = ((nParam * nTruePositive / P) - ((1 - nParam) * nTrueNegative / N));
+                    quality = ((nParam * dSensitivity) - ((1 - nParam) * dSpecificity));
                     break;
-                case 11: // F-measure
-                    quality = ((((nParam * nParam) + 1) * (nTruePositive / (nTruePositive + nFalsePositive)) * dSensitivity) / ((nParam * nParam * nTruePositive / (nTruePositive + nFalsePositive)) + dSensitivity));
+                case 11: //Full Coverage
+                    quality =  (nTruePositive + nTrueNegative) / (P + N);
                     break;
-                case 12: //m-estimate
+                case 12: // F-measure
+                    double precision=((double) nTruePositive / (nTruePositive + nTrueNegative));
+                    quality = (nParam * nParam + 1) * precision * dSensitivity / (nParam * nParam * precision + dSensitivity);
+                     break;
+                case 13: //m-estimate
                     quality = (((nTruePositive) + nParam * P / (P + N)) / (nTruePositive + nTrueNegative + nParam));
                     break;
-                case 13:  //Klosgen measure
-                    double coverage=((double) (nTruePositive + nTrueNegative) / (nTruePositive + nFalseNegative + nFalsePositive + nTrueNegative));;
-                    double precision=((double) nTruePositive / (nTruePositive + nFalsePositive));
+                case 14:  //Klosgen measure
+                    double coverage=((double) (nTruePositive + nTrueNegative) / (P + N));
+                    precision=((double) nTruePositive / (nTruePositive + nTrueNegative));
                     quality = Math.pow(coverage, nParam) * (precision - (P / (P+N)));
                     break;
-                case 14: //Jaccard rule based on Jaccard co-efficient
+                case 15: //Jaccard rule based on Jaccard co-efficient
                     quality = (double) nTruePositive / (nTruePositive + nFalsePositive + nFalseNegative);
                     break;
                 default:
@@ -1017,10 +1017,7 @@ public class CrossValidation implements Runnable {
         }
         return quality;
     }
-    public double testRuleQualityChoice(int nTruePositive, int nFalsePositive, int nFalseNegative, int nTrueNegative, int nQualityChoice, int nParam)
-    {
-        return ruleQualityChoice(nTruePositive, nFalsePositive, nFalseNegative, nTrueNegative, nQualityChoice, nParam);
-    }
+
 
     public double ruleRefinementChoice(int nTruePositive, int nTrueNegative, int P, int N, int choice, double nParam) {
         double quality = 0;
@@ -1153,18 +1150,6 @@ public class CrossValidation implements Runnable {
     private String getRuleString(int [] rule, int ruleConsequent){
         String ruleStr;
         ruleStr = "IF ";
-        boolean first=false;
-        for(int x=0; x < rule.length; x++){
-            if(rule[x] != -1){
-                if(!first)
-                    ruleStr += attributesArray[x].getAttributeName() + " = '" + attributesArray[x].getTypes()[rule[x]] + "' ";
-                else
-                    ruleStr += "AND " + attributesArray[x].getAttributeName() + " = '" + attributesArray[x].getTypes()[rule[x]] +
-                            "' ";
-                first=true;
-            }
-        }
-        ruleStr += "THEN '" + attributesArray[attributesArray.length-1].getTypes()[ruleConsequent] + "'";
         return ruleStr;
     }
 
@@ -1257,7 +1242,7 @@ public class CrossValidation implements Runnable {
         else
             cv.setPruning(false);
 
-        cv.setnParam(0.2);
+        cv.setnParam(Double.parseDouble(args[17].substring(25)));
         cv.start();
 
     }
