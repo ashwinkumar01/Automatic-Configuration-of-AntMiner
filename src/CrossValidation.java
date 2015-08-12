@@ -390,7 +390,9 @@ public class CrossValidation implements Runnable {
                 }
 
                 try {
-                    antsFoundRuleList.add(((Ant) bestIterationAntsList.get(bestAntIndex)).clone());
+                    if (((Ant) bestIterationAntsList.get(bestAntIndex)).hasRules()) {
+                        antsFoundRuleList.add(((Ant) bestIterationAntsList.get(bestAntIndex)).clone());
+                    }
                 } catch (CloneNotSupportedException e) {
                     e.printStackTrace();
                 }
@@ -411,6 +413,12 @@ public class CrossValidation implements Runnable {
                     if(trainingSet[x] != null)
                         tempTrainingSet[count++] = trainingSet[x];
                 }
+
+                if (trainingSet.length == tempTrainingSet.length && !((Ant) bestIterationAntsList.get(bestAntIndex)).hasRules()) {
+// we could not create a rule
+                    break;
+                }
+
                 trainingSet = tempTrainingSet;
 
                 bestIterationAntsList.clear();
