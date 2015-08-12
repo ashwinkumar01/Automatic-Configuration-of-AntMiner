@@ -425,25 +425,6 @@ public class CrossValidation implements Runnable {
             }
 
 
-
-            caller.getJTextArea1().append("\n------------------ Cross Validation #"+(crossValidation+1)+"------------------\n\n");
-
-            caller.getJTextArea1().append("Cases in the training set: "+trainingSetClone.length+"\n");
-            if(caller.getJCheckBox3IsSelected()){
-                caller.getJTextArea1().append("\n");
-                for(int x=0; x < trainingSetClone.length; x++){
-                    caller.getJTextArea1().append(getInstanceString(trainingSetClone[x].getValues())+"\n");
-                }
-            }
-
-            caller.getJTextArea1().append("\nCases in the test set:     "+testSet.length+"\n");
-            if(caller.getJCheckBox2IsSelected()){
-                caller.getJTextArea1().append("\n");
-                for(int x=0; x < testSet.length; x++){
-                    caller.getJTextArea1().append(getInstanceString(testSet[x].getValues())+"\n");
-                }
-            }
-
             numberOfRulesList.add(new Double((double)(antsFoundRuleList.size()+1)));
 
             int sum=0;
@@ -452,8 +433,6 @@ public class CrossValidation implements Runnable {
                 sum += ruleSize(((Ant) li.next()).getRulesArray());
             }
             numberOfTermsList.add(new Double((double)sum));
-
-            caller.getJTextArea1().append("\nRules: "+(antsFoundRuleList.size()+1)+"\n\n");
 
 
             //initializes freqT, which contains the number of cases that identify a class in the trainingSet
@@ -484,22 +463,10 @@ public class CrossValidation implements Runnable {
                 int [] rule = ((Ant)antObj).getRulesArray();
                // caller.getJTextArea1().append(getRuleString(rule, ((Ant)antObj).getRuleConsequent()) + "\n");
             }
-            caller.getJTextArea1().append("Default rule: "+attributesArray[attributesArray.length-1].getTypes()[defaultClassIndex]+"\n");
 
             // System.out.println("\nAccuracy rate on the training set: "+trainingAccuracyRate+" %");
             //System.out.println("Accuracy rate on the test set:     "+testAccuracyRate+" %");
-            if(accuracyRate[0] == -1)
-                accuracyRate[0] = trainingAccuracyRate;
-            else
-            {
-                accuracyRate[1] = trainingAccuracyRate;
-                System.out.println( (accuracyRate[0] + accuracyRate[1]) / 2 );
-            }
 
-            caller.getJTextArea1().append("\nAccuracy rate on the training set: "+trainingAccuracyRate+" %\n");
-            caller.getJTextArea1().append("Accuracy rate on the test set:     " + testAccuracyRate + " %\n\n");
-            caller.getJTextArea1().append("Time taken:                        " + ((new Date().getTime() - date2.getTime()) / 1000.0) + " s.\n"
-            );
 
             //System.out.println("Time taken: "+((new Date().getTime() - date2.getTime())/1000.0)+" s.\n");
 
@@ -508,36 +475,26 @@ public class CrossValidation implements Runnable {
         if(!interrupted){
             DecimalFormat myFormatter = new DecimalFormat("###.##");
 
-            caller.getJTextArea1().append("\n-------------------------------------------------------------------\n");
-            caller.getJTextArea1().append("                 "+folds+"-Fold Cross Validation Results\n");
-            caller.getJTextArea1().append("-------------------------------------------------------------------\n");
-            caller.getJTextArea1().append("Accuracy Rate on Test Set |   Rules Number   | Conditions Number   \n");
-            caller.getJTextArea1().append("-------------------------------------------------------------------\n");
-            caller.getJTextArea1().append("    "+myFormatter.format(totalTestAccuracyRate/folds)+"%  +/- "+myFormatter.format(calculateVariance(accuracyRatesList, (totalTestAccuracyRate / folds), folds))+"%");
-
             double total=0.0;
             ListIterator li = numberOfRulesList.listIterator();
             while(li.hasNext()){
                 total += ((Double) li.next()).doubleValue();
             }
-            caller.getJTextArea1().append("     |  "+myFormatter.format(total/folds)+"  +/- "+myFormatter.format(calculateVariance(numberOfRulesList,(total/folds),folds)));
-
             total=0.0;
             li = numberOfTermsList.listIterator();
             while(li.hasNext()){
                 total += ((Double) li.next()).doubleValue();
             }
-            caller.getJTextArea1().append("  |   "+myFormatter.format(total/folds)+"  +/- "+myFormatter.format(calculateVariance(numberOfTermsList,(total/folds),folds)));
+         }
 
-            caller.getJTextArea1().append("\n\nTotal elapsed time: "+((new Date().getTime() - date.getTime())/1000)+" s.\n");
-        }else
-            caller.getJTextArea1().append("\nCLASSIFICATION HAS BEEN CANCELED!");
-
-        caller.getJTextArea1().setCaretPosition(caller.getJTextArea1().getText().length());
-        caller.getJProgressBar1().setIndeterminate(false);
-        caller.setIsClassifying(false);
-        if(folds >= 1)
+        if(folds >= 10) {
+            double sum = 0.0;
+            for( int i = 0; i < accuracyRatesList.size(); i++ ) {
+                sum += accuracyRatesList.get(i);
+            }
+            System.out.println(sum / accuracyRatesList.size());
             System.exit(0);
+        }
     }
 
     /**
@@ -944,6 +901,15 @@ public class CrossValidation implements Runnable {
      * @param nQualityChoice
      * @return
      */
+    /**
+     * Depending on the choice, it calculate the rule quality of the ant
+     * @param nTruePositive
+     * @param nFalsePositive
+     * @param nFalseNegative
+     * @param nTrueNegative
+     * @param nQualityChoice
+     * @return
+     */
     public double ruleQualityChoice(int nTruePositive, int nFalsePositive, int nFalseNegative, int nTrueNegative, int nQualityChoice, double nParam) {
         //int nParam
         double quality;
@@ -1002,7 +968,7 @@ public class CrossValidation implements Runnable {
                 case 12: // F-measure
                     double precision=((double) nTruePositive / (nTruePositive + nTrueNegative));
                     quality = (nParam * nParam + 1) * precision * dSensitivity / (nParam * nParam * precision + dSensitivity);
-                     break;
+                    break;
                 case 13: //m-estimate
                     quality = (((nTruePositive) + nParam * P / (P + N)) / (nTruePositive + nTrueNegative + nParam));
                     break;
@@ -1025,8 +991,6 @@ public class CrossValidation implements Runnable {
         }
         return quality;
     }
-
-
     public double ruleRefinementChoice(int nTruePositive, int nTrueNegative, int P, int N, int choice, double nParam) {
         double quality = 0;
         try {
@@ -1235,7 +1199,7 @@ public class CrossValidation implements Runnable {
 
         cv.setAttributesArray(attributesArray);
         cv.setDataInstancesArray(dataInstancesArray);
-        cv.setFolds(2);
+        cv.setFolds(10);
 
         cv.setNumAnts(Integer.parseInt(args[2]));
         cv.setMinCasesRule(Integer.parseInt(args[4]));
