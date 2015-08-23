@@ -336,7 +336,8 @@ public class CrossValidation implements Runnable {
                         determineRuleConsequent(currentAnt);
                         calculateRuleQuality(currentAnt, nParam, nQualityChoice, false);
 
-                        if(pruneRule == true) {
+                        //If prune Rule is set to true, then prune the rule
+                        if(pruneRule) {
                             try {
                                 currentAnt = pruneRule(currentAnt);
                             } catch (CloneNotSupportedException e) {
@@ -901,15 +902,6 @@ public class CrossValidation implements Runnable {
      * @param nQualityChoice
      * @return
      */
-    /**
-     * Depending on the choice, it calculate the rule quality of the ant
-     * @param nTruePositive
-     * @param nFalsePositive
-     * @param nFalseNegative
-     * @param nTrueNegative
-     * @param nQualityChoice
-     * @return
-     */
     public double ruleQualityChoice(int nTruePositive, int nFalsePositive, int nFalseNegative, int nTrueNegative, int nQualityChoice, double nParam) {
         //int nParam
         double quality;
@@ -996,7 +988,7 @@ public class CrossValidation implements Runnable {
         try {
             switch (choice) {
                 case 1: //Inverted Precision
-                        quality = (double) ((N - nTrueNegative) / ((P + N) - (nTruePositive + nTrueNegative)));
+                        quality =  ((N - nTrueNegative) / (double)((P + N) - (nTruePositive + nTrueNegative)));
                     return quality;//return Double.isNaN(quality)? 0 : quality;
                 case 2: //Inverted Laplace
                     double num = (double) (N - nTrueNegative + 1);
@@ -1010,7 +1002,7 @@ public class CrossValidation implements Runnable {
                     quality = num * num2 / denom;
                     break;
                 default:
-                    quality = ((double) (N - nTrueNegative) / ((P + N) - (nTruePositive + nTrueNegative)));
+                    quality = ((double) (N - nTrueNegative) / (double) ((P + N) - (nTruePositive + nTrueNegative)));
             }
         }
         catch(Exception e)
@@ -1045,7 +1037,7 @@ public class CrossValidation implements Runnable {
      * @return
      * @throws CloneNotSupportedException
      */
-    private Ant pruneRule(Ant ant) throws CloneNotSupportedException{
+    protected Ant pruneRule(Ant ant) throws CloneNotSupportedException{
         int numCond;
         double greatestQuality, currentRuleQuality;
         Ant antClone;
@@ -1080,7 +1072,7 @@ public class CrossValidation implements Runnable {
      * Updates the trail of pheromone.
      * @param ant
      */
-    private void updatePheromone(Ant ant, boolean normalizePheromoneOn, double cRate){
+    protected void updatePheromone(Ant ant, boolean normalizePheromoneOn, double cRate){
         //update pheromone for used terms
         for(int x=0; x < ant.getRulesArray().length; x++){
             if(ant.getRulesArray()[x] != -1){
@@ -1088,7 +1080,7 @@ public class CrossValidation implements Runnable {
                 pheromoneArray[x][ant.getRulesArray()[x]] = currentValue + currentValue*(ant).getRuleQuality();
             }
         }
-        //normalize pheromone
+        //normalized rate
         if(normalizePheromoneOn) {
             double sum = 0;
             for (int x = 0; x < pheromoneArray.length; x++) {
