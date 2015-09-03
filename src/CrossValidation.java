@@ -31,7 +31,7 @@ public class CrossValidation implements Runnable {
     private Attribute [] attributesArray;
     private DataInstance [] dataInstancesArray;
 
-    private int folds;
+    private int folds = 1;
 
     private DataInstance [] testSet;
     private DataInstance [] trainingSet;
@@ -163,7 +163,7 @@ public class CrossValidation implements Runnable {
         try {
             initialize();
             cvThread.start();
-            caller.getJProgressBar1().setIndeterminate(true);
+          //  caller.getJProgressBar1().setIndeterminate(true);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -178,7 +178,7 @@ public class CrossValidation implements Runnable {
         int n=0;
         int arraysSize;
 
-        if(numAnts==0 || folds==0 || minCasesRule==0 ||
+        if(numAnts==0 || minCasesRule==0 ||
                 convergenceTest==0 || numIterations==0 || maxUncoveredCases==0){
             caller.getJProgressBar1().setIndeterminate(false);
             caller.setIsClassifying(false);
@@ -242,13 +242,13 @@ public class CrossValidation implements Runnable {
 
         group();
 
-        for(int crossValidation=0; crossValidation < folds && currentThread == cvThread; crossValidation++){
+
             // System.out.println("Cross Validation "+(crossValidation+1)+" of "+folds);
 
             Date date2 = new Date();
 
-            splitDataSet(crossValidation);
 
+            splitDataSet(1);
             DataInstance [] trainingSetClone = (DataInstance[])trainingSet.clone();
 
             int bestAntIndex=-1;
@@ -471,31 +471,33 @@ public class CrossValidation implements Runnable {
 
             //System.out.println("Time taken: "+((new Date().getTime() - date2.getTime())/1000.0)+" s.\n");
 
+
+
+        if(!interrupted)
+
+    {
+        DecimalFormat myFormatter = new DecimalFormat("###.##");
+
+        double total = 0.0;
+        li = numberOfRulesList.listIterator();
+        while (li.hasNext()) {
+            total += ((Double) li.next()).doubleValue();
+        }
+        total = 0.0;
+        li = numberOfTermsList.listIterator();
+        while (li.hasNext()) {
+            total += ((Double) li.next()).doubleValue();
         }
 
-        if(!interrupted){
-            DecimalFormat myFormatter = new DecimalFormat("###.##");
+    }
 
-            double total=0.0;
-            ListIterator li = numberOfRulesList.listIterator();
-            while(li.hasNext()){
-                total += ((Double) li.next()).doubleValue();
-            }
-            total=0.0;
-            li = numberOfTermsList.listIterator();
-            while(li.hasNext()){
-                total += ((Double) li.next()).doubleValue();
-            }
-         }
-
-        if(folds >= 10) {
-            double sum = 0.0;
+            double sum1 = 0.0;
             for( int i = 0; i < accuracyRatesList.size(); i++ ) {
-                sum += accuracyRatesList.get(i);
+                sum1 += accuracyRatesList.get(i);
             }
-            System.out.println(sum / accuracyRatesList.size());
+            System.out.println(sum1 / accuracyRatesList.size());
             System.exit(0);
-        }
+
     }
 
     /**
@@ -623,13 +625,10 @@ public class CrossValidation implements Runnable {
      */
     private void splitDataSet(int crossValidation){
         int testSetIndex=0,trainingSetIndex=0;
-        testSet = new DataInstance[noOfInstancesInGroup(crossValidation)];
-        trainingSet = new DataInstance[dataInstancesArray.length - noOfInstancesInGroup(crossValidation)];
+       // testSet = new DataInstance[noOfInstancesInGroup(crossValidation)];
+        trainingSet = new DataInstance[dataInstancesArray.length];
         for(int n=0; n < dataInstancesArray.length; n++){
             try {
-                if(dataInstancesArray[n].getCrossValidationGroup() == crossValidation)
-                    testSet[testSetIndex++] = (DataInstance)dataInstancesArray[n].clone();
-                else
                     trainingSet[trainingSetIndex++] = (DataInstance)dataInstancesArray[n].clone();
             } catch (CloneNotSupportedException e) {
                 e.printStackTrace();
@@ -1053,7 +1052,7 @@ public class CrossValidation implements Runnable {
                     antClone.getRulesArray()[a] = -1;
                     updateInstancesIndexList(antClone);
                     determineRuleConsequent(antClone);
-                    calculateRuleQuality(antClone, nParam, nRefinementChoice, true);
+                    calculateRuleQuality(antClone, nParam, nRefinementChoice, false);
                     if(antClone.getRuleQuality() >= greatestQuality){
                         greatestQuality = antClone.getRuleQuality();
                         antCloneWithBestPrunedRule = (Ant) antClone.clone();
@@ -1186,12 +1185,15 @@ public class CrossValidation implements Runnable {
         DataInstance[] dataInstancesArray = null;
         if(myFileReader.fileIsOk()) {
             attributesArray = myFileReader.getAttributesArray();
-            dataInstancesArray = myFileReader.getDataInstancesArray();
+
+            myFileReader = new MyFileReader((new File(args[1])));
+
+            if(myFileReader.fileIsOk())
+                cv.testSet = myFileReader.getDataInstancesArray();
         }
 
         cv.setAttributesArray(attributesArray);
-        cv.setDataInstancesArray(dataInstancesArray);
-        cv.setFolds(10);
+        cv.setDataInstancesArray(cv.testSet);
 
         cv.setNumAnts(Integer.parseInt(args[2]));
         cv.setMinCasesRule(Integer.parseInt(args[4]));
@@ -1205,8 +1207,8 @@ public class CrossValidation implements Runnable {
             cv.setPruning(true);
         else
             cv.setPruning(false);
-
         cv.setnParam(Double.parseDouble(args[17].substring(25)));
+        cv.setcPheromoneUpdate(Double.parseDouble(args[18].substring(15)));
         cv.start();
 
     }
