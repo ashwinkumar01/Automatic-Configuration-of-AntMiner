@@ -248,7 +248,7 @@ public class CrossValidation implements Runnable {
             Date date2 = new Date();
 
 
-            splitDataSet(1);
+           // splitDataSet(1);
             DataInstance [] trainingSetClone = (DataInstance[])trainingSet.clone();
 
             int bestAntIndex=-1;
@@ -1185,6 +1185,7 @@ public class CrossValidation implements Runnable {
         DataInstance[] dataInstancesArray = null;
         if(myFileReader.fileIsOk()) {
             attributesArray = myFileReader.getAttributesArray();
+            cv.trainingSet = myFileReader.getDataInstancesArray();
 
             myFileReader = new MyFileReader((new File(args[1])));
 
@@ -1193,7 +1194,7 @@ public class CrossValidation implements Runnable {
         }
 
         cv.setAttributesArray(attributesArray);
-        cv.setDataInstancesArray(cv.testSet);
+       // cv.setDataInstancesArray(cv.testSet);
 
         cv.setNumAnts(Integer.parseInt(args[2]));
         cv.setMinCasesRule(Integer.parseInt(args[4]));
