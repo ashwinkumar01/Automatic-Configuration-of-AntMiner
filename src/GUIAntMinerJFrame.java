@@ -631,7 +631,6 @@ public class GUIAntMinerJFrame extends javax.swing.JFrame {
 								cv = new CrossValidation(GUIAntMinerJFrame.this);
 
 								cv.setAttributesArray(attributesArray);
-								cv.setDataInstancesArray(dataInstancesArray);
 								cv.setNumAnts(Integer.parseInt(jTextField1.getText()));
 								cv.setFolds(Integer.parseInt(jTextField2.getText()));
 								cv.setMinCasesRule(Integer.parseInt(jTextField3.getText()));

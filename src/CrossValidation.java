@@ -29,7 +29,7 @@ import javax.swing.JOptionPane;
 
 public class CrossValidation implements Runnable {
     private Attribute [] attributesArray;
-    private DataInstance [] dataInstancesArray;
+    //private DataInstance [] dataInstancesArray;
 
     private int folds = 1;
 
@@ -118,9 +118,6 @@ public class CrossValidation implements Runnable {
     public void setAttributesArray(Attribute [] attributesArray){
         this.attributesArray = attributesArray;
     }
-    public void setDataInstancesArray(DataInstance [] dataInstancesArray){
-        this.dataInstancesArray = dataInstancesArray;
-    }
     public void setNumAnts(int numAnts){
         this.numAnts = numAnts;
     }
@@ -192,15 +189,6 @@ public class CrossValidation implements Runnable {
         numClasses = attributesArray[arraysSize].getTypes().length;
 
         freqT = new int[numClasses];
-
-        //determine the size of the data sets for cross-validation
-        int groupSize = dataInstancesArray.length / folds;
-        if(dataInstancesArray.length % folds == 0)
-            groupSize--;
-
-        control = new int[folds];
-        for(n=0; n < folds; n++)
-            control[n] = groupSize;
 
         pheromoneArray = new double[arraysSize][];
         freqTij = new int[arraysSize][][]; //freqTij[noOfAttributes][noOfValues][noOfClasses]
@@ -508,7 +496,7 @@ public class CrossValidation implements Runnable {
             caller.getJTextArea1().setText(null);
         caller.getJTextArea1().append("=== Run Information ===\n\n");
         caller.getJTextArea1().append("Relation:   " + caller.getJLabel2().getText() + "\n");
-        caller.getJTextArea1().append("Instances:  " + dataInstancesArray.length + "\n");
+        //caller.getJTextArea1().append("Instances:  " + dataInstancesArray.length + "\n");
         caller.getJTextArea1().append("Attributes: " + attributesArray.length + "\n");
         for(int x=0; x < attributesArray.length; x++){
             caller.getJTextArea1().append("            " + attributesArray[x].getAttributeName() + "\n");
@@ -590,58 +578,7 @@ public class CrossValidation implements Runnable {
      * Assigns each case a number with a value between 0 and the number of cross-validation folds -1.
      */
     private void group(){
-        Random random = new Random();
-        int randomNumber;
 
-        loosenGroups();
-
-        for(int n=0; n < dataInstancesArray.length; n++)
-            while(dataInstancesArray[n].getCrossValidationGroup() == -1){
-                randomNumber = (random.nextInt() << 1 >>> 1) % folds;
-                if(control[randomNumber] >= 0){
-                    control[randomNumber]--;
-                    dataInstancesArray[n].setCrossValidationGroup(randomNumber);
-                }
-            }
-    }
-
-    /**
-     * Calculates the number of instances in a certain cross validation group.
-     * @param group
-     * @return
-     */
-    private int noOfInstancesInGroup(int group) {
-        int count = 0;
-        for (int n = 0; n < dataInstancesArray.length; n++) {
-            if (dataInstancesArray[n].getCrossValidationGroup() == group)
-                count++;
-        }
-        return count;
-    }
-
-    /**
-     * Splits dataInstancesArray into testSet and trainingSet.
-     * @param crossValidation
-     */
-    private void splitDataSet(int crossValidation){
-        int testSetIndex=0,trainingSetIndex=0;
-       // testSet = new DataInstance[noOfInstancesInGroup(crossValidation)];
-        trainingSet = new DataInstance[dataInstancesArray.length];
-        for(int n=0; n < dataInstancesArray.length; n++){
-            try {
-                    trainingSet[trainingSetIndex++] = (DataInstance)dataInstancesArray[n].clone();
-            } catch (CloneNotSupportedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    /**
-     * Unsets previously formed groups by applying -1 to the value of each case group
-     */
-    private void loosenGroups(){
-        for(int n=0; n < dataInstancesArray.length; n++)
-            dataInstancesArray[n].setCrossValidationGroup(-1);
     }
 
     /**
